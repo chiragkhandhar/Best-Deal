@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Trending")
+@WebServlet("/Laptops")
 
-public class Trending extends HttpServlet {
+public class Laptops extends HttpServlet {
 
-	/* Trending Page Displays all the Consoles and their Information in Game Speed*/
+	/* Laptops Page Displays all the Consoles and their Information in Game Speed*/
 
 	protected void doGet(HttpServletRequest request,
 		HttpServletResponse response) throws ServletException, IOException {
@@ -21,7 +21,7 @@ public class Trending extends HttpServlet {
 
 		/* Checks the Consoles type whether it is microsft or sony or nintendo then add products to hashmap*/
 
-		String name = "Trending";
+		String name = "Laptops";
 		String CategoryName = request.getParameter("maker");
 		HashMap<String, Console> hm = new HashMap<String, Console>();
 		if(CategoryName==null)
@@ -73,7 +73,7 @@ public class Trending extends HttpServlet {
 		utility.printHtml("Header.html");
 		utility.printHtml("LeftNavigationBar.html");
 		pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
-		pw.print("<a style='font-size: 24px;'>"+name+" Products</a>");
+		pw.print("<a style='font-size: 24px;'>"+name+"</a>");
 		pw.print("</h2><div class='entry'><table id='bestseller'>");
 		int i = 1; int size= hm.size();
 		for(Map.Entry<String, Console> entry : hm.entrySet()){

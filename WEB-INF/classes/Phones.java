@@ -8,18 +8,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/TabletList")
+@WebServlet("/Phones")
 
-public class TabletList extends HttpServlet {
+public class Phones extends HttpServlet {
 
-	/* Trending Page Displays all the Tablets and their Information in Game Speed */
+	/* Phones Page Displays all the Phone and their Information in Best Deal */
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
 
-	/* Checks the Tablets type whether it is microsft or apple or samsung */
+	/* Checks the Phone type whether it is microsft or apple or samsung */
 
 		String name = null;
 		String CategoryName = request.getParameter("maker");
@@ -69,7 +69,7 @@ public class TabletList extends HttpServlet {
 
 		/* Header, Left Navigation Bar are Printed.
 
-		All the tablets and tablet information are dispalyed in the Content Section
+		All the Phones and phone information are dispalyed in the Content Section
 
 		and then Footer is Printed*/
 
@@ -77,7 +77,7 @@ public class TabletList extends HttpServlet {
 		utility.printHtml("Header.html");
 		utility.printHtml("LeftNavigationBar.html");
 		pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
-		pw.print("<a style='font-size: 24px;'>" + name + " Tablets</a>");
+		pw.print("<a style='font-size: 24px;'>" + name + " Phones</a>");
 		pw.print("</h2><div class='entry'><table id='bestseller'>");
 		int i = 1;
 		int size = hm.size();
