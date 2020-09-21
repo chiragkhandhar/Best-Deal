@@ -19,45 +19,45 @@ public class AccessoryList extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
 
-		/* Checks the Console maker whether it is microsft or sony or nintendo 
+		/* Checks the TV maker whether it is microsft or sony or nintendo 
 		   Add the respective product value to hashmap  */
 
 		String CategoryName = request.getParameter("maker");
-//		String ConsoleName = request.getParameter("console");
-		HashMap<String, Console> hm = new HashMap<String, Console>();
-			if(CategoryName.equals("microsoft"))
+//		String TVName = request.getParameter("tv");
+		HashMap<String, TVType> hm = new HashMap<String, TVType>();
+			if(CategoryName.equals("LG"))
 			{
-				for(Map.Entry<String,Console> entry : SaxParserDataStore.consoles.entrySet())
+				for(Map.Entry<String,TVType> entry : SaxParserDataStore.tvs.entrySet())
 				{	
-					if(entry.getValue().getRetailer().equals("Microsoft"))
+					if(entry.getValue().getRetailer().equals("LG"))
 					{
 					 hm.put(entry.getValue().getId(),entry.getValue());
 					}
 				}
 				
 			}
-			else if(CategoryName.equals("sony"))
+			else if(CategoryName.equals("Samsung"))
 			{	
-				for(Map.Entry<String,Console> entry : SaxParserDataStore.consoles.entrySet())
+				for(Map.Entry<String,TVType> entry : SaxParserDataStore.tvs.entrySet())
 				{	
-				  if(entry.getValue().getRetailer().equals("Sony"))
+				  if(entry.getValue().getRetailer().equals("Samsung"))
 				 { 
 					hm.put(entry.getValue().getId(),entry.getValue());
 				 }
 				}
 			}
-			else if(CategoryName.equals("nintendo"))
+			else if(CategoryName.equals("Sony"))
 			{
-				for(Map.Entry<String,Console> entry : SaxParserDataStore.consoles.entrySet())
+				for(Map.Entry<String,TVType> entry : SaxParserDataStore.tvs.entrySet())
 				{
-				  if(entry.getValue().getRetailer().equals("Nintendo"))
+				  if(entry.getValue().getRetailer().equals("Sony"))
 				 {
 					 hm.put(entry.getValue().getId(),entry.getValue());
 				 }
 				}	
 			}
 			
-//		Console console = hm.get(ConsoleName);
+//		TVType tv = hm.get(TVName);
 				
 		/* Header, Left Navigation Bar are Printed.
 
@@ -73,10 +73,10 @@ public class AccessoryList extends HttpServlet {
 		pw.print("<a style='font-size: 24px;'>"+ CategoryName +": Accessories</a>");
 		pw.print("</h2><div class='entry'><table id='bestseller'>");
 		int i = 1; int size= 2;
-		for(Map.Entry<String, Console> entry : hm.entrySet())
+		for(Map.Entry<String, TVType> entry : hm.entrySet())
 		{
-			Console console = entry.getValue();
-			for(Map.Entry<String, String> acc:console.getAccessories().entrySet())
+			TVType tv = entry.getValue();
+			for(Map.Entry<String, String> acc:tv.getAccessories().entrySet())
 			{
 		        
 				Accessory accessory= SaxParserDataStore.accessories.get(acc.getValue());
@@ -90,17 +90,17 @@ public class AccessoryList extends HttpServlet {
 						"<input type='hidden' name='name' value='"+acc.getValue()+"'>"+
 						"<input type='hidden' name='type' value='accessories'>"+
 						"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
-						"<input type='hidden' name='access' value='"+console.getName()+"'>"+
+						"<input type='hidden' name='access' value='"+tv.getName()+"'>"+
 						"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
 				pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='"+acc+"'>"+
 						"<input type='hidden' name='type' value='accessories'>"+
 						"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
-						"<input type='hidden' name='access' value='"+console.getName()+"'>"+
+						"<input type='hidden' name='access' value='"+tv.getName()+"'>"+
 						"<input type='submit' value='WriteReview' class='btnreview'></form></li>");
 				pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+acc+"'>"+
 						"<input type='hidden' name='type' value='accessories'>"+
 						"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
-						"<input type='hidden' name='access' value='"+console.getName()+"'>"+
+						"<input type='hidden' name='access' value='"+tv.getName()+"'>"+
 						"<input type='submit' value='ViewReview' class='btnreview'></form></li>");
 		
 				pw.print("</ul></div></td>");

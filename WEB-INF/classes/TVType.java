@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/Console")
+@WebServlet("/TVType")
 
 
 /* 
-	Console class contains class variables name,price,image,retailer,condition,discount and Accessories Hashmap.
+	TVType class contains class variables name,price,image,retailer,condition,discount and Accessories Hashmap.
 
-	Console class constructor with Arguments name,price,image,retailer,condition,discount and Accessories .
+	TVType class constructor with Arguments name,price,image,retailer,condition,discount and Accessories .
 	  
 	Accessory class contains getters and setters for name,price,image,retailer,condition,discount and Accessories .
 
 */
 
-public class Console extends HttpServlet{
+public class TVType extends HttpServlet{
 	private String id;
 	private String name;
 	private double price;
@@ -28,7 +28,7 @@ public class Console extends HttpServlet{
 	private String condition;
 	private double discount;
 	HashMap<String,String> accessories;
-	public Console(String name, double price, String image, String retailer,String condition,double discount){
+	public TVType(String name, double price, String image, String retailer,String condition,double discount){
 		this.name=name;
 		this.price=price;
 		this.image=image;
@@ -42,7 +42,7 @@ public class Console extends HttpServlet{
 		return accessories;
 		}
 
-	public Console(){
+	public TVType(){
 		
 	}
 	public String getId() {

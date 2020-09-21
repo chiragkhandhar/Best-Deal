@@ -23,14 +23,14 @@ public class Carousel{
 	public String  carouselfeature(Utilities utility){
 				
 						
-		HashMap<String, Console> hm = new HashMap<String, Console>();
+		HashMap<String, TVType> hm = new HashMap<String, TVType>();
 		StringBuilder sb = new StringBuilder();
 		String myCarousel = null;
 			
 		String name = null;
 		String CategoryName = null;
 		if(CategoryName==null){
-			hm.putAll(SaxParserDataStore.consoles);
+			hm.putAll(SaxParserDataStore.tvs);
 			name = "";
 		}
 		int l =0;
@@ -60,11 +60,11 @@ public class Carousel{
 				*/
 				sb.append("<div class='carousel-inner'>");
 						
-				Console console1 = hm.get(oi.getName());
+				TVType tv1 = hm.get(oi.getName());
 				System.out.print(oi.getName());
 				int k = 0; int size= hm.size();
 			
-				for(Map.Entry<String, String> acc:console1.getAccessories().entrySet())
+				for(Map.Entry<String, String> acc:tv1.getAccessories().entrySet())
 				{
 				
 					Accessory accessory= SaxParserDataStore.accessories.get(acc.getValue());

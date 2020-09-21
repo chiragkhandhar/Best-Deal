@@ -200,10 +200,10 @@ public class Utilities extends HttpServlet{
 			OrdersHashMap.orders.put(username(), arr);
 		}
 		ArrayList<OrderItem> orderItems = OrdersHashMap.orders.get(username());
-		if(type.equals("consoles")){
-			Console console;
-			console = SaxParserDataStore.consoles.get(name);
-			OrderItem orderitem = new OrderItem(console.getName(), console.getPrice(), console.getImage(), console.getRetailer());
+		if(type.equals("tvs")){
+			TVType tv;
+			tv = SaxParserDataStore.tvs.get(name);
+			OrderItem orderitem = new OrderItem(tv.getName(), tv.getPrice(), tv.getImage(), tv.getRetailer());
 			orderItems.add(orderitem);
 		}
 		if(type.equals("games")){
@@ -273,11 +273,11 @@ public class Utilities extends HttpServlet{
 	}
 
 	
-	/* getConsoles Functions returns the Hashmap with all consoles in the store.*/
+	/* getTVs Functions returns the Hashmap with all tvs in the store.*/
 
-	public HashMap<String, Console> getConsoles(){
-			HashMap<String, Console> hm = new HashMap<String, Console>();
-			hm.putAll(SaxParserDataStore.consoles);
+	public HashMap<String, TVType> getTVs(){
+			HashMap<String, TVType> hm = new HashMap<String, TVType>();
+			hm.putAll(SaxParserDataStore.tvs);
 			return hm;
 	}
 	
@@ -297,11 +297,11 @@ public class Utilities extends HttpServlet{
 			return hm;
 	}
 	
-	/* getProducts Functions returns the Arraylist of consoles in the store.*/
+	/* getProducts Functions returns the Arraylist of tvs in the store.*/
 
 	public ArrayList<String> getProducts(){
 		ArrayList<String> ar = new ArrayList<String>();
-		for(Map.Entry<String, Console> entry : getConsoles().entrySet()){			
+		for(Map.Entry<String, TVType> entry : getTVs().entrySet()){			
 			ar.add(entry.getValue().getName());
 		}
 		return ar;

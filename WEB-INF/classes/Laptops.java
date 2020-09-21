@@ -12,27 +12,27 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Laptops extends HttpServlet {
 
-	/* Laptops Page Displays all the Consoles and their Information in Game Speed*/
+	/* Laptops Page Displays all the Tvs and their Information in Game Speed*/
 
 	protected void doGet(HttpServletRequest request,
 		HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
 
-		/* Checks the Consoles type whether it is microsft or sony or nintendo then add products to hashmap*/
+		/* Checks the TVs type whether it is microsft or sony or nintendo then add products to hashmap*/
 
 		String name = "Laptops";
 		String CategoryName = request.getParameter("maker");
-		HashMap<String, Console> hm = new HashMap<String, Console>();
+		HashMap<String, TVType> hm = new HashMap<String, TVType>();
 		if(CategoryName==null)
 		{
-			hm.putAll(SaxParserDataStore.consoles);
+			hm.putAll(SaxParserDataStore.tvs);
 		}
 		else
 		{
 			if(CategoryName.equals("microsoft"))
 			{
-				for(Map.Entry<String,Console> entry : SaxParserDataStore.consoles.entrySet())
+				for(Map.Entry<String,TVType> entry : SaxParserDataStore.tvs.entrySet())
 				{
 				  if(entry.getValue().getRetailer().equals("Microsoft")) 
 				  {
@@ -42,7 +42,7 @@ public class Laptops extends HttpServlet {
 			}
 			else if(CategoryName.equals("sony"))
 			{
-				for(Map.Entry<String,Console> entry : SaxParserDataStore.consoles.entrySet())
+				for(Map.Entry<String,TVType> entry : SaxParserDataStore.tvs.entrySet())
 				{
 				  if(entry.getValue().getRetailer().equals("Sony"))
 				  {
@@ -52,7 +52,7 @@ public class Laptops extends HttpServlet {
 			}
 			else if(CategoryName.equals("nintendo"))
 			{
-				for(Map.Entry<String,Console> entry : SaxParserDataStore.consoles.entrySet())
+				for(Map.Entry<String,TVType> entry : SaxParserDataStore.tvs.entrySet())
 				{ 
 			      if(entry.getValue().getRetailer().equals("Nintendo"))
 				  {
@@ -65,7 +65,7 @@ public class Laptops extends HttpServlet {
 
 		/* Header, Left Navigation Bar are Printed.
 
-		All the consoles and Console information are dispalyed in the Content Section
+		All the tvs and Tv information are dispalyed in the Content Section
 
 		and then Footer is Printed*/
 
@@ -76,27 +76,27 @@ public class Laptops extends HttpServlet {
 		pw.print("<a style='font-size: 24px;'>"+name+"</a>");
 		pw.print("</h2><div class='entry'><table id='bestseller'>");
 		int i = 1; int size= hm.size();
-		for(Map.Entry<String, Console> entry : hm.entrySet()){
-			Console console = entry.getValue();
+		for(Map.Entry<String, TVType> entry : hm.entrySet()){
+			TVType tv = entry.getValue();
 			if(i%3==1) pw.print("<tr>");
 			pw.print("<td><div id='shop_item'>");
-			pw.print("<h3>"+console.getName()+"</h3>");
-			pw.print("<strong>$"+console.getPrice()+"</strong><ul>");
-			pw.print("<li id='item'><img src='images/consoles/"+console.getImage()+"' alt='' /></li>");
+			pw.print("<h3>"+tv.getName()+"</h3>");
+			pw.print("<strong>$"+tv.getPrice()+"</strong><ul>");
+			pw.print("<li id='item'><img src='images/tvs/"+tv.getImage()+"' alt='' /></li>");
 			pw.print("<li><form method='post' action='Cart'>" +
 					"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
-					"<input type='hidden' name='type' value='consoles'>"+
-					"<input type='hidden' name='maker' value='"+console.getRetailer()+"'>"+
+					"<input type='hidden' name='type' value='tvs'>"+
+					"<input type='hidden' name='maker' value='"+tv.getRetailer()+"'>"+
 					"<input type='hidden' name='access' value=''>"+
 					"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
 			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
-					"<input type='hidden' name='type' value='consoles'>"+
-					"<input type='hidden' name='maker' value='"+console.getRetailer()+"'>"+
+					"<input type='hidden' name='type' value='tvs'>"+
+					"<input type='hidden' name='maker' value='"+tv.getRetailer()+"'>"+
 					"<input type='hidden' name='access' value=''>"+
 				    "<input type='submit' value='WriteReview' class='btnreview'></form></li>");
 			pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
-					"<input type='hidden' name='type' value='consoles'>"+
-					"<input type='hidden' name='maker' value='"+console.getRetailer()+"'>"+
+					"<input type='hidden' name='type' value='tvs'>"+
+					"<input type='hidden' name='maker' value='"+tv.getRetailer()+"'>"+
 					"<input type='hidden' name='access' value=''>"+
 				    "<input type='submit' value='ViewReview' class='btnreview'></form></li>");
 			pw.print("</ul></div></td>");

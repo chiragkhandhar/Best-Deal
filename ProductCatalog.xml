@@ -2,12 +2,12 @@
 
 <ProductCatalog>
 
-<ConsoleCatalog>
-    <console id="Xbox One">
-        <name>Xbox One</name>
-        <price>399.99</price>
-        <image>xbox1.jpg</image>
-        <manufacturer>Microsoft</manufacturer>
+<TVCatalog>
+    <TV id="LG Nanocell">
+        <name>LG Nanocell</name>
+        <price>499.99</price>
+        <image>lg_nanocell.jpg</image>
+        <manufacturer>LG</manufacturer>
         <condition>New</condition>
         <discount>10.0</discount>
         <accessories>
@@ -21,14 +21,14 @@
 			
 			
         </accessories>
-    </console>
-    <console id="xbox360">
-        <name>xbox360</name>
-        <price>399.99</price>
-        <image>xbox360.jpg</image>
-        <manufacturer>Microsoft</manufacturer>
+    </TV>
+    <TV id="LG UHD">
+        <name>LG UHD</name>
+        <price>699.99</price>
+        <image>lg_UHD.jpg</image>
+        <manufacturer>LG</manufacturer>
         <condition>New</condition>
-        <discount>10.0</discount>
+        <discount>15.0</discount>
         <accessories>
             <accessory>xbox360_wc</accessory>
             <accessory>xbox360_sh</accessory>
@@ -37,45 +37,57 @@
 			<accessory>xbox360_mp</accessory>
 			<accessory>xbox360_kg</accessory>
         </accessories>
-    </console>
+    </TV>
 
-    <console id="PS4">
-        <name>PS4</name>
-        <price>349.99</price>
-        <image>PS4-console-bundle.jpg</image>
-        <manufacturer>Sony</manufacturer>
+    <TV id="Samsung Crystal UHD">
+        <name>Samsung Crystal UHD</name>
+        <price>549.99</price>
+        <image>samsung_crystalUHD.jpg</image>
+        <manufacturer>Samsung</manufacturer>
         <condition>New</condition>
-        <discount>10.0</discount>
+        <discount>12.0</discount>
         <accessories>
             <accessory>ps4_wc</accessory>
 			
         </accessories>
-    </console>
-    <console id="PS3">
-        <name>PS3</name>
-        <price>349.99</price>
-        <image>ps3.jpg</image>
-        <manufacturer>Sony</manufacturer>
+    </TV>
+    <TV id="Samsung QLED">
+        <name>Samsung QLED</name>
+        <price>549.99</price>
+        <image>samsung_QLED.jpg</image>
+        <manufacturer>Samsung</manufacturer>
         <condition>New</condition>
-        <discount>10.0</discount>
+        <discount>20.0</discount>
         <accessories>
             <accessory>ps3_wc</accessory>
 			
         </accessories>
-    </console>
-    <console id="WII">
-        <name>WII</name>
-        <price>249.99</price>
-        <image>Wii-Console.png</image>
-        <manufacturer>Nintendo</manufacturer>
+    </TV>
+    <TV id="Samsung UHD">
+        <name>Samsung UHD</name>
+        <price>749.99</price>
+        <image>samsung_UHD.jpg</image>
+        <manufacturer>Samsung</manufacturer>
         <condition>New</condition>
-        <discount>10.0</discount>
+        <discount>13.0</discount>
         <accessories>
             <accessory>nintendo_wc</accessory>
             <accessory>nintendo_sh</accessory>
         </accessories>
-    </console>
-</ConsoleCatalog>
+    </TV>
+    <TV id="Sony X1">
+        <name>Sony X1</name>
+        <price>849.99</price>
+        <image>sony_x1.jpg</image>
+        <manufacturer>Sony</manufacturer>
+        <condition>New</condition>
+        <discount>35.0</discount>
+        <accessories>
+            <accessory>nintendo_wc</accessory>
+            <accessory>nintendo_sh</accessory>
+        </accessories>
+    </TV>
+</TVCatalog>
 
 <TabletCatalog>
     <tablet id="ipad">

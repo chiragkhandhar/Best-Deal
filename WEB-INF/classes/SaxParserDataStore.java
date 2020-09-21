@@ -5,7 +5,7 @@
 http://www.saxproject.org/
 
 SAX is the Simple API for XML, originally a Java-only API. 
-SAX was the first widely adopted API for XML in Java, and is a “de facto” standard. 
+SAX was the first widely adopted API for XML in Java, and is a ï¿½de factoï¿½ standard. 
 The current version is SAX 2.0.1, and there are versions for several programming language environments other than Java. 
 
 The following URL from Oracle is the JAVA documentation for the API
@@ -41,11 +41,11 @@ You should extend DefaultHandler and override the method when parsin the XML doc
 ////////////////////////////////////////////////////////////
 
 public class SaxParserDataStore extends DefaultHandler {
-    Console console;
+    TVType tv;
     Game game;
     Tablet tablet;
     Accessory accessory;
-    static HashMap<String,Console> consoles;
+    static HashMap<String,TVType> tvs;
     static HashMap<String,Game> games;
     static HashMap<String,Tablet> tablets;
     static HashMap<String,Accessory> accessories;
@@ -58,7 +58,7 @@ public class SaxParserDataStore extends DefaultHandler {
 	}
 	public SaxParserDataStore(String consoleXmlFileName) {
     this.consoleXmlFileName = consoleXmlFileName;
-    consoles = new HashMap<String, Console>();
+    tvs = new HashMap<String, TVType>();
 	games=new  HashMap<String, Game>();
 	tablets=new HashMap<String, Tablet>();
 	accessories=new HashMap<String, Accessory>();
@@ -104,15 +104,15 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 
 ////////////////////////////////////////////////////////////
 	
-	// when xml start element is parsed store the id into respective hashmap for console,games etc 
+	// when xml start element is parsed store the id into respective hashmap for TV,games etc 
     @Override
     public void startElement(String str1, String str2, String elementName, Attributes attributes) throws SAXException {
 
-        if (elementName.equalsIgnoreCase("console")) 
+        if (elementName.equalsIgnoreCase("TV")) 
 		{
-			currentElement="console";
-			console = new Console();
-            console.setId(attributes.getValue("id"));
+			currentElement="TV";
+			tv = new TVType();
+            tv.setId(attributes.getValue("id"));
 		}
         if (elementName.equalsIgnoreCase("tablet"))
 		{
@@ -126,7 +126,7 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 			game= new Game();
             game.setId(attributes.getValue("id"));
         }
-        if (elementName.equals("accessory") &&  !currentElement.equals("console"))
+        if (elementName.equals("accessory") &&  !currentElement.equals("TV"))
 		{
 			currentElement="accessory";
 			accessory=new Accessory();
@@ -135,12 +135,12 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 
 
     }
-	// when xml end element is parsed store the data into respective hashmap for console,games etc respectively
+	// when xml end element is parsed store the data into respective hashmap for TV,games etc respectively
     @Override
     public void endElement(String str1, String str2, String element) throws SAXException {
  
-        if (element.equals("console")) {
-			consoles.put(console.getId(),console);
+        if (element.equals("TV")) {
+			tvs.put(tv.getId(),tv);
 			return;
         }
  
@@ -156,18 +156,18 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 			accessories.put(accessory.getId(),accessory);       
 			return; 
         }
-		if (element.equals("accessory") && currentElement.equals("console")) 
+		if (element.equals("accessory") && currentElement.equals("TV")) 
 		{
 			accessoryHashMap.put(elementValueRead,elementValueRead);
 		}
-      	if (element.equalsIgnoreCase("accessories") && currentElement.equals("console")) {
-			console.setAccessories(accessoryHashMap);
+      	if (element.equalsIgnoreCase("accessories") && currentElement.equals("TV")) {
+			tv.setAccessories(accessoryHashMap);
 			accessoryHashMap=new HashMap<String,String>();
 			return;
 		}
         if (element.equalsIgnoreCase("image")) {
-		    if(currentElement.equals("console"))
-				console.setImage(elementValueRead);
+		    if(currentElement.equals("TV"))
+				tv.setImage(elementValueRead);
         	if(currentElement.equals("game"))
 				game.setImage(elementValueRead);
             if(currentElement.equals("tablet"))
@@ -179,8 +179,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
         
 
 		if (element.equalsIgnoreCase("discount")) {
-            if(currentElement.equals("console"))
-				console.setDiscount(Double.parseDouble(elementValueRead));
+            if(currentElement.equals("TV"))
+				tv.setDiscount(Double.parseDouble(elementValueRead));
         	if(currentElement.equals("game"))
 				game.setDiscount(Double.parseDouble(elementValueRead));
             if(currentElement.equals("tablet"))
@@ -192,8 +192,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 
 
 		if (element.equalsIgnoreCase("condition")) {
-            if(currentElement.equals("console"))
-				console.setCondition(elementValueRead);
+            if(currentElement.equals("TV"))
+				tv.setCondition(elementValueRead);
         	if(currentElement.equals("game"))
 				game.setCondition(elementValueRead);
             if(currentElement.equals("tablet"))
@@ -204,8 +204,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 		}
 
 		if (element.equalsIgnoreCase("manufacturer")) {
-            if(currentElement.equals("console"))
-				console.setRetailer(elementValueRead);
+            if(currentElement.equals("TV"))
+				tv.setRetailer(elementValueRead);
         	if(currentElement.equals("game"))
 				game.setRetailer(elementValueRead);
             if(currentElement.equals("tablet"))
@@ -216,8 +216,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 		}
 
         if (element.equalsIgnoreCase("name")) {
-            if(currentElement.equals("console"))
-				console.setName(elementValueRead);
+            if(currentElement.equals("TV"))
+				tv.setName(elementValueRead);
         	if(currentElement.equals("game"))
 				game.setName(elementValueRead);
             if(currentElement.equals("tablet"))
@@ -228,8 +228,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 	    }
 	
         if(element.equalsIgnoreCase("price")){
-			if(currentElement.equals("console"))
-				console.setPrice(Double.parseDouble(elementValueRead));
+			if(currentElement.equals("TV"))
+				tv.setPrice(Double.parseDouble(elementValueRead));
         	if(currentElement.equals("game"))
 				game.setPrice(Double.parseDouble(elementValueRead));
             if(currentElement.equals("tablet"))
