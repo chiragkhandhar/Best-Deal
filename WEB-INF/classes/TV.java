@@ -21,7 +21,7 @@ public class TV extends HttpServlet {
 		String CategoryName = request.getParameter("maker");
         
 
-		/* Checks the Tablets type whether it is microsft or sony or nintendo */
+		/* Checks the Phones type whether it is microsft or sony or nintendo */
 
 		HashMap<String, TVType> hm = new HashMap<String, TVType>();
 		if(CategoryName==null){

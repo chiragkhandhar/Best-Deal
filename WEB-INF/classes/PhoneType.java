@@ -6,17 +6,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Tablet")
+@WebServlet("/PhoneType")
 
 /* 
-	Tablet class contains class variables name,price,image,retailer,condition,discount.
+	PhoneType class contains class variables name,price,image,retailer,condition,discount.
 
-	Tablet class has a constructor with Arguments name,price,image,retailer,condition,discount.
+	PhoneType class has a constructor with Arguments name,price,image,retailer,condition,discount.
 	  
-	Tablet class contains getters and setters for name,price,image,retailer,condition,discount.
+	PhoneType class contains getters and setters for name,price,image,retailer,condition,discount.
 */
 
-public class Tablet extends HttpServlet{
+public class PhoneType extends HttpServlet{
 	private String id;
 	private String name;
 	private double price;
@@ -25,7 +25,7 @@ public class Tablet extends HttpServlet{
 	private String condition;
 	private double discount;
 	
-	public Tablet(String name, double price, String image, String retailer, String condition,double discount){
+	public PhoneType(String name, double price, String image, String retailer, String condition,double discount){
 		this.name=name;
 		this.price=price;
 		this.image=image;
@@ -34,7 +34,7 @@ public class Tablet extends HttpServlet{
 		this.retailer = retailer;
 	}
 	
-	public Tablet(){
+	public PhoneType(){
 		
 	}
 	

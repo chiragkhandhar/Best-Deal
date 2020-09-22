@@ -89,49 +89,82 @@
     </TV>
 </TVCatalog>
 
-<TabletCatalog>
-    <tablet id="ipad">
-        <name>Apple Ipad Pro</name>
-        <price>189.99</price>
-        <image>apple1.jpg</image>
+<PhoneCatalog>
+    <phone id="gp1">
+        <name>Google Pixel 2XL</name>
+        <price>599.99</price>
+        <image>google-pixel2xl.jpg</image>
+        <manufacturer>Google</manufacturer>
+        <condition>New</condition>
+        <discount>10.0</discount>
+    </phone>
+    <phone id="gp2">
+        <name>Google Pixel 4</name>
+        <price>399.99</price>
+        <image>google-pixel4.jpg</image>
+        <manufacturer>Google</manufacturer>
+        <condition>new</condition>
+        <discount>10.0</discount>
+    </phone>
+    <phone id="gp3">
+        <name>Google Pixel 4XL</name>
+        <price>599.99</price>
+        <image>google-pixel4xl.jpg</image>
+        <manufacturer>Google</manufacturer>
+        <condition>new</condition>
+        <discount>10.0</discount>
+    </phone>
+    <phone id="ap1">
+        <name>Apple iPhone 11</name>
+        <price>699.99</price>
+        <image>iphone11.jpg</image>
         <manufacturer>Apple</manufacturer>
         <condition>New</condition>
-        <discount>40.0</discount>
-    </tablet>
-    <tablet id="ipad3">
-        <name>Apple Ipad 3</name>
-        <price>189.99</price>
-        <image>apple2.jpg</image>
+        <discount>15.0</discount>
+    </phone>
+    <phone id="ap2">
+        <name>Apple iPhone 11 Pro</name>
+        <price>999.99</price>
+        <image>iphone11-pro.jpg</image>
         <manufacturer>Apple</manufacturer>
-        <condition>Used</condition>
-        <discount>20.0</discount>
-    </tablet>
-    <tablet id="Surface">
-        <name>Surface</name>
-        <price>299.99</price>
-        <image>m1.jpg</image>
-        <manufacturer>Microsoft</manufacturer>
         <condition>New</condition>
         <discount>15.0</discount>
-    </tablet>
-    <tablet id="Surface4">
-        <name>Surface Pro 4</name>
-        <price>299.99</price>
-        <image>m2.jpg</image>
-        <manufacturer>Microsoft</manufacturer>
+    </phone>
+    <phone id="ap3">
+        <name>Apple iPhone 11 Pro Max</name>
+        <price>1190.99</price>
+        <image>iphone11-pro-max.jpg</image>
+        <manufacturer>Apple</manufacturer>
         <condition>New</condition>
         <discount>15.0</discount>
-    </tablet>
-    <tablet id="Samsung2">
-        <name>Samsung Tab 2</name>
-        <price>150.99</price>
-        <image>s1.jpg</image>
+    </phone>
+    <phone id="sp1">
+        <name>Samsung Galaxy Note 20 -5G</name>
+        <price>990.99</price>
+        <image>samsung-galaxy-note20-5g.jpg</image>
         <manufacturer>Samsung</manufacturer>
         <condition>New</condition>
-        <discount>15.0</discount>
-    </tablet>
+        <discount>12.0</discount>
+    </phone>
+     <phone id="sp2">
+        <name>Samsung Galaxy S20 -5G</name>
+        <price>799.99</price>
+        <image>samsung-galaxy-s20-5g.jpg</image>
+        <manufacturer>Samsung</manufacturer>
+        <condition>New</condition>
+        <discount>12.0</discount>
+    </phone>
+     <phone id="sp3">
+        <name>Samsung Galaxy ZFlip</name>
+        <price>599.99</price>
+        <image>samsung-galaxy-zFlip.jpg</image>
+        <manufacturer>Samsung</manufacturer>
+        <condition>New</condition>
+        <discount>12.0</discount>
+    </phone>
 
-</TabletCatalog>
+
+</PhoneCatalog>
 <SoundSystemCatalog>
 <soundsystem id="ss1">
         <name>Yamaha Turbi 2500</name>

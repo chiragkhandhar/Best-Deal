@@ -23,18 +23,18 @@ public class Phones extends HttpServlet {
 
 		String name = null;
 		String CategoryName = request.getParameter("maker");
-		HashMap<String, Tablet> hm = new HashMap<String, Tablet>();
+		HashMap<String, PhoneType> hm = new HashMap<String, PhoneType>();
 
 		if (CategoryName == null)	
 		{
-			hm.putAll(SaxParserDataStore.tablets);
+			hm.putAll(SaxParserDataStore.phones);
 			name = "";
 		} 
 		else 
 		{
-			if(CategoryName.equals("apple")) 
+			if(CategoryName.equals("Apple")) 
 			{	
-				for(Map.Entry<String,Tablet> entry : SaxParserDataStore.tablets.entrySet())
+				for(Map.Entry<String,PhoneType> entry : SaxParserDataStore.phones.entrySet())
 				{
 				  if(entry.getValue().getRetailer().equals("Apple"))
 				  {
@@ -43,20 +43,20 @@ public class Phones extends HttpServlet {
 				}
 				name ="Apple";
 			} 
-			else if (CategoryName.equals("microsoft"))
+			else if (CategoryName.equals("Google"))
 			{
-				for(Map.Entry<String,Tablet> entry : SaxParserDataStore.tablets.entrySet())
+				for(Map.Entry<String,PhoneType> entry : SaxParserDataStore.phones.entrySet())
 				{
-				  if(entry.getValue().getRetailer().equals("Microsoft"))
+				  if(entry.getValue().getRetailer().equals("Google"))
 				  {
 					 hm.put(entry.getValue().getId(),entry.getValue());
 				  }
 				}
-				name = "Microsoft";
+				name = "Google";
 			} 
-			else if (CategoryName.equals("samsung")) 
+			else if (CategoryName.equals("Samsung")) 
 			{
-				for(Map.Entry<String,Tablet> entry : SaxParserDataStore.tablets.entrySet())
+				for(Map.Entry<String,PhoneType> entry : SaxParserDataStore.phones.entrySet())
 				{
 				  if(entry.getValue().getRetailer().equals("Samsung"))
 				 {
@@ -81,28 +81,28 @@ public class Phones extends HttpServlet {
 		pw.print("</h2><div class='entry'><table id='bestseller'>");
 		int i = 1;
 		int size = hm.size();
-		for (Map.Entry<String, Tablet> entry : hm.entrySet()) {
-			Tablet Tablet = entry.getValue();
+		for (Map.Entry<String, PhoneType> entry : hm.entrySet()) {
+			PhoneType phone = entry.getValue();
 			if (i % 3 == 1)
 				pw.print("<tr>");
 			pw.print("<td><div id='shop_item'>");
-			pw.print("<h3>" + Tablet.getName() + "</h3>");
-			pw.print("<strong>" + Tablet.getPrice() + "$</strong><ul>");
-			pw.print("<li id='item'><img src='images/tablets/"
-					+ Tablet.getImage() + "' alt='' /></li>");
+			pw.print("<h3>" + phone.getName() + "</h3>");
+			pw.print("<strong>$ " + phone.getPrice() + "</strong><ul>");
+			pw.print("<li id='item'><img src='images/phones/"
+					+ phone.getImage() + "' alt='' /></li>");
 			pw.print("<li><form method='post' action='Cart'>" +
 					"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
-					"<input type='hidden' name='type' value='tablets'>"+
+					"<input type='hidden' name='type' value='phones'>"+
 					"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
 					"<input type='hidden' name='access' value=''>"+
 					"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
 			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
-					"<input type='hidden' name='type' value='tablets'>"+
+					"<input type='hidden' name='type' value='phones'>"+
 					"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
 					"<input type='hidden' name='access' value=''>"+
 				    "<input type='submit' value='WriteReview' class='btnreview'></form></li>");
 			pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
-					"<input type='hidden' name='type' value='tablets'>"+
+					"<input type='hidden' name='type' value='phones'>"+
 					"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
 					"<input type='hidden' name='access' value=''>"+
 				    "<input type='submit' value='ViewReview' class='btnreview'></form></li>");

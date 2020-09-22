@@ -1,19 +1,3 @@
-
-/*********
-
-
-http://www.saxproject.org/
-
-SAX is the Simple API for XML, originally a Java-only API. 
-SAX was the first widely adopted API for XML in Java, and is a �de facto� standard. 
-The current version is SAX 2.0.1, and there are versions for several programming language environments other than Java. 
-
-The following URL from Oracle is the JAVA documentation for the API
-
-https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.html
-
-
-*********/
 import org.xml.sax.InputSource;
 
 import java.io.IOException;
@@ -28,26 +12,14 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-
-////////////////////////////////////////////////////////////
-
-/**************
-
-SAX parser use callback function  to notify client object of the XML document structure. 
-You should extend DefaultHandler and override the method when parsin the XML document
-
-***************/
-
-////////////////////////////////////////////////////////////
-
 public class SaxParserDataStore extends DefaultHandler {
     TVType tv;
     SSType soundsystem;
-    Tablet tablet;
+    PhoneType phone;
     Accessory accessory;
     static HashMap<String,TVType> tvs;
     static HashMap<String,SSType> soundsystems;
-    static HashMap<String,Tablet> tablets;
+    static HashMap<String,PhoneType> phones;
     static HashMap<String,Accessory> accessories;
     String consoleXmlFileName;
 	HashMap<String,String> accessoryHashMap;
@@ -60,7 +32,7 @@ public class SaxParserDataStore extends DefaultHandler {
     this.consoleXmlFileName = consoleXmlFileName;
     tvs = new HashMap<String, TVType>();
 	soundsystems=new  HashMap<String, SSType>();
-	tablets=new HashMap<String, Tablet>();
+	phones=new HashMap<String, PhoneType>();
 	accessories=new HashMap<String, Accessory>();
 	accessoryHashMap=new HashMap<String,String>();
 	parseDocument();
@@ -82,27 +54,6 @@ public class SaxParserDataStore extends DefaultHandler {
             System.out.println("IO error");
         }
 	}
-
-   
-
-////////////////////////////////////////////////////////////
-
-/*************
-
-There are a number of methods to override in SAX handler  when parsing your XML document :
-
-    Group 1. startDocument() and endDocument() :  Methods that are called at the start and end of an XML document. 
-    Group 2. startElement() and endElement() :  Methods that are called  at the start and end of a document element.  
-    Group 3. characters() : Method that is called with the text content in between the start and end tags of an XML document element.
-
-
-There are few other methods that you could use for notification for different purposes, check the API at the following URL:
-
-https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.html
-
-***************/
-
-////////////////////////////////////////////////////////////
 	
 	// when xml start element is parsed store the id into respective hashmap for TV, soundsystems etc 
     @Override
@@ -114,11 +65,11 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 			tv = new TVType();
             tv.setId(attributes.getValue("id"));
 		}
-        if (elementName.equalsIgnoreCase("tablet"))
+        if (elementName.equalsIgnoreCase("phone"))
 		{
-			currentElement="tablet";
-			tablet = new Tablet();
-            tablet.setId(attributes.getValue("id"));
+			currentElement="phone";
+			phone = new PhoneType();
+            phone.setId(attributes.getValue("id"));
         }
         if (elementName.equalsIgnoreCase("soundsystem"))
 		{
@@ -144,8 +95,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 			return;
         }
  
-        if (element.equals("tablet")) {	
-			tablets.put(tablet.getId(),tablet);
+        if (element.equals("phone")) {	
+			phones.put(phone.getId(),phone);
 			return;
         }
         if (element.equals("soundsystem")) {	  
@@ -170,8 +121,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 				tv.setImage(elementValueRead);
         	if(currentElement.equals("soundsystem"))
 				soundsystem.setImage(elementValueRead);
-            if(currentElement.equals("tablet"))
-				tablet.setImage(elementValueRead);
+            if(currentElement.equals("phone"))
+				phone.setImage(elementValueRead);
             if(currentElement.equals("accessory"))
 				accessory.setImage(elementValueRead);          
 			return;
@@ -183,8 +134,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 				tv.setDiscount(Double.parseDouble(elementValueRead));
         	if(currentElement.equals("soundsystem"))
 				soundsystem.setDiscount(Double.parseDouble(elementValueRead));
-            if(currentElement.equals("tablet"))
-				tablet.setDiscount(Double.parseDouble(elementValueRead));
+            if(currentElement.equals("phone"))
+				phone.setDiscount(Double.parseDouble(elementValueRead));
             if(currentElement.equals("accessory"))
 				accessory.setDiscount(Double.parseDouble(elementValueRead));          
 			return;
@@ -196,8 +147,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 				tv.setCondition(elementValueRead);
         	if(currentElement.equals("soundsystem"))
 				soundsystem.setCondition(elementValueRead);
-            if(currentElement.equals("tablet"))
-				tablet.setCondition(elementValueRead);
+            if(currentElement.equals("phone"))
+				phone.setCondition(elementValueRead);
             if(currentElement.equals("accessory"))
 				accessory.setCondition(elementValueRead);          
 			return;  
@@ -208,8 +159,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 				tv.setRetailer(elementValueRead);
         	if(currentElement.equals("soundsystem"))
 				soundsystem.setRetailer(elementValueRead);
-            if(currentElement.equals("tablet"))
-				tablet.setRetailer(elementValueRead);
+            if(currentElement.equals("phone"))
+				phone.setRetailer(elementValueRead);
             if(currentElement.equals("accessory"))
 				accessory.setRetailer(elementValueRead);          
 			return;
@@ -220,8 +171,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 				tv.setName(elementValueRead);
         	if(currentElement.equals("soundsystem"))
 				soundsystem.setName(elementValueRead);
-            if(currentElement.equals("tablet"))
-				tablet.setName(elementValueRead);
+            if(currentElement.equals("phone"))
+				phone.setName(elementValueRead);
             if(currentElement.equals("accessory"))
 				accessory.setName(elementValueRead);          
 			return;
@@ -232,8 +183,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 				tv.setPrice(Double.parseDouble(elementValueRead));
         	if(currentElement.equals("soundsystem"))
 				soundsystem.setPrice(Double.parseDouble(elementValueRead));
-            if(currentElement.equals("tablet"))
-				tablet.setPrice(Double.parseDouble(elementValueRead));
+            if(currentElement.equals("phone"))
+				phone.setPrice(Double.parseDouble(elementValueRead));
             if(currentElement.equals("accessory"))
 				accessory.setPrice(Double.parseDouble(elementValueRead));          
 			return;
