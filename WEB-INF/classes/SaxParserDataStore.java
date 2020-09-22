@@ -42,11 +42,11 @@ You should extend DefaultHandler and override the method when parsin the XML doc
 
 public class SaxParserDataStore extends DefaultHandler {
     TVType tv;
-    Game game;
+    SSType soundsystem;
     Tablet tablet;
     Accessory accessory;
     static HashMap<String,TVType> tvs;
-    static HashMap<String,Game> games;
+    static HashMap<String,SSType> soundsystems;
     static HashMap<String,Tablet> tablets;
     static HashMap<String,Accessory> accessories;
     String consoleXmlFileName;
@@ -59,7 +59,7 @@ public class SaxParserDataStore extends DefaultHandler {
 	public SaxParserDataStore(String consoleXmlFileName) {
     this.consoleXmlFileName = consoleXmlFileName;
     tvs = new HashMap<String, TVType>();
-	games=new  HashMap<String, Game>();
+	soundsystems=new  HashMap<String, SSType>();
 	tablets=new HashMap<String, Tablet>();
 	accessories=new HashMap<String, Accessory>();
 	accessoryHashMap=new HashMap<String,String>();
@@ -104,7 +104,7 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 
 ////////////////////////////////////////////////////////////
 	
-	// when xml start element is parsed store the id into respective hashmap for TV,games etc 
+	// when xml start element is parsed store the id into respective hashmap for TV, soundsystems etc 
     @Override
     public void startElement(String str1, String str2, String elementName, Attributes attributes) throws SAXException {
 
@@ -120,11 +120,11 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 			tablet = new Tablet();
             tablet.setId(attributes.getValue("id"));
         }
-        if (elementName.equalsIgnoreCase("game"))
+        if (elementName.equalsIgnoreCase("soundsystem"))
 		{
-			currentElement="game";
-			game= new Game();
-            game.setId(attributes.getValue("id"));
+			currentElement="soundsystem";
+			soundsystem= new SSType();
+            soundsystem.setId(attributes.getValue("id"));
         }
         if (elementName.equals("accessory") &&  !currentElement.equals("TV"))
 		{
@@ -135,7 +135,7 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 
 
     }
-	// when xml end element is parsed store the data into respective hashmap for TV,games etc respectively
+	// when xml end element is parsed store the data into respective hashmap for TV,soundsystems etc respectively
     @Override
     public void endElement(String str1, String str2, String element) throws SAXException {
  
@@ -148,8 +148,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 			tablets.put(tablet.getId(),tablet);
 			return;
         }
-        if (element.equals("game")) {	  
-			games.put(game.getId(),game);
+        if (element.equals("soundsystem")) {	  
+			soundsystems.put(soundsystem.getId(),soundsystem);
 			return;
         }
         if (element.equals("accessory") && currentElement.equals("accessory")) {
@@ -168,8 +168,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
         if (element.equalsIgnoreCase("image")) {
 		    if(currentElement.equals("TV"))
 				tv.setImage(elementValueRead);
-        	if(currentElement.equals("game"))
-				game.setImage(elementValueRead);
+        	if(currentElement.equals("soundsystem"))
+				soundsystem.setImage(elementValueRead);
             if(currentElement.equals("tablet"))
 				tablet.setImage(elementValueRead);
             if(currentElement.equals("accessory"))
@@ -181,8 +181,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 		if (element.equalsIgnoreCase("discount")) {
             if(currentElement.equals("TV"))
 				tv.setDiscount(Double.parseDouble(elementValueRead));
-        	if(currentElement.equals("game"))
-				game.setDiscount(Double.parseDouble(elementValueRead));
+        	if(currentElement.equals("soundsystem"))
+				soundsystem.setDiscount(Double.parseDouble(elementValueRead));
             if(currentElement.equals("tablet"))
 				tablet.setDiscount(Double.parseDouble(elementValueRead));
             if(currentElement.equals("accessory"))
@@ -194,8 +194,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 		if (element.equalsIgnoreCase("condition")) {
             if(currentElement.equals("TV"))
 				tv.setCondition(elementValueRead);
-        	if(currentElement.equals("game"))
-				game.setCondition(elementValueRead);
+        	if(currentElement.equals("soundsystem"))
+				soundsystem.setCondition(elementValueRead);
             if(currentElement.equals("tablet"))
 				tablet.setCondition(elementValueRead);
             if(currentElement.equals("accessory"))
@@ -206,8 +206,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 		if (element.equalsIgnoreCase("manufacturer")) {
             if(currentElement.equals("TV"))
 				tv.setRetailer(elementValueRead);
-        	if(currentElement.equals("game"))
-				game.setRetailer(elementValueRead);
+        	if(currentElement.equals("soundsystem"))
+				soundsystem.setRetailer(elementValueRead);
             if(currentElement.equals("tablet"))
 				tablet.setRetailer(elementValueRead);
             if(currentElement.equals("accessory"))
@@ -218,8 +218,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
         if (element.equalsIgnoreCase("name")) {
             if(currentElement.equals("TV"))
 				tv.setName(elementValueRead);
-        	if(currentElement.equals("game"))
-				game.setName(elementValueRead);
+        	if(currentElement.equals("soundsystem"))
+				soundsystem.setName(elementValueRead);
             if(currentElement.equals("tablet"))
 				tablet.setName(elementValueRead);
             if(currentElement.equals("accessory"))
@@ -230,8 +230,8 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
         if(element.equalsIgnoreCase("price")){
 			if(currentElement.equals("TV"))
 				tv.setPrice(Double.parseDouble(elementValueRead));
-        	if(currentElement.equals("game"))
-				game.setPrice(Double.parseDouble(elementValueRead));
+        	if(currentElement.equals("soundsystem"))
+				soundsystem.setPrice(Double.parseDouble(elementValueRead));
             if(currentElement.equals("tablet"))
 				tablet.setPrice(Double.parseDouble(elementValueRead));
             if(currentElement.equals("accessory"))

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AccessoryList extends HttpServlet {
 
-	/* Accessory Page Displays all the Accessories and their Information in Game Speed */
+	/* Accessory Page Displays all the Accessories and their Information in Best Deal */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

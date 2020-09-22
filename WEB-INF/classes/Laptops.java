@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Laptops extends HttpServlet {
 
-	/* Laptops Page Displays all the Tvs and their Information in Game Speed*/
+	/* Laptops Page Displays all the Tvs and their Information in Best Deal*/
 
 	protected void doGet(HttpServletRequest request,
 		HttpServletResponse response) throws ServletException, IOException {

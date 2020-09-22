@@ -64,7 +64,7 @@ public class Login extends HttpServlet {
 	}
 
 
-	/*  Login Screen is Displayed, Registered User specifies credentials and logins into the Game Speed Application. */
+	/*  Login Screen is Displayed, Registered User specifies credentials and logins into the Best Deal Application. */
 	protected void displayLogin(HttpServletRequest request,
 			HttpServletResponse response, PrintWriter pw, boolean error)
 			throws ServletException, IOException {

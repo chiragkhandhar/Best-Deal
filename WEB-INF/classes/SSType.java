@@ -4,18 +4,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Game")
+@WebServlet("/SSType")
 
 /* 
-	Game class contains class variables name,price,image,retailer,condition,discount.
+	SSType class contains class variables name,price,image,retailer,condition,discount.
 
-	Game class has a constructor with Arguments name,price,image,retailer,condition,discount.
+	SSType class has a constructor with Arguments name,price,image,retailer,condition,discount.
 	  
-	Game class contains getters and setters for name,price,image,retailer,condition,discount.
+	SSType class contains getters and setters for name,price,image,retailer,condition,discount.
 
 */
 
-public class Game extends HttpServlet{
+public class SSType extends HttpServlet{
 	private String id;
 	private String name;
 	private double price;
@@ -24,7 +24,7 @@ public class Game extends HttpServlet{
 	private String condition;
 	private double discount;
 	
-	public Game(String id,String name, double price, String image, String retailer,String condition,double discount){
+	public SSType(String id,String name, double price, String image, String retailer,String condition,double discount){
 		this.id=id;
 		this.name=name;
 		this.price=price;
@@ -34,7 +34,7 @@ public class Game extends HttpServlet{
 		this.retailer = retailer;
 	}
 	
-	public Game(){
+	public SSType(){
 		
 	}
 	public String getId() {

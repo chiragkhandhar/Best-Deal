@@ -132,40 +132,51 @@
     </tablet>
 
 </TabletCatalog>
-<GamesCatalog>
-<game id="g1">
-        <name>FIFA 2016</name>
-        <price>50.99</price>
-        <image>ea_fifa.jpg</image>
-        <manufacturer>ElectronicArts</manufacturer>
+<SoundSystemCatalog>
+<soundsystem id="ss1">
+        <name>Yamaha Turbi 2500</name>
+        <price>349.99</price>
+        <image>yamaha-turbi.jpg</image>
+        <manufacturer>Yamaha</manufacturer>
         <condition>New</condition>
-        <discount>15.0</discount>
-</game>
-<game id="g2">
-        <name>Need for Speed</name>
-        <price>50.99</price>
-        <image>ea_nfs.jpg</image>
-        <manufacturer>ElectronicArts</manufacturer>
+        <discount>25.0</discount>
+</soundsystem> 
+
+
+<soundsystem id="ss2">
+        <name>Bose Lifestyle 600</name>
+        <price>550.99</price>
+        <image>bose-lifestyle600.jpg</image>
+        <manufacturer>Bose</manufacturer>
         <condition>Refurbished</condition>
         <discount>15.0</discount>
-</game>
-<game id="g3">
-        <name>Call Of Duty</name>
-        <price>50.99</price>
-        <image>activision_cod.jpg</image>
-        <manufacturer>Activision</manufacturer>
+</soundsystem>
+<soundsystem id="ss3">
+        <name>Bose Lifestyle 650</name>
+        <price>650.99</price>
+        <image>bose-lifestyle650.jpg</image>
+        <manufacturer>Bose</manufacturer>
         <condition>New</condition>
         <discount>15.0</discount>
-</game>
-<game id="g4">
-        <name>Evolve</name>
-        <price>50.99</price>
-        <image>tti_evolve.jpg</image>
-        <manufacturer>TakeTwoInteractive</manufacturer>
+</soundsystem>
+<soundsystem id="ss4">
+        <name>Polka Audio Black Tone</name>
+        <price>399.99</price>
+        <image>polkaudio-blackstone.jpg</image>
+        <manufacturer>PolkaAudio</manufacturer>
+        <condition>New</condition>
+        <discount>5.0</discount>
+</soundsystem>
+<soundsystem id="ss5">
+        <name>Bose 5.1</name>
+        <price>450.99</price>
+        <image>bose-51.jpg</image>
+        <manufacturer>Bose</manufacturer>
         <condition>New</condition>
         <discount>15.0</discount>
-</game>
-</GamesCatalog>
+</soundsystem>
+
+</SoundSystemCatalog>
 
 <AccessoryCatalog>
 

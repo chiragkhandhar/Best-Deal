@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class PrevAccessory extends HttpServlet {
 
-	/* TV Page Displays all the Tvs and their Information in Game Speed */
+	/* TV Page Displays all the Tvs and their Information in Best Deal */
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /* 
 	Home class uses the printHtml Function of Utilities class and prints the Header,LeftNavigationBar,
-	Content,Footer of Game Speed Application.
+	Content,Footer of Best Deal Application.
 
 */
 

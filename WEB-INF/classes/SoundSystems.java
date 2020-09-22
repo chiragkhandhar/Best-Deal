@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class SoundSystems extends HttpServlet {
 
-	/* Sound Systems Page Displays all the Sound Systems and their Information in Game Speed */
+	/* Sound Systems Page Displays all the Sound Systems and their Information in Best Deal */
 
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,47 +24,47 @@ public class SoundSystems extends HttpServlet {
 				
 		String name = null;
 		String CategoryName = request.getParameter("maker");
-		HashMap<String, Game> hm = new HashMap<String, Game>();
+		HashMap<String, SSType> hm = new HashMap<String, SSType>();
 		
 		if(CategoryName==null)
 		{
-			hm.putAll(SaxParserDataStore.games);
+			hm.putAll(SaxParserDataStore.soundsystems);
 			name = "";
 		}
 		else
 		{
-		  if(CategoryName.equals("electronicArts"))
+		  if(CategoryName.equals("Bose"))
 		  {
-			for(Map.Entry<String,Game> entry : SaxParserDataStore.games.entrySet())
+			for(Map.Entry<String,SSType> entry : SaxParserDataStore.soundsystems.entrySet())
 				{
-				if(entry.getValue().getRetailer().equals("ElectronicArts"))
+				if(entry.getValue().getRetailer().equals("Bose"))
 				 {
 					 hm.put(entry.getValue().getId(),entry.getValue());
 				 }
 				}
-			name = "ElectronicArts";
+			name = "Bose";
 		  }
-		  else if(CategoryName.equals("activision"))
+		  else if(CategoryName.equals("Yamaha"))
 		  {
-			for(Map.Entry<String,Game> entry : SaxParserDataStore.games.entrySet())
+			for(Map.Entry<String,SSType> entry : SaxParserDataStore.soundsystems.entrySet())
 				{
-				if(entry.getValue().getRetailer().equals("Activision"))
+				if(entry.getValue().getRetailer().equals("Yamaha"))
 				 {
 					 hm.put(entry.getValue().getId(),entry.getValue());
 				 }
 				}	
-			name = "Activision";
+			name = "Yamaha";
 		  }
-		  else if(CategoryName.equals("takeTwoInteractive"))
+		  else if(CategoryName.equals("PolkaAudio"))
 		  {
-			for(Map.Entry<String,Game> entry : SaxParserDataStore.games.entrySet())
+			for(Map.Entry<String,SSType> entry : SaxParserDataStore.soundsystems.entrySet())
 				{
-				if(entry.getValue().getRetailer().equals("TakeTwoInteractive"))
+				if(entry.getValue().getRetailer().equals("PolkaAudio"))
 				 {
 					 hm.put(entry.getValue().getId(),entry.getValue());
 				 }
 				}
-			name = "TakeTwoInteractive";
+			name = "PolkaAudio";
 		  }
 		}
 
@@ -81,26 +81,26 @@ public class SoundSystems extends HttpServlet {
 		pw.print("<a style='font-size: 24px;'>"+name+" Sound Sytems</a>");
 		pw.print("</h2><div class='entry'><table id='bestseller'>");
 		int i = 1; int size= hm.size();
-		for(Map.Entry<String, Game> entry : hm.entrySet()){
-			Game game = entry.getValue();
+		for(Map.Entry<String, SSType> entry : hm.entrySet()){
+			SSType soundsystem = entry.getValue();
 			if(i%3==1) pw.print("<tr>");
 			pw.print("<td><div id='shop_item'>");
-			pw.print("<h3>"+game.getName()+"</h3>");
-			pw.print("<strong>"+ "$" + game.getPrice() + "</strong><ul>");
-			pw.print("<li id='item'><img src='images/games/"+game.getImage()+"' alt='' /></li>");
+			pw.print("<h3>"+soundsystem.getName()+"</h3>");
+			pw.print("<strong>"+ "$" + soundsystem.getPrice() + "</strong><ul>");
+			pw.print("<li id='item'><img src='images/soundsystems/"+soundsystem.getImage()+"' alt='' /></li>");
 			pw.print("<li><form method='post' action='Cart'>" +
 					"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
-					"<input type='hidden' name='type' value='games'>"+
+					"<input type='hidden' name='type' value='soundsystems'>"+
 					"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
 					"<input type='hidden' name='access' value=''>"+
 					"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
 			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
-					"<input type='hidden' name='type' value='games'>"+
+					"<input type='hidden' name='type' value='soundsystems'>"+
 					"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
 					"<input type='hidden' name='access' value=''>"+
 				    "<input type='submit' value='WriteReview' class='btnreview'></form></li>");
 			pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
-					"<input type='hidden' name='type' value='games'>"+
+					"<input type='hidden' name='type' value='soundsystems'>"+
 					"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
 					"<input type='hidden' name='access' value=''>"+
 				    "<input type='submit' value='ViewReview' class='btnreview'></form></li>");

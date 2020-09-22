@@ -206,10 +206,10 @@ public class Utilities extends HttpServlet{
 			OrderItem orderitem = new OrderItem(tv.getName(), tv.getPrice(), tv.getImage(), tv.getRetailer());
 			orderItems.add(orderitem);
 		}
-		if(type.equals("games")){
-			Game game = null;
-			game = SaxParserDataStore.games.get(name);
-			OrderItem orderitem = new OrderItem(game.getName(), game.getPrice(), game.getImage(), game.getRetailer());
+		if(type.equals("soundsystems")){
+			SSType soundsystem = null;
+			soundsystem = SaxParserDataStore.soundsystems.get(name);
+			OrderItem orderitem = new OrderItem(soundsystem.getName(), soundsystem.getPrice(), soundsystem.getImage(), soundsystem.getRetailer());
 			orderItems.add(orderitem);
 		}
 		if(type.equals("tablets")){
@@ -281,11 +281,11 @@ public class Utilities extends HttpServlet{
 			return hm;
 	}
 	
-	/* getGames Functions returns the  Hashmap with all Games in the store.*/
+	/* getSoundSystems Functions returns the  Hashmap with all SoundSystems in the store.*/
 
-	public HashMap<String, Game> getGames(){
-			HashMap<String, Game> hm = new HashMap<String, Game>();
-			hm.putAll(SaxParserDataStore.games);
+	public HashMap<String, SSType> getSoundSystems(){
+			HashMap<String, SSType> hm = new HashMap<String, SSType>();
+			hm.putAll(SaxParserDataStore.soundsystems);
 			return hm;
 	}
 	
@@ -307,11 +307,11 @@ public class Utilities extends HttpServlet{
 		return ar;
 	}
 	
-	/* getProducts Functions returns the Arraylist of games in the store.*/
+	/* getProducts Functions returns the Arraylist of soundsystems in the store.*/
 
-	public ArrayList<String> getProductsGame(){		
+	public ArrayList<String> getProductsSoundSystem(){		
 		ArrayList<String> ar = new ArrayList<String>();
-		for(Map.Entry<String, Game> entry : getGames().entrySet()){
+		for(Map.Entry<String, SSType> entry : getSoundSystems().entrySet()){
 			ar.add(entry.getValue().getName());
 		}
 		return ar;

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class TV extends HttpServlet {
 
-	/* TV Page Displays all the TVs and their Information in Game Speed */
+	/* TV Page Displays all the TVs and their Information in Best Deal */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
