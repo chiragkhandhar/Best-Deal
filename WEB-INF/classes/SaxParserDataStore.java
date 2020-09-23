@@ -15,11 +15,13 @@ import org.xml.sax.helpers.DefaultHandler;
 public class SaxParserDataStore extends DefaultHandler {
     TVType tv;
     SSType soundsystem;
-    PhoneType phone;
+	PhoneType phone;
+	LaptopType laptop;
     Accessory accessory;
     static HashMap<String,TVType> tvs;
     static HashMap<String,SSType> soundsystems;
-    static HashMap<String,PhoneType> phones;
+	static HashMap<String,PhoneType> phones;
+	static HashMap<String, LaptopType> laptops;
     static HashMap<String,Accessory> accessories;
     String consoleXmlFileName;
 	HashMap<String,String> accessoryHashMap;
@@ -33,6 +35,7 @@ public class SaxParserDataStore extends DefaultHandler {
     tvs = new HashMap<String, TVType>();
 	soundsystems=new  HashMap<String, SSType>();
 	phones=new HashMap<String, PhoneType>();
+	laptops = new HashMap<String, LaptopType>();
 	accessories=new HashMap<String, Accessory>();
 	accessoryHashMap=new HashMap<String,String>();
 	parseDocument();
@@ -76,7 +79,13 @@ public class SaxParserDataStore extends DefaultHandler {
 			currentElement="soundsystem";
 			soundsystem= new SSType();
             soundsystem.setId(attributes.getValue("id"));
-        }
+		}
+		if(elementName.equalsIgnoreCase("laptop"))
+		{
+			currentElement = "laptop";
+			laptop = new LaptopType();
+			laptop.setId(attributes.getValue("id"));
+		}
         if (elementName.equals("accessory") &&  !currentElement.equals("TV"))
 		{
 			currentElement="accessory";
@@ -102,6 +111,10 @@ public class SaxParserDataStore extends DefaultHandler {
         if (element.equals("soundsystem")) {	  
 			soundsystems.put(soundsystem.getId(),soundsystem);
 			return;
+		}
+		if (element.equals("laptop")) {	  
+			laptops.put(laptop.getId(),laptop);
+			return;
         }
         if (element.equals("accessory") && currentElement.equals("accessory")) {
 			accessories.put(accessory.getId(),accessory);       
@@ -123,6 +136,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				soundsystem.setImage(elementValueRead);
             if(currentElement.equals("phone"))
 				phone.setImage(elementValueRead);
+			if(currentElement.equals("laptop"))
+				laptop.setImage(elementValueRead);
             if(currentElement.equals("accessory"))
 				accessory.setImage(elementValueRead);          
 			return;
@@ -136,6 +151,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				soundsystem.setDiscount(Double.parseDouble(elementValueRead));
             if(currentElement.equals("phone"))
 				phone.setDiscount(Double.parseDouble(elementValueRead));
+			if(currentElement.equals("laptop"))
+				laptop.setDiscount(Double.parseDouble(elementValueRead));
             if(currentElement.equals("accessory"))
 				accessory.setDiscount(Double.parseDouble(elementValueRead));          
 			return;
@@ -149,6 +166,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				soundsystem.setCondition(elementValueRead);
             if(currentElement.equals("phone"))
 				phone.setCondition(elementValueRead);
+			if(currentElement.equals("laptop"))
+				laptop.setCondition(elementValueRead);
             if(currentElement.equals("accessory"))
 				accessory.setCondition(elementValueRead);          
 			return;  
@@ -161,6 +180,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				soundsystem.setRetailer(elementValueRead);
             if(currentElement.equals("phone"))
 				phone.setRetailer(elementValueRead);
+			if(currentElement.equals("laptop"))
+				laptop.setRetailer(elementValueRead);
             if(currentElement.equals("accessory"))
 				accessory.setRetailer(elementValueRead);          
 			return;
@@ -173,6 +194,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				soundsystem.setName(elementValueRead);
             if(currentElement.equals("phone"))
 				phone.setName(elementValueRead);
+			if(currentElement.equals("laptop"))
+				laptop.setName(elementValueRead);
             if(currentElement.equals("accessory"))
 				accessory.setName(elementValueRead);          
 			return;
@@ -185,6 +208,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				soundsystem.setPrice(Double.parseDouble(elementValueRead));
             if(currentElement.equals("phone"))
 				phone.setPrice(Double.parseDouble(elementValueRead));
+			if(currentElement.equals("laptop"))
+				laptop.setPrice(Double.parseDouble(elementValueRead));
             if(currentElement.equals("accessory"))
 				accessory.setPrice(Double.parseDouble(elementValueRead));          
 			return;
