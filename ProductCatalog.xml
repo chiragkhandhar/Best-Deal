@@ -303,6 +303,81 @@
     </va>
 </VACatalog>
 
+<WearableCatalog>
+    <wt id="fw1">
+        <name>Samsung - Galaxy Fit Activity Tracker + Heart Rate - Black</name>
+        <price>99.99</price>
+        <image>samsung1.jpg</image>
+        <category>fitnesswatch</category>
+        <condition>New</condition>
+        <discount>50.0</discount>
+    </wt>
+    <wt id="fw2">
+        <name>Fitbit - Versa 2 Smartwatch 40mm Aluminum - Stone/Mist Gray</name>
+        <price>179.99</price>
+        <image>fitbit1.jpg</image>
+        <category>fitnesswatch</category>
+        <condition>New</condition>
+        <discount>1</discount>
+    </wt>
+    <wt id="fw3">
+        <name>Garmin - Fēnix 6X Pro Solar GPS/GLONASS/Galileo Watch - Black</name>
+        <price>999.99</price>
+        <image>garmin1.jpg</image>
+        <category>fitnesswatch</category>
+        <condition>New</condition>
+        <discount>00.0</discount>
+    </wt>
+    <wt id="sw1">
+        <name>Apple Watch Series 3 Space Gray Aluminum</name>
+        <price>229.00</price>
+        <image>apple1.jpg</image>
+        <category>smartwatch</category>
+        <condition>New</condition>
+        <discount>10.0</discount>
+    </wt>
+    <wt id="sw2">
+        <name>Fitbit Versa 3 Black</name>
+        <price>329.95</price>
+        <image>fitbit2.jpg</image>
+        <category>smartwatch</category>
+        <condition>New</condition>
+        <discount>10.0</discount>
+    </wt>
+    <wt id="sw3">
+        <name>Apple Watch Edition (GPS + Cellular) 42mm Gray Ceramic Case</name>
+        <price>1329.00</price>
+        <image>apple2.jpg</image>
+        <category>smartwatch</category>
+        <condition>New</condition>
+        <discount>10.0</discount>
+    </wt>
+    <wt id="hp1">
+        <name>Bose - Noise Cancelling Headphones 700 - Triple Midnight</name>
+        <price>379.00</price>
+        <image>bose1.jpg</image>
+        <category>headphone</category>
+        <condition>New</condition>
+        <discount>12.0</discount>
+    </wt>
+    <wt id="vr1">
+        <name>Oculus - Rift S PC-Powered VR Gaming Headset - Black</name>
+        <price>399.00</price>
+        <image>oculus1.jpg</image>
+        <category>vr</category>
+        <condition>New</condition>
+        <discount>5.0</discount>
+    </wt>
+    <wt id="pt1">
+        <name>Verizon - Smart Locator - Cool Gray</name>
+        <price>99.99</price>
+        <image>verizon1.jpg</image>
+        <category>pettracker</category>
+        <condition>New</condition>
+        <discount>10.0</discount>
+    </wt>
+</WearableCatalog>
+
 <AccessoryCatalog>
 
     <accessory id="xboxone_wc">

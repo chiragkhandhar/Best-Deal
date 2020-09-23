@@ -18,12 +18,14 @@ public class SaxParserDataStore extends DefaultHandler {
 	PhoneType phone;
 	LaptopType laptop;
 	VAType va;
+	WTType wt;
     Accessory accessory;
     static HashMap<String,TVType> tvs;
     static HashMap<String,SSType> soundsystems;
 	static HashMap<String,PhoneType> phones;
 	static HashMap<String, LaptopType> laptops;
 	static HashMap<String, VAType> vas;
+	static HashMap<String, WTType> wts;
     static HashMap<String,Accessory> accessories;
     String consoleXmlFileName;
 	HashMap<String,String> accessoryHashMap;
@@ -39,6 +41,7 @@ public class SaxParserDataStore extends DefaultHandler {
 	phones=new HashMap<String, PhoneType>();
 	laptops = new HashMap<String, LaptopType>();
 	vas = new HashMap<String, VAType>();
+	wts = new HashMap<String, WTType>();
 	accessories=new HashMap<String, Accessory>();
 	accessoryHashMap=new HashMap<String,String>();
 	parseDocument();
@@ -95,6 +98,12 @@ public class SaxParserDataStore extends DefaultHandler {
 			va = new VAType();
 			va.setId(attributes.getValue("id"));
 		}
+		if(elementName.equalsIgnoreCase("wt"))
+		{
+			currentElement = "wt";
+			wt = new WTType();
+			wt.setId(attributes.getValue("id"));
+		}
         if (elementName.equals("accessory") &&  !currentElement.equals("TV"))
 		{
 			currentElement="accessory";
@@ -128,6 +137,10 @@ public class SaxParserDataStore extends DefaultHandler {
 		if (element.equals("va")) {	  
 			vas.put(va.getId(),va);
 			return;
+		}
+		if (element.equals("wt")) {	  
+			wts.put(wt.getId(),wt);
+			return;
         }
         if (element.equals("accessory") && currentElement.equals("accessory")) {
 			accessories.put(accessory.getId(),accessory);       
@@ -153,6 +166,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				laptop.setImage(elementValueRead);
 			if(currentElement.equals("va"))
 				va.setImage(elementValueRead);
+			if(currentElement.equals("wt"))
+				wt.setImage(elementValueRead);
             if(currentElement.equals("accessory"))
 				accessory.setImage(elementValueRead);          
 			return;
@@ -170,6 +185,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				laptop.setDiscount(Double.parseDouble(elementValueRead));
 			if(currentElement.equals("va"))
 				va.setDiscount(Double.parseDouble(elementValueRead));
+			if(currentElement.equals("wt"))
+				wt.setDiscount(Double.parseDouble(elementValueRead));
             if(currentElement.equals("accessory"))
 				accessory.setDiscount(Double.parseDouble(elementValueRead));          
 			return;
@@ -187,6 +204,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				laptop.setCondition(elementValueRead);
 			if(currentElement.equals("va"))
 				va.setCondition(elementValueRead);
+			if(currentElement.equals("wt"))
+				wt.setCondition(elementValueRead);
             if(currentElement.equals("accessory"))
 				accessory.setCondition(elementValueRead);          
 			return;  
@@ -208,6 +227,11 @@ public class SaxParserDataStore extends DefaultHandler {
 			return;
 		}
 
+		if(element.equalsIgnoreCase("category")){
+			if(currentElement.equals("wt"))
+				wt.setCategory(elementValueRead);
+		}
+
         if (element.equalsIgnoreCase("name")) {
             if(currentElement.equals("TV"))
 				tv.setName(elementValueRead);
@@ -219,6 +243,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				laptop.setName(elementValueRead);
 			if(currentElement.equals("va"))
 				va.setName(elementValueRead);
+			if(currentElement.equals("wt"))
+				wt.setName(elementValueRead);
             if(currentElement.equals("accessory"))
 				accessory.setName(elementValueRead);          
 			return;
@@ -235,6 +261,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				laptop.setPrice(Double.parseDouble(elementValueRead));
 			if(currentElement.equals("va"))
 				va.setPrice(Double.parseDouble(elementValueRead));
+			if(currentElement.equals("wt"))
+				wt.setPrice(Double.parseDouble(elementValueRead));
             if(currentElement.equals("accessory"))
 				accessory.setPrice(Double.parseDouble(elementValueRead));          
 			return;

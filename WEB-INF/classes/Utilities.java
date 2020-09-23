@@ -230,6 +230,12 @@ public class Utilities extends HttpServlet{
 			OrderItem orderitem = new OrderItem(va.getName(), va.getPrice(), va.getImage(), va.getRetailer());
 			orderItems.add(orderitem);
 		}
+		if(type.equals("wts")){
+			WTType wt = null;
+			wt = SaxParserDataStore.wts.get(name);
+			OrderItem orderitem = new OrderItem(wt.getName(), wt.getPrice(), wt.getImage(), wt.getCategory());
+			orderItems.add(orderitem);
+		}
 		if(type.equals("accessories")){	
 			Accessory accessory = SaxParserDataStore.accessories.get(name); 
 			OrderItem orderitem = new OrderItem(accessory.getName(), accessory.getPrice(), accessory.getImage(), accessory.getRetailer());
@@ -323,6 +329,14 @@ public class Utilities extends HttpServlet{
 		hm.putAll(SaxParserDataStore.vas);
 		return hm;
 	}
+
+	/* getWTs Functions returns the Hashmap with all Laptops in the store.*/
+
+	public HashMap<String, WTType> getWTs(){
+		HashMap<String, WTType> hm = new HashMap<String, WTType>();
+		hm.putAll(SaxParserDataStore.wts);
+		return hm;
+	}
 	
 	/* getProducts Functions returns the Arraylist of tvs in the store.*/
 
@@ -369,6 +383,16 @@ public class Utilities extends HttpServlet{
 	public ArrayList<String> getProductsVAs(){		
 		ArrayList<String> ar = new ArrayList<String>();
 		for(Map.Entry<String, VAType> entry : getVAs().entrySet()){
+			ar.add(entry.getValue().getName());
+		}
+		return ar;
+	}
+
+	/* getProductsWTs Functions returns the Arraylist of Voice Assistants in the store.*/
+
+	public ArrayList<String> getProductsWTs(){		
+		ArrayList<String> ar = new ArrayList<String>();
+		for(Map.Entry<String, WTType> entry : getWTs().entrySet()){
 			ar.add(entry.getValue().getName());
 		}
 		return ar;
