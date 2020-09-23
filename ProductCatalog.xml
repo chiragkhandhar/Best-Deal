@@ -260,6 +260,48 @@
         <discount>15.0</discount>
     </laptop>
 </LaptopCatalog>
+<VACatalog>
+    <va id="gh1">
+        <name>Google - Nest Wifi AC1200</name>
+        <price>149.00</price>
+        <image>google-nest-wifi.jpg</image>
+        <manufacturer>Google</manufacturer>
+        <condition>New</condition>
+        <discount>10.0</discount>
+    </va>
+    <va id="gh2">
+        <name>Google - Nest Wifi AC2200</name>
+        <price>269.00</price>
+        <image>google-nest-wifi2.jpg</image>
+        <manufacturer>Google</manufacturer>
+        <condition>New</condition>
+        <discount>10.0</discount>
+    </va>
+    <va id="amz1">
+        <name>Amazon - Echo Dot (3rd Gen) - Smart Speaker with Alexa - Charcoal</name>
+        <price>49.99</price>
+        <image>echo-dot.jpg</image>
+        <manufacturer>Amazon</manufacturer>
+        <condition>New</condition>
+        <discount>12.0</discount>
+    </va>
+    <va id="amz2">
+        <name>Amazon - Echo Studio Smart Speaker with Alexa - Charcoal</name>
+        <price>199.99</price>
+        <image>echo-studio.jpg</image>
+        <manufacturer>Amazon</manufacturer>
+        <condition>New</condition>
+        <discount>12.0</discount>
+    </va>
+    <va id="amz3">
+        <name>Amazon - Echo Dot Kids Edition Smart Speaker with Alexa - Rainbow</name>
+        <price>69.99</price>
+        <image>echo-kids.jpg</image>
+        <manufacturer>Amazon</manufacturer>
+        <condition>New</condition>
+        <discount>12.0</discount>
+    </va>
+</VACatalog>
 
 <AccessoryCatalog>
 
