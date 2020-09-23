@@ -321,7 +321,7 @@ public class Utilities extends HttpServlet{
 		return ar;
 	}
 	
-	/* getProducts Functions returns the Arraylist of soundsystems in the store.*/
+	/* getProductsSoundSystem Functions returns the Arraylist of soundsystems in the store.*/
 
 	public ArrayList<String> getProductsSoundSystem(){		
 		ArrayList<String> ar = new ArrayList<String>();
@@ -331,7 +331,7 @@ public class Utilities extends HttpServlet{
 		return ar;
 	}
 	
-	/* getProducts Functions returns the Arraylist of Phones in the store.*/
+	/* getProductsPhones Functions returns the Arraylist of Phones in the store.*/
 
 	public ArrayList<String> getProductsPhones(){		
 		ArrayList<String> ar = new ArrayList<String>();
@@ -341,7 +341,7 @@ public class Utilities extends HttpServlet{
 		return ar;
 	}
 
-	/* getProducts Functions returns the Arraylist of Laptops in the store.*/
+	/* getProductsLaptops Functions returns the Arraylist of Laptops in the store.*/
 
 	public ArrayList<String> getProductsLaptops(){		
 		ArrayList<String> ar = new ArrayList<String>();
