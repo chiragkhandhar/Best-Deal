@@ -71,15 +71,15 @@ public class Carousel{
 					if (k==0 )
 					{
 						
-						sb.append("<div class='item active'><div class='col-md-6' style = 'background-color: #58acfa;border :1px solid #cfd1d3'>");
+						sb.append("<div class='item active'><div class='col-md-6' style = 'background-color: #ffffff;border :1px solid #cfd1d3'>");
 					}
 					else
 					{
-						sb.append("<div class='item'><div class='col-md-6' style = 'background-color: #58acfa ;border :1px solid #cfd1d3' >");
+						sb.append("<div class='item'><div class='col-md-6' style = 'background-color: #ffffff ;border :1px solid #cfd1d3' >");
 					}
 					sb.append("<div id='shop_item'>");
 					sb.append("<h3>"+accessory.getName()+"</h3>");
-					sb.append("<strong>"+accessory.getPrice()+"$</strong><ul>");
+					sb.append("<strong>$ "+accessory.getPrice()+"</strong><ul>");
 					sb.append("<li id='item'><img src='images/accessories/"+accessory.getImage()+"' alt='' /></li>");
 					sb.append("<li><form method='post' action='Cart'>" +
 							"<input type='hidden' name='name' value='"+acc.getValue()+"'>"+

@@ -31,7 +31,7 @@ public class PrevAccessory extends HttpServlet {
 		}
 
 
-		/* Checks the Phones type whether it is microsft or sony or nintendo */
+		/* Checks the TV type whether it is LG or Samsung or Sony */
 
 		HashMap<String, TVType> hm = new HashMap<String, TVType>();
 		if(CategoryName==null){

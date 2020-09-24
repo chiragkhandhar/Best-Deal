@@ -114,7 +114,7 @@ public class Utilities extends HttpServlet{
 		session.removeAttribute("usertype");
 	}
 	
-	/*  logout Function checks whether the user is loggedIn or Not*/
+	/*  isLoggedin Function checks whether the user is loggedIn or Not*/
 
 	public boolean isLoggedin(){
 		if (session.getAttribute("username")==null)

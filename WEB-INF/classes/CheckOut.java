@@ -19,7 +19,7 @@ public class CheckOut extends HttpServlet {
 		
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
-	        Utilities Utility = new Utilities(request, pw);
+		Utilities Utility = new Utilities(request, pw);
 		storeOrders(request, response);
 	}
 	
@@ -64,15 +64,38 @@ public class CheckOut extends HttpServlet {
 		pw.print("<tr><td>");
         pw.print("Total Order Cost</td><td>"+orderTotal);
 		pw.print("<input type='hidden' name='orderTotal' value='"+orderTotal+"'>");
-		pw.print("</td></tr></table><table><tr></tr><tr></tr>");	
+		pw.print("</td></tr></table><table><tr></tr><tr></tr>");
+
 		pw.print("<tr><td>");
-     	pw.print("Credit/accountNo</td>");
+     	pw.print("Credit/Debit Card: </td>");
 		pw.print("<td><input type='text' name='creditCardNo'>");
 		pw.print("</td></tr>");
+
 		pw.print("<tr><td>");
-	    pw.print("Customer Address</td>");
-		pw.print("<td><input type='text' name='userAddress'>");
-        pw.print("</td></tr>");
+	    pw.print("Street Address: </td>");
+		pw.print("<td><input type='text' name='street'>");
+		pw.print("</td></tr>");
+
+		pw.print("<tr><td>");
+	    pw.print("Apt/Suit: </td>");
+		pw.print("<td><input type='text' name='apt'>");
+		pw.print("</td></tr>");
+
+		pw.print("<tr><td>");
+	    pw.print("City: </td>");
+		pw.print("<td><input type='text' name='city'>");
+		pw.print("</td></tr>");
+
+		pw.print("<tr><td>");
+		pw.print("State: </td>");
+		pw.print("<td><input type='text' name='state'>");
+		pw.print("</td></tr>");
+
+		pw.print("<tr><td>");
+		pw.print("Zip: </td>");
+		pw.print("<td><input type='text' name='zip'>");
+		pw.print("</td></tr>");
+
 		pw.print("<tr><td colspan='2'>");
 		pw.print("<input type='submit' name='submit' class='btnbuy'>");
         pw.print("</td></tr></table></form>");

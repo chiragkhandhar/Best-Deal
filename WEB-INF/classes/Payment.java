@@ -17,7 +17,6 @@ public class Payment extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
 		
-
 		Utilities utility = new Utilities(request, pw);
 		if(!utility.isLoggedin())
 		{
@@ -28,7 +27,12 @@ public class Payment extends HttpServlet {
 		}
 		// get the payment details like credit card no address processed from cart servlet	
 
-		String userAddress=request.getParameter("userAddress");
+		String street = request.getParameter("street");		
+		String apt = request.getParameter("apt");		
+		String city = request.getParameter("city");		
+		String state = request.getParameter("state");
+		String zip = request.getParameter("zip");
+		String userAddress = street + ", " + apt + ", " + city + ", " + state + ", " + zip;
 		String creditCardNo=request.getParameter("creditCardNo");
 		System.out.print("the user address is" +userAddress);
 		System.out.print(creditCardNo);
