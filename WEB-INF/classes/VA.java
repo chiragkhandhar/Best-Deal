@@ -77,17 +77,27 @@ public class VA extends HttpServlet {
 			pw.print("<h3>"+va.getName()+"</h3>");
 			pw.print("<strong>$"+va.getPrice()+"</strong><ul>");
 			pw.print("<li id='item'><img src='images/vas/"+va.getImage()+"' alt='' /></li>");
+
+			pw.print("<form name ='ViewItem' action='ViewItem' method='post'>");
+			pw.print("<li><input type='hidden' name='name' value='"+va.getName()+"'>"+
+					"<input type='hidden' name='type' value='vas'>"+
+					"<input type='hidden' name='maker' value='"+va.getRetailer()+"'>"+
+					"<input type='hidden' name='access' value=''>"+
+					"<input type='submit' class='btnbuy' value='View Item'></form></li>");
+
 			pw.print("<li><form method='post' action='Cart'>" +
 					"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='vas'>"+
 					"<input type='hidden' name='maker' value='"+va.getRetailer()+"'>"+
 					"<input type='hidden' name='access' value=''>"+
 					"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
+
 			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='vas'>"+
 					"<input type='hidden' name='maker' value='"+va.getRetailer()+"'>"+
 					"<input type='hidden' name='access' value=''>"+
-				    "<input type='submit' value='WriteReview' class='btnreview'></form></li>");
+					"<input type='submit' value='WriteReview' class='btnreview'></form></li>");
+					
 			pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='vas'>"+
 					"<input type='hidden' name='maker' value='"+va.getRetailer()+"'>"+

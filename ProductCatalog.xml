@@ -291,6 +291,7 @@
         <name>Google - Nest Wifi AC1200</name>
         <price>149.00</price>
         <image>google-nest-wifi.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Google</manufacturer>
         <condition>New</condition>
         <discount>10.0</discount>
@@ -299,6 +300,7 @@
         <name>Google - Nest Wifi AC2200</name>
         <price>269.00</price>
         <image>google-nest-wifi2.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Google</manufacturer>
         <condition>New</condition>
         <discount>10.0</discount>
@@ -307,6 +309,7 @@
         <name>Amazon - Echo Dot (3rd Gen) - Smart Speaker with Alexa - Charcoal</name>
         <price>49.99</price>
         <image>echo-dot.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Amazon</manufacturer>
         <condition>New</condition>
         <discount>12.0</discount>
@@ -315,6 +318,7 @@
         <name>Amazon - Echo Studio Smart Speaker with Alexa - Charcoal</name>
         <price>199.99</price>
         <image>echo-studio.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Amazon</manufacturer>
         <condition>New</condition>
         <discount>12.0</discount>
@@ -323,6 +327,7 @@
         <name>Amazon - Echo Dot Kids Edition Smart Speaker with Alexa - Rainbow</name>
         <price>69.99</price>
         <image>echo-kids.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Amazon</manufacturer>
         <condition>New</condition>
         <discount>12.0</discount>

@@ -38,6 +38,7 @@ public class ViewItem extends HttpServlet
     TVType tv = new TVType();
     SSType soundsystem = new SSType();
     PhoneType phone = new PhoneType();
+    VAType va = new VAType();
 
     String name = request.getParameter("name");
     String type = request.getParameter("type");
@@ -115,6 +116,22 @@ public class ViewItem extends HttpServlet
           }
         }
         break;
+
+      case "vas":
+      for (Map.Entry<String, VAType> entry : SaxParserDataStore.vas.entrySet()) {
+        if (entry.getValue().getRetailer().equals(maker) && entry.getValue().getName().equals(name)) 
+        {
+          va = entry.getValue();
+          price = va.getPrice();
+          discount = va.getDiscount();
+          image = va.getImage();
+          description = va.getDescription();
+          retailer = va.getRetailer();
+          key = entry.getKey();
+          break;
+        }
+      }
+      break;
 
     }
 

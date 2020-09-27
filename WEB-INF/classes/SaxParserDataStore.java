@@ -181,8 +181,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				phone.setDescription(elementValueRead);
 			if(currentElement.equals("laptop"))
 				laptop.setDescription(elementValueRead);
-			// if(currentElement.equals("va"))
-			// 	va.setDescription(elementValueRead);
+			if(currentElement.equals("va"))
+				va.setDescription(elementValueRead);
 			// if(currentElement.equals("wt"))
 			// 	wt.setDescription(elementValueRead);
             // if(currentElement.equals("accessory"))
