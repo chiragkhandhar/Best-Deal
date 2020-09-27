@@ -87,6 +87,13 @@ public class TV extends HttpServlet {
 			pw.print("<h3>"+tv.getName()+"</h3>");
 			pw.print("<strong>$"+tv.getPrice()+"</strong><ul>");
 			pw.print("<li id='item'><img src='images/tvs/"+tv.getImage()+"' alt='' /></li>");
+
+			pw.print("<form name ='ViewItem' action='ViewItem' method='post'>");
+			pw.print("<li><input type='hidden' name='name' value='"+tv.getName()+"'>"+
+					"<input type='hidden' name='type' value='tvs'>"+
+					"<input type='hidden' name='maker' value='"+tv.getRetailer()+"'>"+
+					"<input type='hidden' name='access' value=''>"+
+					"<input type='submit' class='btnbuy' value='View Item'></form></li>");
 			
 			pw.print("<li><form method='post' action='Cart'>" +
 					"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
@@ -94,11 +101,13 @@ public class TV extends HttpServlet {
 					"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
 					"<input type='hidden' name='access' value=''>"+
 					"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
+
 			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='tvs'>"+
 					"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
 					"<input type='hidden' name='access' value=''>"+
-				    "<input type='submit' value='WriteReview' class='btnreview'></form></li>");
+					"<input type='submit' value='WriteReview' class='btnreview'></form></li>");
+					
 			pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='tvs'>"+
 					"<input type='hidden' name='maker' value='"+CategoryName+"'>"+

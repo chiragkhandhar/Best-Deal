@@ -24,6 +24,7 @@ public class TVType extends HttpServlet{
 	private String name;
 	private double price;
 	private String image;
+	private String description;
 	private String retailer;
 	private String condition;
 	private double discount;
@@ -32,6 +33,7 @@ public class TVType extends HttpServlet{
 		this.name=name;
 		this.price=price;
 		this.image=image;
+		this.description = description;
 		this.retailer = retailer;
 		this.condition=condition;
 		this.discount = discount;
@@ -68,6 +70,12 @@ public class TVType extends HttpServlet{
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getRetailer() {
 		return retailer;

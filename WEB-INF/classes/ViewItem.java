@@ -35,6 +35,7 @@ public class ViewItem extends HttpServlet
     Utilities utility = new Utilities(request, pw);
     Carousel carousel = new Carousel();
     LaptopType laptop = new LaptopType();
+    TVType tv = new TVType();
 
     String name = request.getParameter("name");
     String type = request.getParameter("type");
@@ -49,6 +50,22 @@ public class ViewItem extends HttpServlet
 
     switch (type) 
     {
+      case "tvs":
+        for (Map.Entry<String, TVType> entry : SaxParserDataStore.tvs.entrySet()) {
+          if (entry.getValue().getRetailer().equals(maker) && entry.getValue().getName().equals(name)) 
+          {
+            tv = entry.getValue();
+            price = tv.getPrice();
+            discount = tv.getDiscount();
+            image = tv.getImage();
+            description = tv.getDescription();
+            retailer = tv.getRetailer();
+            key = entry.getKey();
+            break;
+          }
+        }
+        break;
+
       case "laptops":
         for (Map.Entry<String, LaptopType> entry : SaxParserDataStore.laptops.entrySet()) {
           if (entry.getValue().getRetailer().equals(maker) && entry.getValue().getName().equals(name)) 
@@ -64,6 +81,7 @@ public class ViewItem extends HttpServlet
           }
         }
         break;
+
     }
 
     utility.printHtml("Header.html");
@@ -120,6 +138,6 @@ public class ViewItem extends HttpServlet
   }
 
   protected double getNewPrice(double original, double discount) {
-    return  (original * (100 - discount)) / 100;
+    return  Math.round((original * (100 - discount)) / 100);
   }
 }

@@ -173,8 +173,8 @@ public class SaxParserDataStore extends DefaultHandler {
 			return;
 		}
 		if (element.equalsIgnoreCase("description")) {
-		    // if(currentElement.equals("TV"))
-			// 	tv.setDescription(elementValueRead);
+		    if(currentElement.equals("TV"))
+				tv.setDescription(elementValueRead);
         	// if(currentElement.equals("soundsystem"))
 			// 	soundsystem.setDescription(elementValueRead);
             // if(currentElement.equals("phone"))

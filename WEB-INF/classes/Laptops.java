@@ -84,11 +84,12 @@ public class Laptops extends HttpServlet {
 			LaptopType laptop = entry.getValue();
 			if(i%3==1) pw.print("<tr>");
 			pw.print("<td><div id='shop_item'>");
-			pw.print("<form name ='ViewItem' action='ViewItem' method='post'>");
+			
 			pw.print("<h3>"+laptop.getName()+"</h3>");
 			pw.print("<strong>$"+laptop.getPrice()+"</strong><ul>");
 			pw.print("<li id='item'><img src='images/laptops/"+laptop.getImage()+"' alt='' /></li>");
 			
+			pw.print("<form name ='ViewItem' action='ViewItem' method='post'>");
 			pw.print("<li><input type='hidden' name='name' value='"+laptop.getName()+"'>"+
 					"<input type='hidden' name='type' value='laptops'>"+
 					"<input type='hidden' name='maker' value='"+laptop.getRetailer()+"'>"+

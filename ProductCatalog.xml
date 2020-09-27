@@ -7,6 +7,7 @@
         <name>LG Nanocell</name>
         <price>499.99</price>
         <image>lg_nanocell.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>LG</manufacturer>
         <condition>New</condition>
         <discount>10.0</discount>
@@ -26,6 +27,7 @@
         <name>LG UHD</name>
         <price>699.99</price>
         <image>lg_UHD.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>LG</manufacturer>
         <condition>New</condition>
         <discount>15.0</discount>
@@ -43,6 +45,7 @@
         <name>Samsung Crystal UHD</name>
         <price>549.99</price>
         <image>samsung_crystalUHD.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Samsung</manufacturer>
         <condition>New</condition>
         <discount>12.0</discount>
@@ -55,6 +58,7 @@
         <name>Samsung QLED</name>
         <price>549.99</price>
         <image>samsung_QLED.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Samsung</manufacturer>
         <condition>New</condition>
         <discount>20.0</discount>
@@ -67,6 +71,7 @@
         <name>Samsung UHD</name>
         <price>749.99</price>
         <image>samsung_UHD.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Samsung</manufacturer>
         <condition>New</condition>
         <discount>13.0</discount>
@@ -79,6 +84,7 @@
         <name>Sony X1</name>
         <price>849.99</price>
         <image>sony_x1.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Sony</manufacturer>
         <condition>New</condition>
         <discount>35.0</discount>
