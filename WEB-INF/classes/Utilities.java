@@ -191,6 +191,10 @@ public class Utilities extends HttpServlet{
 		return getCustomerOrders().size();
 		return 0;
 	}
+
+	protected double getNewPrice(double original, double discount) {
+		return  Math.round((original * (100 - discount)) / 100);
+	  }
 	
 	/* StoreProduct Function stores the Purchased product in Orders HashMap according to the User Names.*/
 
@@ -203,46 +207,47 @@ public class Utilities extends HttpServlet{
 		if(type.equals("tvs")){
 			TVType tv;
 			tv = SaxParserDataStore.tvs.get(name);
-			OrderItem orderitem = new OrderItem(tv.getName(), tv.getPrice(), tv.getImage(), tv.getRetailer());
+			OrderItem orderitem = new OrderItem(tv.getName(), getNewPrice(tv.getPrice(), tv.getDiscount()), tv.getImage(), tv.getRetailer());
 			orderItems.add(orderitem);
 		}
 		if(type.equals("soundsystems")){
 			SSType soundsystem = null;
 			soundsystem = SaxParserDataStore.soundsystems.get(name);
-			OrderItem orderitem = new OrderItem(soundsystem.getName(), soundsystem.getPrice(), soundsystem.getImage(), soundsystem.getRetailer());
+			OrderItem orderitem = new OrderItem(soundsystem.getName(), getNewPrice(soundsystem.getPrice(), soundsystem.getDiscount()), soundsystem.getImage(), soundsystem.getRetailer());
 			orderItems.add(orderitem);
 		}
 		if(type.equals("phones")){
 			PhoneType phone = null;
 			phone = SaxParserDataStore.phones.get(name);
-			OrderItem orderitem = new OrderItem(phone.getName(), phone.getPrice(), phone.getImage(), phone.getRetailer());
+			OrderItem orderitem = new OrderItem(phone.getName(), getNewPrice(phone.getPrice(), phone.getDiscount()), phone.getImage(), phone.getRetailer());
 			orderItems.add(orderitem);
 		}
 		if(type.equals("laptops")){
 			LaptopType laptop = null;
 			laptop = SaxParserDataStore.laptops.get(name);
-			OrderItem orderitem = new OrderItem(laptop.getName(), laptop.getPrice(), laptop.getImage(), laptop.getRetailer());
+			OrderItem orderitem = new OrderItem(laptop.getName(), getNewPrice(laptop.getPrice(), laptop.getDiscount()), laptop.getImage(), laptop.getRetailer());
 			orderItems.add(orderitem);
 		}
 		if(type.equals("vas")){
 			VAType va = null;
 			va = SaxParserDataStore.vas.get(name);
-			OrderItem orderitem = new OrderItem(va.getName(), va.getPrice(), va.getImage(), va.getRetailer());
+			OrderItem orderitem = new OrderItem(va.getName(), getNewPrice(va.getPrice(), va.getDiscount()), va.getImage(), va.getRetailer());
 			orderItems.add(orderitem);
 		}
 		if(type.equals("wts")){
 			WTType wt = null;
 			wt = SaxParserDataStore.wts.get(name);
-			OrderItem orderitem = new OrderItem(wt.getName(), wt.getPrice(), wt.getImage(), wt.getCategory());
+			OrderItem orderitem = new OrderItem(wt.getName(), getNewPrice(wt.getPrice(), wt.getDiscount()), wt.getImage(), wt.getCategory());
 			orderItems.add(orderitem);
 		}
 		if(type.equals("accessories")){	
 			Accessory accessory = SaxParserDataStore.accessories.get(name); 
-			OrderItem orderitem = new OrderItem(accessory.getName(), accessory.getPrice(), accessory.getImage(), accessory.getRetailer());
+			OrderItem orderitem = new OrderItem(accessory.getName(), getNewPrice(accessory.getPrice(), accessory.getDiscount()), accessory.getImage(), accessory.getRetailer());
 			orderItems.add(orderitem);
 		}
 		
 	}
+	
 	// store the payment details for orders
 	public void storePayment(int orderId,
 		String orderName,double orderPrice,String userAddress,String creditCardNo){
