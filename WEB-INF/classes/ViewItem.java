@@ -36,6 +36,7 @@ public class ViewItem extends HttpServlet
     Carousel carousel = new Carousel();
     LaptopType laptop = new LaptopType();
     TVType tv = new TVType();
+    SSType soundsystem = new SSType();
 
     String name = request.getParameter("name");
     String type = request.getParameter("type");
@@ -65,6 +66,22 @@ public class ViewItem extends HttpServlet
           }
         }
         break;
+
+      case "soundsystems":
+      for (Map.Entry<String, SSType> entry : SaxParserDataStore.soundsystems.entrySet()) {
+        if (entry.getValue().getRetailer().equals(maker) && entry.getValue().getName().equals(name)) 
+        {
+          soundsystem = entry.getValue();
+          price = soundsystem.getPrice();
+          discount = soundsystem.getDiscount();
+          image = soundsystem.getImage();
+          description = soundsystem.getDescription();
+          retailer = soundsystem.getRetailer();
+          key = entry.getKey();
+          break;
+        }
+      }
+      break;
 
       case "laptops":
         for (Map.Entry<String, LaptopType> entry : SaxParserDataStore.laptops.entrySet()) {
@@ -124,7 +141,7 @@ public class ViewItem extends HttpServlet
 	  "<input type='submit' value='ViewReview' class='btnreview'></form></li>");
 	  
     pw.print("</ul></div></td>");
-    pw.print(carousel.carouselfeature(utility));
+    //pw.print(carousel.carouselfeature(utility));
     pw.print("</table></div></div></div>");
     utility.printHtml("Footer.html");
   }

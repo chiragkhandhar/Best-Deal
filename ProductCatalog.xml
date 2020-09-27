@@ -176,6 +176,7 @@
         <name>Yamaha Turbi 2500</name>
         <price>349.99</price>
         <image>yamaha-turbi.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Yamaha</manufacturer>
         <condition>New</condition>
         <discount>25.0</discount>
@@ -186,6 +187,7 @@
         <name>Bose Lifestyle 600</name>
         <price>550.99</price>
         <image>bose-lifestyle600.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Bose</manufacturer>
         <condition>Refurbished</condition>
         <discount>15.0</discount>
@@ -194,6 +196,7 @@
         <name>Bose Lifestyle 650</name>
         <price>650.99</price>
         <image>bose-lifestyle650.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Bose</manufacturer>
         <condition>New</condition>
         <discount>15.0</discount>
@@ -202,6 +205,7 @@
         <name>Polka Audio Black Tone</name>
         <price>399.99</price>
         <image>polkaudio-blackstone.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>PolkaAudio</manufacturer>
         <condition>New</condition>
         <discount>5.0</discount>
@@ -210,6 +214,7 @@
         <name>Bose 5.1</name>
         <price>450.99</price>
         <image>bose-51.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Bose</manufacturer>
         <condition>New</condition>
         <discount>15.0</discount>
