@@ -110,17 +110,27 @@ public class WT extends HttpServlet {
 			pw.print("<h3>"+wt.getName()+"</h3>");
 			pw.print("<strong>$"+wt.getPrice()+"</strong><ul>");
 			pw.print("<li id='item'><img src='images/wts/"+wt.getImage()+"' alt='' /></li>");
+
+			pw.print("<form name ='ViewItem' action='ViewItem' method='post'>");
+			pw.print("<li><input type='hidden' name='name' value='"+wt.getName()+"'>"+
+					"<input type='hidden' name='type' value='wts'>"+
+					"<input type='hidden' name='maker' value='"+wt.getCategory()+"'>"+
+					"<input type='hidden' name='access' value=''>"+
+					"<input type='submit' class='btnbuy' value='View Item'></form></li>");
+
 			pw.print("<li><form method='post' action='Cart'>" +
 					"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='wts'>"+
 					"<input type='hidden' name='maker' value='"+wt.getCategory()+"'>"+
 					"<input type='hidden' name='access' value=''>"+
 					"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
+
 			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='wts'>"+
 					"<input type='hidden' name='maker' value='"+wt.getCategory()+"'>"+
 					"<input type='hidden' name='access' value=''>"+
-				    "<input type='submit' value='WriteReview' class='btnreview'></form></li>");
+					"<input type='submit' value='WriteReview' class='btnreview'></form></li>");
+					
 			pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='wts'>"+
 					"<input type='hidden' name='maker' value='"+wt.getCategory()+"'>"+

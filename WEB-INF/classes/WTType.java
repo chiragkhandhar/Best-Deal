@@ -20,6 +20,7 @@ public class WTType extends HttpServlet{
 	private String name;
 	private double price;
 	private String image;
+	private String description;
 	private String category;
 	private String condition;
 	private double discount;
@@ -29,6 +30,7 @@ public class WTType extends HttpServlet{
 		this.name=name;
 		this.price=price;
 		this.image=image;
+		this.description = description;
 		this.condition=condition;
 		this.discount = discount;
 		this.category = category;
@@ -62,6 +64,12 @@ public class WTType extends HttpServlet{
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getCategory() {
 		return category;

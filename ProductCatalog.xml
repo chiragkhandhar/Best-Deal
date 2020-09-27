@@ -339,6 +339,7 @@
         <name>Samsung - Galaxy Fit Activity Tracker + Heart Rate - Black</name>
         <price>99.99</price>
         <image>samsung1.jpg</image>
+        <description>This is a dummy description.</description>
         <category>fitnesswatch</category>
         <condition>New</condition>
         <discount>50.0</discount>
@@ -347,6 +348,7 @@
         <name>Fitbit - Versa 2 Smartwatch 40mm Aluminum - Stone/Mist Gray</name>
         <price>179.99</price>
         <image>fitbit1.jpg</image>
+        <description>This is a dummy description.</description>
         <category>fitnesswatch</category>
         <condition>New</condition>
         <discount>1</discount>
@@ -355,6 +357,7 @@
         <name>Garmin - Fēnix 6X Pro Solar GPS/GLONASS/Galileo Watch - Black</name>
         <price>999.99</price>
         <image>garmin1.jpg</image>
+        <description>This is a dummy description.</description>
         <category>fitnesswatch</category>
         <condition>New</condition>
         <discount>00.0</discount>
@@ -363,6 +366,7 @@
         <name>Apple Watch Series 3 Space Gray Aluminum</name>
         <price>229.00</price>
         <image>apple1.jpg</image>
+        <description>This is a dummy description.</description>
         <category>smartwatch</category>
         <condition>New</condition>
         <discount>10.0</discount>
@@ -371,6 +375,7 @@
         <name>Fitbit Versa 3 Black</name>
         <price>329.95</price>
         <image>fitbit2.jpg</image>
+        <description>This is a dummy description.</description>
         <category>smartwatch</category>
         <condition>New</condition>
         <discount>10.0</discount>
@@ -379,6 +384,7 @@
         <name>Apple Watch Edition (GPS + Cellular) 42mm Gray Ceramic Case</name>
         <price>1329.00</price>
         <image>apple2.jpg</image>
+        <description>This is a dummy description.</description>
         <category>smartwatch</category>
         <condition>New</condition>
         <discount>10.0</discount>
@@ -387,6 +393,7 @@
         <name>Bose - Noise Cancelling Headphones 700 - Triple Midnight</name>
         <price>379.00</price>
         <image>bose1.jpg</image>
+        <description>This is a dummy description.</description>
         <category>headphone</category>
         <condition>New</condition>
         <discount>12.0</discount>
@@ -395,6 +402,7 @@
         <name>Oculus - Rift S PC-Powered VR Gaming Headset - Black</name>
         <price>399.00</price>
         <image>oculus1.jpg</image>
+        <description>This is a dummy description.</description>
         <category>vr</category>
         <condition>New</condition>
         <discount>5.0</discount>
@@ -403,6 +411,7 @@
         <name>Verizon - Smart Locator - Cool Gray</name>
         <price>99.99</price>
         <image>verizon1.jpg</image>
+        <description>This is a dummy description.</description>
         <category>pettracker</category>
         <condition>New</condition>
         <discount>10.0</discount>

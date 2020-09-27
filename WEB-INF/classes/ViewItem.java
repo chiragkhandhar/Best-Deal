@@ -39,6 +39,7 @@ public class ViewItem extends HttpServlet
     SSType soundsystem = new SSType();
     PhoneType phone = new PhoneType();
     VAType va = new VAType();
+    WTType wt = new WTType();
 
     String name = request.getParameter("name");
     String type = request.getParameter("type");
@@ -127,6 +128,22 @@ public class ViewItem extends HttpServlet
           image = va.getImage();
           description = va.getDescription();
           retailer = va.getRetailer();
+          key = entry.getKey();
+          break;
+        }
+      }
+      break;
+
+      case "wts":
+      for (Map.Entry<String, WTType> entry : SaxParserDataStore.wts.entrySet()) {
+        if (entry.getValue().getCategory().equals(maker) && entry.getValue().getName().equals(name)) 
+        {
+          wt = entry.getValue();
+          price = wt.getPrice();
+          discount = wt.getDiscount();
+          image = wt.getImage();
+          description = wt.getDescription();
+          retailer = wt.getCategory();
           key = entry.getKey();
           break;
         }
