@@ -100,6 +100,7 @@
         <name>Google Pixel 2XL</name>
         <price>599.99</price>
         <image>google-pixel2xl.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Google</manufacturer>
         <condition>New</condition>
         <discount>10.0</discount>
@@ -108,6 +109,7 @@
         <name>Google Pixel 4</name>
         <price>399.99</price>
         <image>google-pixel4.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Google</manufacturer>
         <condition>new</condition>
         <discount>10.0</discount>
@@ -116,6 +118,7 @@
         <name>Google Pixel 4XL</name>
         <price>599.99</price>
         <image>google-pixel4xl.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Google</manufacturer>
         <condition>new</condition>
         <discount>10.0</discount>
@@ -124,6 +127,7 @@
         <name>Apple iPhone 11</name>
         <price>699.99</price>
         <image>iphone11.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Apple</manufacturer>
         <condition>New</condition>
         <discount>15.0</discount>
@@ -132,6 +136,7 @@
         <name>Apple iPhone 11 Pro</name>
         <price>999.99</price>
         <image>iphone11-pro.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Apple</manufacturer>
         <condition>New</condition>
         <discount>15.0</discount>
@@ -140,6 +145,7 @@
         <name>Apple iPhone 11 Pro Max</name>
         <price>1190.99</price>
         <image>iphone11-pro-max.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Apple</manufacturer>
         <condition>New</condition>
         <discount>15.0</discount>
@@ -148,6 +154,7 @@
         <name>Samsung Galaxy Note 20 -5G</name>
         <price>990.99</price>
         <image>samsung-galaxy-note20-5g.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Samsung</manufacturer>
         <condition>New</condition>
         <discount>12.0</discount>
@@ -156,6 +163,7 @@
         <name>Samsung Galaxy S20 -5G</name>
         <price>799.99</price>
         <image>samsung-galaxy-s20-5g.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Samsung</manufacturer>
         <condition>New</condition>
         <discount>12.0</discount>
@@ -164,6 +172,7 @@
         <name>Samsung Galaxy ZFlip</name>
         <price>599.99</price>
         <image>samsung-galaxy-zFlip.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Samsung</manufacturer>
         <condition>New</condition>
         <discount>12.0</discount>

@@ -177,8 +177,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				tv.setDescription(elementValueRead);
         	if(currentElement.equals("soundsystem"))
 				soundsystem.setDescription(elementValueRead);
-            // if(currentElement.equals("phone"))
-			// 	phone.setDescription(elementValueRead);
+            if(currentElement.equals("phone"))
+				phone.setDescription(elementValueRead);
 			if(currentElement.equals("laptop"))
 				laptop.setDescription(elementValueRead);
 			// if(currentElement.equals("va"))

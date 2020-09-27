@@ -37,6 +37,7 @@ public class ViewItem extends HttpServlet
     LaptopType laptop = new LaptopType();
     TVType tv = new TVType();
     SSType soundsystem = new SSType();
+    PhoneType phone = new PhoneType();
 
     String name = request.getParameter("name");
     String type = request.getParameter("type");
@@ -82,6 +83,22 @@ public class ViewItem extends HttpServlet
         }
       }
       break;
+
+      case "phones":
+        for (Map.Entry<String, PhoneType> entry : SaxParserDataStore.phones.entrySet()) {
+          if (entry.getValue().getRetailer().equals(maker) && entry.getValue().getName().equals(name)) 
+          {
+            phone = entry.getValue();
+            price = phone.getPrice();
+            discount = phone.getDiscount();
+            image = phone.getImage();
+            description = phone.getDescription();
+            retailer = phone.getRetailer();
+            key = entry.getKey();
+            break;
+          }
+        }
+        break;
 
       case "laptops":
         for (Map.Entry<String, LaptopType> entry : SaxParserDataStore.laptops.entrySet()) {
