@@ -84,20 +84,31 @@ public class Laptops extends HttpServlet {
 			LaptopType laptop = entry.getValue();
 			if(i%3==1) pw.print("<tr>");
 			pw.print("<td><div id='shop_item'>");
+			pw.print("<form name ='ViewItem' action='ViewItem' method='post'>");
 			pw.print("<h3>"+laptop.getName()+"</h3>");
 			pw.print("<strong>$"+laptop.getPrice()+"</strong><ul>");
 			pw.print("<li id='item'><img src='images/laptops/"+laptop.getImage()+"' alt='' /></li>");
+			
+			pw.print("<li><input type='hidden' name='name' value='"+laptop.getName()+"'>"+
+					"<input type='hidden' name='type' value='laptops'>"+
+					"<input type='hidden' name='maker' value='"+laptop.getRetailer()+"'>"+
+					"<input type='hidden' name='access' value=''>"+
+					"<input type='submit' class='btnbuy' value='View Item'></form></li>");
+
+			
 			pw.print("<li><form method='post' action='Cart'>" +
 					"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='laptops'>"+
 					"<input type='hidden' name='maker' value='"+laptop.getRetailer()+"'>"+
 					"<input type='hidden' name='access' value=''>"+
 					"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
+
 			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='laptops'>"+
 					"<input type='hidden' name='maker' value='"+laptop.getRetailer()+"'>"+
 					"<input type='hidden' name='access' value=''>"+
-				    "<input type='submit' value='WriteReview' class='btnreview'></form></li>");
+					"<input type='submit' value='WriteReview' class='btnreview'></form></li>");
+					
 			pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='laptops'>"+
 					"<input type='hidden' name='maker' value='"+laptop.getRetailer()+"'>"+

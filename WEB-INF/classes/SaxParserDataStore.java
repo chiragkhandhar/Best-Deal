@@ -171,9 +171,24 @@ public class SaxParserDataStore extends DefaultHandler {
             if(currentElement.equals("accessory"))
 				accessory.setImage(elementValueRead);          
 			return;
+		}
+		if (element.equalsIgnoreCase("description")) {
+		    // if(currentElement.equals("TV"))
+			// 	tv.setDescription(elementValueRead);
+        	// if(currentElement.equals("soundsystem"))
+			// 	soundsystem.setDescription(elementValueRead);
+            // if(currentElement.equals("phone"))
+			// 	phone.setDescription(elementValueRead);
+			if(currentElement.equals("laptop"))
+				laptop.setDescription(elementValueRead);
+			// if(currentElement.equals("va"))
+			// 	va.setDescription(elementValueRead);
+			// if(currentElement.equals("wt"))
+			// 	wt.setDescription(elementValueRead);
+            // if(currentElement.equals("accessory"))
+			// 	accessory.setDescription(elementValueRead);          
+			return;
         }
-        
-
 		if (element.equalsIgnoreCase("discount")) {
             if(currentElement.equals("TV"))
 				tv.setDiscount(Double.parseDouble(elementValueRead));

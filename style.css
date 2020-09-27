@@ -5,7 +5,7 @@ body {
   margin: 0px;
   padding: 0;
   background: #0b0b61 !important;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Roboto", sans-serif;
   font-size: 12px;
 }
 
@@ -17,6 +17,8 @@ h3 {
   margin: 0 !important;
   font-weight: normal !important;
   color: #6666ff !important;
+  display: flex;
+  justify-content: center;
 }
 
 h1 {
@@ -130,7 +132,7 @@ hr {
   letter-spacing: -1px;
   text-decoration: none;
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-weight: normal;
   color: #ffffff;
@@ -171,7 +173,7 @@ hr {
 .post .title {
   height: 44px;
   padding: 0px 20px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Roboto", sans-serif;
 }
 
 /* Decoration for Product Title Links in the Main Content Screen */
@@ -192,7 +194,7 @@ hr {
   padding: 4px 30px 6px 20px;
   background: url(images/site/1.png) repeat-x left bottom;
   background-size: fill;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: normal;
   font-size: 10px;
   color: #66665e;
@@ -224,7 +226,7 @@ hr {
   margin: 0px 0px 4px 0px;
   padding: 3px 0px 0px 40px;
   text-decoration: none;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 11px;
   text-decoration: none;
   font-weight: bold;
@@ -241,7 +243,7 @@ hr {
   background: #90bf35;
   border: 1px solid #5f817e;
   text-decoration: none;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 11px;
   text-decoration: none;
   font-weight: bold;
@@ -455,7 +457,7 @@ hr {
   -webkit-border-radius: 5;
   -moz-border-radius: 5;
   border-radius: 5px;
-  font-family: Arial;
+  font-family: "Roboto", sans-serif;
   color: #ffffff;
   font-size: 15px;
   background: #3498db;
@@ -473,7 +475,7 @@ hr {
   -webkit-border-radius: 5;
   -moz-border-radius: 5;
   border-radius: 5px;
-  font-family: Arial;
+  font-family: "Roboto", sans-serif;
   color: #ffffff;
   font-size: 15px;
   background: #3498db;
@@ -505,12 +507,13 @@ hr {
 /* Cart Details Table ( Table Displayed During Check Out)  */
 
 table.gridtable {
-  font-family: verdana, arial, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 11px;
   color: #333333;
   border-width: 1px;
   border-color: #666666;
   border-collapse: collapse;
+  text-align: center;
 }
 
 /* Decoration for Cart Details with Table Head Tags */

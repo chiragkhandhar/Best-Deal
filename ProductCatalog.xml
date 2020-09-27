@@ -215,6 +215,7 @@
         <name>Apple Macbook Air</name>
         <price>899.99</price>
         <image>apple_macbook_air.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Apple</manufacturer>
         <condition>New</condition>
         <discount>0.0</discount>
@@ -223,6 +224,7 @@
         <name>Apple Macbook Pro</name>
         <price>1299.99</price>
         <image>apple_macbook_pro.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Apple</manufacturer>
         <condition>New</condition>
         <discount>0.0</discount>
@@ -231,6 +233,7 @@
         <name>Apple Macbook Pro 16"</name>
         <price>1899.99</price>
         <image>apple_macbook_pro_16.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Apple</manufacturer>
         <condition>New</condition>
         <discount>0.0</discount>
@@ -239,6 +242,7 @@
         <name>Dell Inspiron 6546</name>
         <price>699.99</price>
         <image>dell_inspiron.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Dell</manufacturer>
         <condition>New</condition>
         <discount>25.0</discount>
@@ -247,6 +251,7 @@
         <name>Dell Inspiron Fold</name>
         <price>799.99</price>
         <image>dell_inspiron_fold.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Dell</manufacturer>
         <condition>New</condition>
         <discount>25.0</discount>
@@ -255,6 +260,7 @@
         <name>Microsoft Surface Ultima</name>
         <price>899.99</price>
         <image>microsoft_surface.jpg</image>
+        <description>This is a dummy description.</description>
         <manufacturer>Microsoft</manufacturer>
         <condition>New</condition>
         <discount>15.0</discount>

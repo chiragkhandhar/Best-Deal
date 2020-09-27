@@ -23,17 +23,19 @@ public class LaptopType extends HttpServlet{
 	private String name;
 	private double price;
 	private String image;
+	private String description;
 	private String retailer;
 	private String condition;
 	private double discount;
 	
-	public LaptopType(String id, String name, double price, String image, String retailer,String condition,double discount){
+	public LaptopType(String id, String name, double price, String image, String description, String retailer, String condition, double discount){
         this.id = id;
-        this.name=name;
-		this.price=price;
-		this.image=image;
+        this.name = name;
+		this.price = price;
+		this.image = image;
+		this.description = description;
 		this.retailer = retailer;
-		this.condition=condition;
+		this.condition = condition;
 		this.discount = discount;
 	}   
 
@@ -63,6 +65,12 @@ public class LaptopType extends HttpServlet{
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getRetailer() {
 		return retailer;
