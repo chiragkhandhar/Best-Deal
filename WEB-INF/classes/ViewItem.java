@@ -110,9 +110,9 @@ public class ViewItem extends HttpServlet
 
     pw.print("<td><div id='shop_item'>");
 
-    pw.print("<h3>$ " + getNewPrice(price, discount) + "</h3>");
+    pw.print("<h3><span style = 'font-size: 3rem;font-weight: bold;'>$ " + getNewPrice(price, discount) + "</span></h3>");
     pw.print("<strong>Discount: " + discount + " %</strong>");
-    pw.print("<h3>Old Price: $ " + price + "</h3><ul>");
+    pw.print("<h3><span  style = 'color: #a6a6a6;'>Old Price: $ " + price + "</span></h3><ul>");
     pw.print("<li id='item'><img src='images/" + type +"/" + image +"' alt='' /></li>");
     pw.print("<li><p style = 'text-align: center;'>" + description + "</p></li>");
 
