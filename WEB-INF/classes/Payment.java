@@ -34,8 +34,12 @@ public class Payment extends HttpServlet {
 		String zip = request.getParameter("zip");
 		String userAddress = street + ", " + apt + ", " + city + ", " + state + ", " + zip;
 		String creditCardNo=request.getParameter("creditCardNo");
-		System.out.print("the user address is" +userAddress);
-		System.out.print(creditCardNo);
+		String mode = request.getParameter("mode");
+		String location = request.getParameter("location");
+
+		if(mode.equals("delivery"))
+			location = "";
+
 		if(!userAddress.isEmpty() && !creditCardNo.isEmpty() )
 		{
 			//Random rand = new Random(); 
@@ -46,10 +50,7 @@ public class Payment extends HttpServlet {
 
 			for (OrderItem oi : utility.getCustomerOrders())
 			{
-
-				//set the parameter for each column and execute the prepared statement
-
-				utility.storePayment(orderId,oi.getName(),oi.getPrice(),userAddress,creditCardNo);
+				utility.storePayment(orderId, oi.getName(), oi.getPrice(), userAddress, creditCardNo, mode, location);
 			}
 
 			//remove the order details from cart after processing

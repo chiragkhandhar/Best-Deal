@@ -249,8 +249,8 @@ public class Utilities extends HttpServlet{
 	}
 	
 	// store the payment details for orders
-	public void storePayment(int orderId,
-		String orderName,double orderPrice,String userAddress,String creditCardNo){
+	public void storePayment(int orderId, String orderName, double orderPrice, String userAddress, String creditCardNo, String mode, String location)
+	{
 		HashMap<Integer, ArrayList<OrderPayment>> orderPayments= new HashMap<Integer, ArrayList<OrderPayment>>();
 		String TOMCAT_HOME = System.getProperty("catalina.home");
 			// get the payment details file 
@@ -275,7 +275,7 @@ public class Utilities extends HttpServlet{
 				orderPayments.put(orderId, arr);
 			}
 		ArrayList<OrderPayment> listOrderPayment = orderPayments.get(orderId);		
-		OrderPayment orderpayment = new OrderPayment(orderId,username(),orderName,orderPrice,userAddress,creditCardNo);
+		OrderPayment orderpayment = new OrderPayment(orderId, username(), orderName, orderPrice, userAddress, creditCardNo, mode, location);
 		listOrderPayment.add(orderpayment);	
 			
 			// add order details into file

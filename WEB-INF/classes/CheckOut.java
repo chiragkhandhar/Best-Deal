@@ -26,81 +26,107 @@ public class CheckOut extends HttpServlet {
 	protected void storeOrders(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    try
         {
-        response.setContentType("text/html");
-		PrintWriter pw = response.getWriter();
-        Utilities utility = new Utilities(request,pw);
-		if(!utility.isLoggedin())
-		{
-			HttpSession session = request.getSession(true);				
-			session.setAttribute("login_msg", "Please Login to add items to cart");
-			response.sendRedirect("Login");
-			return;
-		}
-        HttpSession session=request.getSession(); 
+			response.setContentType("text/html");
+			PrintWriter pw = response.getWriter();
+			Utilities utility = new Utilities(request,pw);
+			if(!utility.isLoggedin())
+			{
+				HttpSession session = request.getSession(true);				
+				session.setAttribute("login_msg", "Please Login to add items to cart");
+				response.sendRedirect("Login");
+				return;
+			}
+			HttpSession session=request.getSession(); 
 
-		//get the order product details	on clicking submit the form will be passed to submitorder page	
+			//get the order product details	on clicking submit the form will be passed to submitorder page				
+			String userName = session.getAttribute("username").toString();
+			String orderTotal = request.getParameter("orderTotal");
+			utility.printHtml("Header.html");
+			utility.printHtml("LeftNavigationBar.html");
+			pw.print("<form name ='CheckOut' action='Payment' method='post'>");
+			pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
+			pw.print("<a style='font-size: 24px;'>Order</a>");
+			pw.print("</h2><div class='entry'>");
+
+			pw.print("<table  class='gridtable'>");
+			pw.print("<tr><th>Customer Name</th><td>" + userName + "</td></tr>");
+			
+			// for each order iterate and display the order name price
+			for (OrderItem oi : utility.getCustomerOrders()) 
+			{
+				pw.print("<tr><td> Product Purchased:</td><td>");
+				pw.print(oi.getName()+"</td></tr><tr><td>");
+				pw.print("<input type='hidden' name='orderPrice' value='"+oi.getPrice()+"'>");
+				pw.print("<input type='hidden' name='orderName' value='"+oi.getName()+"'>");
+				pw.print("Product Price:</td><td>"+ oi.getPrice());
+				pw.print("</td></tr>");
+			}
+
+			pw.print("<tr><th>Total Amount</th><td>$ "+orderTotal + "</td></tr>");
+			pw.print("<input type='hidden' name='orderTotal' value='"+orderTotal+"'>");
+			pw.print("</table><br>");
+
+			pw.print("<h3>Shipping Details</h3><br>");
+			pw.print("<table>");
+
+			pw.print("<tr>");
+			pw.print("<th>Street Address</th>");
+			pw.print("<td><input type='text' name='street' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
+
+			pw.print("<tr>");
+			pw.print("<th>Apt/Suit</th>");
+			pw.print("<td><input type='text' name='apt' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
 		
-	    String userName = session.getAttribute("username").toString();
-        String orderTotal = request.getParameter("orderTotal");
-		utility.printHtml("Header.html");
-		utility.printHtml("LeftNavigationBar.html");
-		pw.print("<form name ='CheckOut' action='Payment' method='post'>");
-        pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
-		pw.print("<a style='font-size: 24px;'>Order</a>");
-		pw.print("</h2><div class='entry'>");
-		pw.print("<table  class='gridtable'><tr><td>Customer Name:</td><td>");
-		pw.print(userName);
-		pw.print("</td></tr>");
-		// for each order iterate and display the order name price
-		for (OrderItem oi : utility.getCustomerOrders()) 
-		{
-			pw.print("<tr><td> Product Purchased:</td><td>");
-			pw.print(oi.getName()+"</td></tr><tr><td>");
-			pw.print("<input type='hidden' name='orderPrice' value='"+oi.getPrice()+"'>");
-			pw.print("<input type='hidden' name='orderName' value='"+oi.getName()+"'>");
-			pw.print("Product Price:</td><td>"+ oi.getPrice());
-			pw.print("</td></tr>");
-		}
-		pw.print("<tr><td>");
-        pw.print("Total Order Cost</td><td>"+orderTotal);
-		pw.print("<input type='hidden' name='orderTotal' value='"+orderTotal+"'>");
-		pw.print("</td></tr></table><table><tr></tr><tr></tr>");
+			pw.print("<tr>");
+			pw.print("<th>City</th>");
+			pw.print("<td><input type='text' name='city' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
 
-		pw.print("<tr><td>");
-     	pw.print("Credit/Debit Card: </td>");
-		pw.print("<td><input type='text' name='creditCardNo'>");
-		pw.print("</td></tr>");
+			pw.print("<tr>");
+			pw.print("<th>State</th>");
+			pw.print("<td><input type='text' name='state' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
 
-		pw.print("<tr><td>");
-	    pw.print("Street Address: </td>");
-		pw.print("<td><input type='text' name='street'>");
-		pw.print("</td></tr>");
+			pw.print("<tr>");
+			pw.print("<th>Zip</th>");
+			pw.print("<td><input type='text' name='zip' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
 
-		pw.print("<tr><td>");
-	    pw.print("Apt/Suit: </td>");
-		pw.print("<td><input type='text' name='apt'>");
-		pw.print("</td></tr>");
+			pw.print("<tr>");
+			pw.print("<th>Shipping Mode</th>");
+			pw.print("<td><input type='radio' id = 'delivery' name ='mode' value = 'delivery' required = 'true' style = 'margin-left: 1rem;'> <label for='delivery'>Delivery</label><br></td>");
+			pw.print("<td><input type='radio' id = 'pickup' name ='mode' value = 'pickup' required = 'true' > <label for='pickup'>Pickup</label><br></td>");
+			pw.print("</tr>");
+			
+			pw.print("<tr>");
+			pw.print("<td colspan='2'>");
+			pw.print("<label>Select Pickup location(if pickup is selected): </label> ");
+			pw.print("<input name = 'location' list = 'locations'>");
+			pw.print("<datalist id = 'locations'>");
+			pw.print("<option value = '1555N State Street'/>");
+			pw.print("<option value = '256N Michigan Avenue'/>");
+			pw.print("<option value = '400E 25th Street'/>");
+			pw.print("<option value = 'Devon Ave'/>");
+			pw.print("<option value = 'Belmont Harbour'/>");
+			pw.print("<option value = '525 S Adams'/>");
+			pw.print("<option value = '256 W Chinatown'/>");
+			pw.print("</datalist>");
+			pw.print("</td>");
+			pw.print("</tr>");
 
-		pw.print("<tr><td>");
-	    pw.print("City: </td>");
-		pw.print("<td><input type='text' name='city'>");
-		pw.print("</td></tr>");
+			pw.print("</table>");
+		
 
-		pw.print("<tr><td>");
-		pw.print("State: </td>");
-		pw.print("<td><input type='text' name='state'>");
-		pw.print("</td></tr>");
+			pw.print("<h3>Payment Details</h3><br>");
+			pw.print("<table>");
+			pw.print("<tr>");
+			pw.print("<th>Credit/Debit Card</th>");
+			pw.print("<td><input type='text' name='creditCardNo' required = 'true' style = 'margin-left: 1rem;'> </td></tr>");
 
-		pw.print("<tr><td>");
-		pw.print("Zip: </td>");
-		pw.print("<td><input type='text' name='zip'>");
-		pw.print("</td></tr>");
+			pw.print("<tr'><td colspan='2'>");
+			pw.print("<input type='submit' name='submit' class='btnbuy' value = 'Place Order' style = 'width: 100%; margin-top: 1rem;'>");
+			pw.print("</td></tr></table>");
 
-		pw.print("<tr><td colspan='2'>");
-		pw.print("<input type='submit' name='submit' class='btnbuy'>");
-        pw.print("</td></tr></table></form>");
-		pw.print("</div></div></div>");		
-		utility.printHtml("Footer.html");
+			pw.print("</form>");
+			pw.print("</div></div></div>");		
+			utility.printHtml("Footer.html");
 	    }
         catch(Exception e)
 		{
