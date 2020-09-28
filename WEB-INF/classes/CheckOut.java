@@ -99,16 +99,14 @@ public class CheckOut extends HttpServlet {
 			pw.print("<tr>");
 			pw.print("<td colspan='2'>");
 			pw.print("<label>Select Pickup location(if pickup is selected): </label> ");
-			pw.print("<input name = 'location' list = 'locations'>");
-			pw.print("<datalist id = 'locations'>");
-			pw.print("<option value = '1555N State Street'/>");
-			pw.print("<option value = '256N Michigan Avenue'/>");
-			pw.print("<option value = '400E 25th Street'/>");
-			pw.print("<option value = 'Devon Ave'/>");
-			pw.print("<option value = 'Belmont Harbour'/>");
-			pw.print("<option value = '525 S Adams'/>");
-			pw.print("<option value = '256 W Chinatown'/>");
-			pw.print("</datalist>");
+			pw.print("<select name = 'location' class='input' >");
+			pw.print("<option value = '1555N State Street' selected>1555N State Street</option>");
+			pw.print("<option value = '256N Michigan Avenue'>256N Michigan Avenue</option>");
+			pw.print("<option value = '400E 25th Street'>400E 25th Street</option>");
+			pw.print("<option value = 'Devon Ave'>Devon Ave</option>");
+			pw.print("<option value = 'Belmont Harbour'>Belmont Harbour</option>");
+			pw.print("<option value = '525 S Adams'>525 S Adams</option>");
+			pw.print("<option value = '256 W Chinatown'>256 W Chinatown</option>");
 			pw.print("</td>");
 			pw.print("</tr>");
 
