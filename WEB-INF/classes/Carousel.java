@@ -18,11 +18,73 @@ import javax.servlet.http.HttpSession;
 import java.io.*;			
 			
 			
-public class Carousel{
+public class Carousel
+{
+
+	public String showAccessories(String name, String type, String retailer, Utilities utility)
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append("");
+		if(type.equals("tvs"))
+		{
+			HashMap<String, TVType> hm = new HashMap<String, TVType>();
+			hm.putAll(SaxParserDataStore.tvs);
 			
-	public String  carouselfeature(Utilities utility){
-				
-						
+			String myCarousel = "accessories";
+
+			TVType tv1 = hm.get(name);
+			int k = 0; int size= hm.size();		
+			sb.append("<div id='content'><div class='post'><h2 class='title meta'>");
+			sb.append("<a style='font-size: 24px;'>"+name+" Accessories</a>");
+			sb.append("</h2>");
+			sb.append("<div class='container'>");
+			sb.append("<div class='carousel slide' id='"+myCarousel+"' data-ride='carousel'>");
+			sb.append("<div class='carousel-inner'>");
+			for(Map.Entry<String, String> acc:tv1.getAccessories().entrySet())
+			{
+			
+				Accessory accessory = SaxParserDataStore.accessories.get(acc.getValue());
+				if (k == 0 )
+				{				
+					sb.append("<div class='item active'><div class='col-md-6' style = 'background-color: #ffffff;border :1px solid #cfd1d3'>");
+				}
+				else
+				{
+					sb.append("<div class='item'><div class='col-md-6' style = 'background-color: #ffffff ;border :1px solid #cfd1d3' >");
+				}
+				sb.append("<div id='shop_item'>");
+				sb.append("<h3>"+accessory.getName()+"</h3>");
+				sb.append("<strong>$ "+accessory.getPrice()+"</strong><ul>");
+				sb.append("<li id='item'><img src='images/accessories/"+accessory.getImage()+"' alt='' /></li>");
+				sb.append("<li><form method='post' action='Cart'>" +
+						"<input type='hidden' name='name' value='"+acc.getValue()+"'>"+
+						"<input type='hidden' name='type' value='accessories'>"+
+						"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
+				sb.append("</ul></div></div>");
+				sb.append("</div>");
+				k++;
+			}
+			sb.append("</div>");
+			sb.append("<a class='left carousel-control' href='#"+myCarousel+"' data-slide='prev' style = 'width : 10% ;background-color:#D7e4ef; opacity :1'>"+
+							"<span class='glyphicon glyphicon-chevron-left' style = 'color :black'></span>"+
+							"<span class='sr-only'>Previous</span>"+
+							"</a>");
+			sb.append("<a class='right carousel-control' href='#"+myCarousel+"' data-slide='next' style = 'width : 10% ;background-color:#D7e4ef; opacity :1'>"+
+					"<span class='glyphicon glyphicon-chevron-right' style = 'color :black'></span>"+
+						"<span class='sr-only'>Next</span>"+
+						"</a>");
+
+		
+			sb.append("</div>");	
+			sb.append("</div></div>");
+			sb.append("</div>");
+		}
+		
+		return sb.toString();
+	}
+			
+	public String  carouselfeature(Utilities utility)
+	{									
 		HashMap<String, TVType> hm = new HashMap<String, TVType>();
 		StringBuilder sb = new StringBuilder();
 		String myCarousel = null;

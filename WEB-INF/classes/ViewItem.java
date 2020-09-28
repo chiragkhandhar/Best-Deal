@@ -192,8 +192,8 @@ public class ViewItem extends HttpServlet
 	  "<input type='submit' value='ViewReview' class='btnreview'></form></li>");
 	  
     pw.print("</ul></div></td>");
-    //pw.print(carousel.carouselfeature(utility));
     pw.print("</table></div></div></div>");
+    pw.print(carousel.showAccessories(key, type, retailer, utility));
     utility.printHtml("Footer.html");
   }
 
