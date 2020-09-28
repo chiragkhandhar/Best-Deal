@@ -84,17 +84,12 @@ public class Login extends HttpServlet {
 			session.removeAttribute("login_msg");
 		}
 		pw.print("<form method='post' action='Login'>"
-				+ "<table style='width:100%'><tr><td>"
-				+ "<h3>Username</h3></td><td><input type='text' name='username' value='' class='input' required></input>"
-				+ "</td></tr><tr><td>"
-				+ "<h3>Password</h3></td><td><input type='password' name='password' value='' class='input' required></input>"
-				+ "</td></tr><tr><td>"
-				+ "<h3>User Type</h3></td><td><select name='usertype' class='input'><option value='customer' selected>Customer</option><option value='retailer'>Store Manager</option><option value='manager'>Salesman</option></select>"
-				+ "</td></tr><tr><td></td><td>"
-				+ "<input type='submit' class='btnbuy' value='Login' style='float: right;height: 20px margin: 20px; margin-right: 10px;'></input>"
-				+ "</td></tr><tr><td></td><td>"
-				+ "<strong><a class='' href='Registration' style='float: right;height: 20px margin: 20px;'>New User? Register here!</a></strong>"
-				+ "</td></tr></table>"
+				+ "<table style='width:100%'>"
+				+ "<tr><td><h3>Username</h3></td><td><input type='text' name='username' value='' class='input' required></input></td></tr>"
+				+ "<tr><td><h3>Password</h3></td><td><input type='password' name='password' value='' class='input' required></input></td></tr>"
+				+ "<tr><td colspan = '2'><input type='submit' class='btnbuy' value='Login' style=' width: 100%; margin: 2rem;'></input></td></tr>"
+				+ "<tr><td colspan = '2'><strong><a class='' href='Registration' style='float: right;'>New User? Sign up here!</a></strong></td></tr>"
+				+ "</table>"
 				+ "</form>" + "</div></div></div>");
 		utility.printHtml("Footer.html");
 	}
