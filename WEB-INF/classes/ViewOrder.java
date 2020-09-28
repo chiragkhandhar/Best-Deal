@@ -139,6 +139,52 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				pw.print("<h4 style='color:red'>Please enter the valid order number</h4>");	
 			}
 		}
+
+		// if the retailer presses Remove Manager button 
+		if(usertype.equals("retailer") && request.getParameter("managerName") != null && request.getParameter("remove").equals("Remove Manager") )
+		{
+			String managerName = request.getParameter("managerName");
+
+			HashMap<String, User> usersHM = new HashMap<String, User>();
+			
+			try
+			{
+				FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\UserDetails.txt"));
+				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
+				usersHM = (HashMap)objectInputStream.readObject();
+			}
+			catch(Exception e)
+			{
+		
+			}
+
+			for(Map.Entry<String, User> entry : usersHM.entrySet())
+			{
+				User temp = entry.getValue();
+				if(temp.getUsertype().equals("manager") && temp.getName().equals(managerName))
+				{
+					usersHM.remove(entry.getKey());
+					break;
+				}
+			}
+			//save the updated hashmap with removed order to the file	
+			try
+			{	
+				FileOutputStream fileOutputStream = new FileOutputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\UserDetails.txt"));
+				ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+				objectOutputStream.writeObject(usersHM);
+				objectOutputStream.flush();
+				objectOutputStream.close();       
+				fileOutputStream.close();
+			}
+			catch(Exception e)
+			{
+			
+			}	
+			response.sendRedirect("Account");
+		}
+
+
 		//if the user presses cancel order from order details shown then process to cancel the order
 		if(request.getParameter("Order")!=null && request.getParameter("Order").equals("CancelOrder"))
 		{
@@ -163,7 +209,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				//get the exact order with same ordername and add it into cancel list to remove it later
 				for (OrderPayment oi : orderPayments.get(orderId)) 
 				{
-					if(oi.getOrderName().equals(orderName) && (oi.getUserName().equals(username) || usertype.equals("retailer") ))
+					if(oi.getOrderName().equals(orderName) && (oi.getUserName().equals(username) || usertype.equals("retailer") || usertype.equals("manager") ))
 					{
 						ListOrderPayment.add(oi);
 						pw.print("<h4 style='color:red'>Your item  <span style='color:black'>"+ orderName +"</span> has been cancelled</h4>");								
@@ -172,9 +218,9 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				//remove all the orders from hashmap that exist in cancel list
 				orderPayments.get(orderId).removeAll(ListOrderPayment);
 				if(orderPayments.get(orderId).size()==0)
-					{
-							orderPayments.remove(orderId);
-					}
+				{
+						orderPayments.remove(orderId);
+				}
 				//save the updated hashmap with removed order to the file	
 				try
 				{	
