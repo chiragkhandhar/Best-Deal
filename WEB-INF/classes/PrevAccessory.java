@@ -125,7 +125,6 @@ public class PrevAccessory extends HttpServlet {
 		pw.print("<a style='font-size: 24px;'>"+ProductName+" Accessories</a>");
 		pw.print("</h2><div class='entry'><table id='bestseller'>");
 		TVType tv1 = hm.get(ProductName);
-		System.out.print(ProductName);
 		int i = 1; int size= hm.size();
 		pw.print("<tr>");
 		ArrayList<String> arr = new ArrayList<String> ();
@@ -135,7 +134,6 @@ public class PrevAccessory extends HttpServlet {
 			arr.add(acc.getValue());
 		}	
 		
-		System.out.println("vishal");
 		if (j > 0){
 		pw.print("<td><li><form method='post' action='PrevAccessory'>" +
 					"<input type='hidden' name='name' value='"+arr+"'>"+

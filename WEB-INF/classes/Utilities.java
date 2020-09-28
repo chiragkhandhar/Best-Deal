@@ -247,6 +247,19 @@ public class Utilities extends HttpServlet{
 		}
 		
 	}
+
+	public void removeProduct(String name)
+	{
+		ArrayList<OrderItem> orderItems = OrdersHashMap.orders.get(username());
+		for( OrderItem temp : orderItems)
+		{
+			if( temp.getName().equals(name))
+			{
+				orderItems.remove(temp);
+				break;
+			}
+		}
+	}
 	
 	// store the payment details for orders
 	public void storePayment(int orderId, String orderName, double orderPrice, String userAddress, String creditCardNo, String mode, String location)

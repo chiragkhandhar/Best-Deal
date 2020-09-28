@@ -61,7 +61,6 @@ public class Carousel{
 				sb.append("<div class='carousel-inner'>");
 						
 				TVType tv1 = hm.get(oi.getName());
-				System.out.print(oi.getName());
 				int k = 0; int size= hm.size();
 			
 				for(Map.Entry<String, String> acc:tv1.getAccessories().entrySet())

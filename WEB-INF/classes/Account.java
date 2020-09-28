@@ -103,7 +103,7 @@ public class Account extends HttpServlet {
 						else
 						pw.print("<td> - </td>");
 						pw.print("<input type='hidden' name='orderId' value='"+oi.getOrderId()+"'>");
-						pw.print("<td><input type='submit' name='Order' value='CancelOrder' class='btnbuy'></td>");
+						pw.print("<td><input type='submit' name='Order' value='Cancel Item' class='btnbuy'></td>");
 						pw.print("</tr>");
 						pw.print("</form>");
 					}

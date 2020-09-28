@@ -25,11 +25,12 @@ public class Cart extends HttpServlet {
 		String type = request.getParameter("type");
 		String maker = request.getParameter("maker");
 		String access = request.getParameter("access");
-		System.out.println("Cart: Name = " + name + " Type = " + type + " Maker = " + maker + " Access = " + access);
-
-		/* StoreProduct Function stores the Purchased product in Orders HashMap.*/	
+		String operation = request.getParameter("operation");
 		
-		utility.storeProduct(name, type, maker, access);
+		if(operation == null)
+			utility.storeProduct(name, type, maker, access);
+		else if(operation.equals("remove"))
+			utility.removeProduct(name);
 		displayCart(request, response);
 	}
 	
@@ -53,7 +54,7 @@ public class Cart extends HttpServlet {
 		pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
 		pw.print("<a style='font-size: 24px;'>Cart("+utility.CartCount()+")</a>");
 		pw.print("</h2><div class='entry'>");
-		pw.print("<form name ='Cart' action='CheckOut' method='post'>");
+		
 		if(utility.CartCount()>0)
 		{
 			pw.print("<table  class='gridtable'>");
@@ -63,15 +64,21 @@ public class Cart extends HttpServlet {
 			{
 				pw.print("<tr>");
 				pw.print("<td>"+i+".</td><td>"+oi.getName()+"</td><td>$ "+oi.getPrice()+"</td>");
-				pw.print("<input type='hidden' name='orderName' value='"+oi.getName()+"'>");
-				pw.print("<input type='hidden' name='orderPrice' value='"+oi.getPrice()+"'>");
+
+				pw.print("<form name ='Cart' action='Cart' method='post'>");
+				pw.print("<input type='hidden' name='name' value='"+oi.getName()+"'>");
+				pw.print("<input type='hidden' name='operation' value='remove'>");		
+				pw.print("<td><input type='submit' name='Remove' value='Remove' class='btnbuy' />");
+				pw.print("</form>");
+				
 				pw.print("</tr>");
 				total = total +oi.getPrice();
 				i++;
 			}
+			pw.print("<form name ='Cart' action='CheckOut' method='post'>");
 			pw.print("<input type='hidden' name='orderTotal' value='"+total+"'>");	
-			pw.print("<tr><th></th><th>Total</th><th>$ "+total+"</th>");
-			pw.print("<tr><td></td><td></td><td><input type='submit' name='CheckOut' value='CheckOut' class='btnbuy' /></td>");
+			pw.print("<tr><th colspan = '2'>Total</th><th>$ "+total+"</th>");
+			pw.print("<tr><td colspan = '3'><input type='submit' name='CheckOut' value='Check Out' class='btnbuy' style = 'width: 80%;' /></td>");
 			pw.print("</table></form>");
 			/* This code is calling Carousel.java code to implement carousel feature*/
 			pw.print(carousel.carouselfeature(utility));
