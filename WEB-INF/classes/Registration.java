@@ -104,7 +104,7 @@ public class Registration extends HttpServlet {
 		Utilities utility = new Utilities(request, pw);
 		utility.printHtml("Header.html");
 		pw.print("<div class='post' style='float: none; width: 100%'>");
-		pw.print("<h2 class='title meta'><a style='font-size: 24px;'>Login</a></h2>"
+		pw.print("<h2 class='title meta'><a style='font-size: 24px;'>Sign Up</a></h2>"
 				+ "<div class='entry'>"
 				+ "<div style='width:400px; margin:25px; margin-left: auto;margin-right: auto;'>");
 		if (error)
@@ -118,8 +118,9 @@ public class Registration extends HttpServlet {
 				+ "<h3>Re-Password</h3></td><td><input type='password' name='repassword' value='' class='input' required></input>"
 				+ "</td></tr><tr><td>"
 				+ "<h3>User Type</h3></td><td><select name='usertype' class='input'><option value='customer' selected>Customer</option><option value='retailer'>Store Manager</option><option value='manager'>Salesman</option></select>"
-				+ "</td></tr></table>"
-				+ "<input type='submit' class='btnbuy' name='ByUser' value='Create User' style='float: right;height: 20px margin: 20px; margin-right: 10px;'></input>"
+				+ "</td></tr>"
+				+ "<tr><td colspan = '2' ><input type='submit' class='btnbuy' name='ByUser' value='Create User' style='width:100%; margin-top: 2rem;'></input></td></tr>"
+				+ "</table>"
 				+ "</form>" + "</div></div></div>");
 		utility.printHtml("Footer.html");
 	}
