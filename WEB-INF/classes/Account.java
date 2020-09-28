@@ -151,6 +151,7 @@ public class Account extends HttpServlet {
 	void displayRetailerTable(HashMap<Integer, ArrayList<OrderPayment>> orderPayments, PrintWriter pw)
 	{
 		displayAllSalesmen(pw);
+		displayAllCustomers(pw);
 		int size=0;
 		for(Map.Entry<Integer, ArrayList<OrderPayment>> entry : orderPayments.entrySet())
 		{
@@ -209,6 +210,7 @@ public class Account extends HttpServlet {
 
 	void displayManagerTable(HashMap<Integer, ArrayList<OrderPayment>> orderPayments, PrintWriter pw)
 	{
+		displayAllCustomers(pw);
 		int size=0;
 		for(Map.Entry<Integer, ArrayList<OrderPayment>> entry : orderPayments.entrySet())
 		{
@@ -308,11 +310,61 @@ public class Account extends HttpServlet {
 					pw.print("<td>"+temp.getName()+"</td>");
 					pw.print("<td><input type='submit' name='remove' value='Remove Manager' class='btnbuy'></td></tr>");
 					pw.print("</form>");
-					pw.print("</table>");
+					
 				}
 			}
+			pw.print("</table>");
+		}
+	}
+
+	void displayAllCustomers(PrintWriter pw)
+	{
+		HashMap<String, User> usersHM = new HashMap<String, User>();
+		String TOMCAT_HOME = System.getProperty("catalina.home");
+		try
+		{
+			FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\UserDetails.txt"));
+			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
+			usersHM = (HashMap)objectInputStream.readObject();
+		}
+		catch(Exception e)
+		{
+	
 		}
 
+		int size = 0;
+		for(Map.Entry<String, User> entry : usersHM.entrySet())
+		{
+			User temp = entry.getValue();
+			if(temp.getUsertype().equals("customer"))
+				size++;
+		}
 
+		if( size > 0)
+		{
+			pw.print("<br><h3 style = 'text-align: center;'>All Customers</h3><br>");
+			pw.print("<table class='gridtable' style = 'width:100%;'><tr><th></th>");
+			pw.print("<th style = 'text-align: center;'>Sr. No.</th>");
+			pw.print("<th style = 'text-align: center;'>Name.</th>");
+			pw.print("<th style = 'text-align: center;'>Action</th></tr>");
+			int i = 0;
+			for(Map.Entry<String, User> entry : usersHM.entrySet())
+			{
+				User temp = entry.getValue();
+				if(temp.getUsertype().equals("customer"))
+				{
+					i++;
+					pw.print("<form method='get' action='ViewOrder'>");
+					pw.print("<tr>");			
+					pw.print("<td><input type='radio' name='customerName' value='"+temp.getName()+"'></td>");			
+					pw.print("<td>"+i+"</td>");
+					pw.print("<td>"+temp.getName()+"</td>");
+					pw.print("<td><input type='submit' name='remove' value='Delete Customer' class='btnbuy'></td></tr>");
+					pw.print("</form>");
+					
+				}
+			}
+			pw.print("</table>");
+		}
 	}
 }

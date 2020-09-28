@@ -184,6 +184,50 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			response.sendRedirect("Account");
 		}
 
+		// if the retailer or manager presses Delete Customer button 
+		if((usertype.equals("retailer") || usertype.equals("manager")) && request.getParameter("customerName") != null && request.getParameter("remove").equals("Delete Customer") )
+		{
+			String customerName = request.getParameter("customerName");
+
+			HashMap<String, User> usersHM = new HashMap<String, User>();
+			
+			try
+			{
+				FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\UserDetails.txt"));
+				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
+				usersHM = (HashMap)objectInputStream.readObject();
+			}
+			catch(Exception e)
+			{
+		
+			}
+
+			for(Map.Entry<String, User> entry : usersHM.entrySet())
+			{
+				User temp = entry.getValue();
+				if(temp.getUsertype().equals("customer") && temp.getName().equals(customerName))
+				{
+					usersHM.remove(entry.getKey());
+					break;
+				}
+			}
+			//save the updated hashmap with removed order to the file	
+			try
+			{	
+				FileOutputStream fileOutputStream = new FileOutputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\UserDetails.txt"));
+				ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+				objectOutputStream.writeObject(usersHM);
+				objectOutputStream.flush();
+				objectOutputStream.close();       
+				fileOutputStream.close();
+			}
+			catch(Exception e)
+			{
+			
+			}	
+			response.sendRedirect("Account");
+		}
+
 
 		//if the user presses cancel order from order details shown then process to cancel the order
 		if(request.getParameter("Order")!=null && request.getParameter("Order").equals("CancelOrder"))
