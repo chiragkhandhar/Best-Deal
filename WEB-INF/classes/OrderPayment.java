@@ -19,8 +19,9 @@ public class OrderPayment implements Serializable{
 	private String creditCardNo;
 	private String mode;
 	private String location;
+	private String orderDate;
 	
-	public OrderPayment(int orderId, String userName, String orderName, double orderPrice, String userAddress, String creditCardNo, String mode, String location){
+	public OrderPayment(int orderId, String userName, String orderName, double orderPrice, String userAddress, String creditCardNo, String mode, String location, String orderDate){
 		this.orderId = orderId;
 		this.userName = userName;
 		this.orderName = orderName;
@@ -29,6 +30,7 @@ public class OrderPayment implements Serializable{
 		this.creditCardNo = creditCardNo;
 		this.mode = mode;
 		this.location = location;
+		this.orderDate = orderDate;
 		}
 
 	public String getUserAddress() {
@@ -93,7 +95,15 @@ public class OrderPayment implements Serializable{
 	}
 
 	public void setLocation(String location) {
-		this.location = mode;
+		this.location = location;
+	}
+
+	public String getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
 	}
 	
 

@@ -6,7 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Random;
+import java.lang.Math;
+import java.time.LocalDate;
 
 @WebServlet("/Payment")
 
@@ -42,31 +43,37 @@ public class Payment extends HttpServlet {
 
 		if(!userAddress.isEmpty() && !creditCardNo.isEmpty() )
 		{
-			//Random rand = new Random(); 
-			//int orderId = rand.nextInt(100);
-			int orderId=utility.getOrderPaymentSize()+1;
+			int min = 100000;
+			int max = 999999;
+			
+			int orderId =  (int)(Math.random()*(max-min+1)+min);  
+			//int orderId=utility.getOrderPaymentSize()+1; 
+
+			String orderDate = LocalDate.now().toString();
 
 			//iterate through each order
-
 			for (OrderItem oi : utility.getCustomerOrders())
 			{
-				utility.storePayment(orderId, oi.getName(), oi.getPrice(), userAddress, creditCardNo, mode, location);
+				utility.storePayment(orderId, oi.getName(), oi.getPrice(), userAddress, creditCardNo, mode, location, orderDate);
 			}
 
-			//remove the order details from cart after processing
-			
+			//remove the order details from cart after processing			
 			OrdersHashMap.orders.remove(utility.username());	
+
 			utility.printHtml("Header.html");
 			utility.printHtml("LeftNavigationBar.html");
 			pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
-			pw.print("<a style='font-size: 24px;'>Order</a>");
+			pw.print("<a style='font-size: 24px;'>Order Confirmation</a>");
 			pw.print("</h2><div class='entry'>");
 		
-			pw.print("<h2>Your Order");
-			pw.print("&nbsp&nbsp");  
-			pw.print("is stored ");
-			pw.print("<br>Your Order No is "+(orderId));
-			pw.print("</h2></div></div></div>");		
+			pw.print("<h2>Your order is placed! </h2><br>");
+			pw.print("<h3>Your tracking id is <span style = 'font-weight:bold;'>&nbsp;"+(orderId) + "</span></h3><br>");
+			pw.print("<h4 style = 'text-align: center;'> Use this ID to manage your orders.");
+			if(mode.equals("delivery"))
+				pw.print("<h3>Your order would be delivered on "+LocalDate.now().plusDays(14)+"</h3>");
+			else
+				pw.print("<h3>Your order would be ready for pickup on "+LocalDate.now().plusDays(14)+"</h3>");
+			pw.print("</div></div></div>");		
 			utility.printHtml("Footer.html");
 		}else
 		{

@@ -79,6 +79,7 @@ public class Account extends HttpServlet {
 				pw.print("<h3 style = 'text-align: center;'>Order Details</h3><br>");
 				pw.print("<table class='gridtable'><tr><td></td>");
 				pw.print("<th style = 'text-align: center;'>OrderId</th>");
+				pw.print("<th style = 'text-align: center;'>Order Date</th>");
 				pw.print("<th style = 'text-align: center;'>UserName</th>");
 				pw.print("<th style = 'text-align: center;'>Item</th>");
 				pw.print("<th style = 'text-align: center;'>Price</th>");
@@ -93,7 +94,8 @@ public class Account extends HttpServlet {
 						pw.print("<form method='get' action='ViewOrder'>");
 						pw.print("<tr>");			
 						pw.print("<td><input type='radio' name='orderName' value='"+oi.getOrderName()+"'></td>");			
-						pw.print("<td>"+oi.getOrderId()+".</td>");
+						pw.print("<td>"+oi.getOrderId()+"</td>");
+						pw.print("<td>"+oi.getOrderDate()+"</td>");
 						pw.print("<td>"+oi.getUserName()+"</td>");
 						pw.print("<td>"+oi.getOrderName()+"</td>");
 						pw.print("<td>$ "+oi.getOrderPrice()+"</td>");
