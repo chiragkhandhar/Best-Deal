@@ -57,7 +57,7 @@ public class Cart extends HttpServlet {
 		
 		if(utility.CartCount()>0)
 		{
-			pw.print("<table  class='gridtable'>");
+			pw.print("<table  class='gridtable' style = 'width: 100%'>");
 			int i = 1;
 			double total = 0;
 			for (OrderItem oi : utility.getCustomerOrders()) 
@@ -77,7 +77,7 @@ public class Cart extends HttpServlet {
 			}
 			pw.print("<form name ='Cart' action='CheckOut' method='post'>");
 			pw.print("<input type='hidden' name='orderTotal' value='"+total+"'>");	
-			pw.print("<tr><th colspan = '2'>Total</th><th>$ "+total+"</th>");
+			pw.print("<tr><th colspan = '2' style = 'text-align: center;'>Total</th><th style = 'text-align: center;'>$ "+total+"</th>");
 			pw.print("<tr><td colspan = '3'><input type='submit' name='CheckOut' value='Check Out' class='btnbuy' style = 'width: 80%;' /></td>");
 			pw.print("</table></form>");
 			/* This code is calling Carousel.java code to implement carousel feature*/

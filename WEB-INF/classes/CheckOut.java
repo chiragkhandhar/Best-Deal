@@ -48,21 +48,22 @@ public class CheckOut extends HttpServlet {
 			pw.print("<a style='font-size: 24px;'>Order</a>");
 			pw.print("</h2><div class='entry'>");
 
-			pw.print("<table  class='gridtable'>");
-			pw.print("<tr><th>Customer Name</th><td>" + userName + "</td></tr>");
-			
+			pw.print("<table  class='gridtable' style = 'width: 100%'>");
+			pw.print("<tr><td style = 'text-align: center;'>Customer Name</td><th>" + userName + "</th></tr>");
+			pw.print("</table>");
+
+			pw.print("<br>");
+			pw.print("<table  class='gridtable' style = 'width: 100%'>");
+			pw.print("<tr><th style = 'text-align: center;'>Item</th><th style = 'text-align: center;'> Price</th></tr>");
 			// for each order iterate and display the order name price
 			for (OrderItem oi : utility.getCustomerOrders()) 
 			{
-				pw.print("<tr><td> Product Purchased:</td><td>");
-				pw.print(oi.getName()+"</td></tr><tr><td>");
-				pw.print("<input type='hidden' name='orderPrice' value='"+oi.getPrice()+"'>");
+				pw.print("<tr><td>" + oi.getName()+"</td><td>" + oi.getPrice() + "</td></tr>");
+				pw.print("<input type='hidden' name='orderPrice' value='$ "+oi.getPrice()+"'>");
 				pw.print("<input type='hidden' name='orderName' value='"+oi.getName()+"'>");
-				pw.print("Product Price:</td><td>"+ oi.getPrice());
-				pw.print("</td></tr>");
 			}
 
-			pw.print("<tr><th>Total Amount</th><td>$ "+orderTotal + "</td></tr>");
+			pw.print("<tr><th style = 'text-align: center;'>Total Amount</th><td>$ " + orderTotal + "</td></tr>");
 			pw.print("<input type='hidden' name='orderTotal' value='"+orderTotal+"'>");
 			pw.print("</table><br>");
 

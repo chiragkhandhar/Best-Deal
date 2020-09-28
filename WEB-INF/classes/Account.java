@@ -45,13 +45,13 @@ public class Account extends HttpServlet {
 			pw.print("<a style='font-size: 24px;'>Account</a>");
 			pw.print("</h2><div class='entry'>");
 			User user=utility.getUser();
-			pw.print("<table class='gridtable'>");
+			pw.print("<table class='gridtable' style = 'width: 100%'>");
 			pw.print("<tr>");
-			pw.print("<th> User Name</th>");
+			pw.print("<th style = 'text-align: center;'> User Name</th>");
 			pw.print("<td>" +user.getName()+ "</td>");
 			pw.print("</tr>");
 			pw.print("<tr>");
-			pw.print("<th> User Type</th>");
+			pw.print("<th style = 'text-align: center;'> User Type</th>");
 			pw.print("<td>" +user.getUsertype()+ "</td>");
 			pw.print("</tr></table>");
 			HashMap<Integer, ArrayList<OrderPayment>> orderPayments = new HashMap<Integer, ArrayList<OrderPayment>>();
@@ -78,13 +78,13 @@ public class Account extends HttpServlet {
 			{	
 				pw.print("<h3 style = 'text-align: center;'>Order Details</h3><br>");
 				pw.print("<table class='gridtable'><tr><td></td>");
-				pw.print("<th>OrderId</th>");
-				pw.print("<th>UserName</th>");
-				pw.print("<th>Item</th>");
-				pw.print("<th>Price</th>");
-				pw.print("<th>Shipping Mode</th>");
-				pw.print("<th>Pickup Location</th>");
-				pw.print("<th>Action</th></tr>");
+				pw.print("<th style = 'text-align: center;'>OrderId</th>");
+				pw.print("<th style = 'text-align: center;'>UserName</th>");
+				pw.print("<th style = 'text-align: center;'>Item</th>");
+				pw.print("<th style = 'text-align: center;'>Price</th>");
+				pw.print("<th style = 'text-align: center;'>Shipping Mode</th>");
+				pw.print("<th style = 'text-align: center;'>Pickup Location</th>");
+				pw.print("<th style = 'text-align: center;'>Action</th></tr>");
 				for(Map.Entry<Integer, ArrayList<OrderPayment>> entry : orderPayments.entrySet())
 				{
 					for(OrderPayment oi:entry.getValue())	
@@ -103,7 +103,7 @@ public class Account extends HttpServlet {
 						else
 						pw.print("<td> - </td>");
 						pw.print("<input type='hidden' name='orderId' value='"+oi.getOrderId()+"'>");
-						pw.print("<td><input type='submit' name='Order' value='Cancel Item' class='btnbuy'></td>");
+						pw.print("<td><input type='submit' name='Order' value='CancelOrder' class='btnbuy'></td>");
 						pw.print("</tr>");
 						pw.print("</form>");
 					}
