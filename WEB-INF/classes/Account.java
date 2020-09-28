@@ -24,7 +24,8 @@ public class Account extends HttpServlet {
 
 	/* Display Account Details of the Customer (Name and Usertype) */
 
-	protected void displayAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void displayAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
 		Utilities utility = new Utilities(request, pw);
@@ -66,65 +67,137 @@ public class Account extends HttpServlet {
 			{
 		
 			}
-			int size=0;
-			for(Map.Entry<Integer, ArrayList<OrderPayment>> entry : orderPayments.entrySet())
-			{
-				for(OrderPayment od:entry.getValue())	
-				if(od.getUserName().equals(user.getName()))
-				size= size+1;
-			}
-				
-			if(size>0)
-			{	
-				pw.print("<h3 style = 'text-align: center;'>Order Details</h3><br>");
-				pw.print("<table class='gridtable'><tr><th></th>");
-				pw.print("<th style = 'text-align: center;'>OrderId</th>");
-				pw.print("<th style = 'text-align: center;'>Order Date</th>");
-				pw.print("<th style = 'text-align: center;'>UserName</th>");
-				pw.print("<th style = 'text-align: center;'>Item</th>");
-				pw.print("<th style = 'text-align: center;'>Price</th>");
-				pw.print("<th style = 'text-align: center;'>Shipping Mode</th>");
-				pw.print("<th style = 'text-align: center;'>Pickup Location</th>");
-				pw.print("<th style = 'text-align: center;'>Action</th></tr>");
-				for(Map.Entry<Integer, ArrayList<OrderPayment>> entry : orderPayments.entrySet())
-				{
-					for(OrderPayment oi:entry.getValue())	
-					if(oi.getUserName().equals(user.getName())) 
-					{
-						pw.print("<form method='get' action='ViewOrder'>");
-						pw.print("<tr>");			
-						pw.print("<td><input type='radio' name='orderName' value='"+oi.getOrderName()+"'></td>");			
-						pw.print("<td>"+oi.getOrderId()+"</td>");
-						pw.print("<td>"+oi.getOrderDate()+"</td>");
-						pw.print("<td>"+oi.getUserName()+"</td>");
-						pw.print("<td>"+oi.getOrderName()+"</td>");
-						pw.print("<td>$ "+oi.getOrderPrice()+"</td>");
-						pw.print("<td>"+oi.getMode()+"</td>");
-						if(!oi.getLocation().equals(""))
-							pw.print("<td>"+oi.getLocation()+"</td>");
-						else
-						pw.print("<td> - </td>");
-						pw.print("<input type='hidden' name='orderId' value='"+oi.getOrderId()+"'>");
-						pw.print("<td><input type='submit' name='Order' value='CancelOrder' class='btnbuy'></td>");
-						pw.print("</tr>");
-						pw.print("</form>");
-					}
-				
-				}
-				
-				pw.print("</table>");
-			}
-			else
-			{
-				pw.print("<h4 style='color:red; text-align:center;'>There are no orders to display.</h4>");
-			}
+			
 
-			pw.print("</table>");		
-			pw.print("</h2></div></div></div>");		
+			if(user.getUsertype().equals("retailer"))
+			{
+				displayRetailerTable(orderPayments, pw, user);
+			}
+			else if(user.getUsertype().equals("customer"))
+			{
+				displayCustomerTable(orderPayments, pw, user);
+			}
+			
 			utility.printHtml("Footer.html");	        	
 		}
 		catch(Exception e)
 		{
 		}		
+	}
+
+	void displayCustomerTable(HashMap<Integer, ArrayList<OrderPayment>> orderPayments, PrintWriter pw, User user)
+	{
+		int size=0;
+		for(Map.Entry<Integer, ArrayList<OrderPayment>> entry : orderPayments.entrySet())
+		{
+			for(OrderPayment od:entry.getValue())	
+			if(od.getUserName().equals(user.getName()))
+			size= size+1;
+		}
+				
+		if(size>0)
+		{	
+			pw.print("<h3 style = 'text-align: center;'>Order Details</h3><br>");
+			pw.print("<table class='gridtable'><tr><th></th>");
+			pw.print("<th style = 'text-align: center;'>OrderId</th>");
+			pw.print("<th style = 'text-align: center;'>Order Date</th>");
+			pw.print("<th style = 'text-align: center;'>UserName</th>");
+			pw.print("<th style = 'text-align: center;'>Item</th>");
+			pw.print("<th style = 'text-align: center;'>Price</th>");
+			pw.print("<th style = 'text-align: center;'>Shipping Mode</th>");
+			pw.print("<th style = 'text-align: center;'>Pickup Location</th>");
+			pw.print("<th style = 'text-align: center;'>Action</th></tr>");
+			for(Map.Entry<Integer, ArrayList<OrderPayment>> entry : orderPayments.entrySet())
+			{
+				for(OrderPayment oi:entry.getValue())	
+				if(oi.getUserName().equals(user.getName())) 
+				{
+					pw.print("<form method='get' action='ViewOrder'>");
+					pw.print("<tr>");			
+					pw.print("<td><input type='radio' name='orderName' value='"+oi.getOrderName()+"'></td>");			
+					pw.print("<td>"+oi.getOrderId()+"</td>");
+					pw.print("<td>"+oi.getOrderDate()+"</td>");
+					pw.print("<td>"+oi.getUserName()+"</td>");
+					pw.print("<td>"+oi.getOrderName()+"</td>");
+					pw.print("<td>$ "+oi.getOrderPrice()+"</td>");
+					pw.print("<td>"+oi.getMode()+"</td>");
+					if(!oi.getLocation().equals(""))
+						pw.print("<td>"+oi.getLocation()+"</td>");
+					else
+					pw.print("<td> - </td>");
+					pw.print("<input type='hidden' name='orderId' value='"+oi.getOrderId()+"'>");
+					pw.print("<td><input type='submit' name='Order' value='CancelOrder' class='btnbuy'></td>");
+					pw.print("</tr>");
+					pw.print("</form>");
+				}
+			
+			}
+			
+			pw.print("</table>");
+		}
+		else
+		{
+			pw.print("<h4 style='color:red; text-align:center;'>There are no orders to display.</h4>");
+		}
+
+		pw.print("</table>");		
+		pw.print("</h2></div></div></div>");		
+	}
+
+	void displayRetailerTable(HashMap<Integer, ArrayList<OrderPayment>> orderPayments, PrintWriter pw, User user)
+	{
+		int size=0;
+		for(Map.Entry<Integer, ArrayList<OrderPayment>> entry : orderPayments.entrySet())
+		{
+			for(OrderPayment od:entry.getValue())	
+				size= size+1;
+		}
+				
+		if(size>0)
+		{	
+			pw.print("<br><h3 style = 'text-align: center;'>All Recent Orders</h3><br>");
+			pw.print("<table class='gridtable'><tr><th></th>");
+			pw.print("<th style = 'text-align: center;'>OrderId</th>");
+			pw.print("<th style = 'text-align: center;'>Order Date</th>");
+			pw.print("<th style = 'text-align: center;'>UserName</th>");
+			pw.print("<th style = 'text-align: center;'>Item</th>");
+			pw.print("<th style = 'text-align: center;'>Price</th>");
+			pw.print("<th style = 'text-align: center;'>Shipping Mode</th>");
+			pw.print("<th style = 'text-align: center;'>Pickup Location</th>");
+			pw.print("<th style = 'text-align: center;'>Action</th></tr>");
+			for(Map.Entry<Integer, ArrayList<OrderPayment>> entry : orderPayments.entrySet())
+			{
+				for(OrderPayment oi:entry.getValue())	
+				{
+					pw.print("<form method='get' action='ViewOrder'>");
+					pw.print("<tr>");			
+					pw.print("<td><input type='radio' name='orderName' value='"+oi.getOrderName()+"'></td>");			
+					pw.print("<td>"+oi.getOrderId()+"</td>");
+					pw.print("<td>"+oi.getOrderDate()+"</td>");
+					pw.print("<td>"+oi.getUserName()+"</td>");
+					pw.print("<td>"+oi.getOrderName()+"</td>");
+					pw.print("<td>$ "+oi.getOrderPrice()+"</td>");
+					pw.print("<td>"+oi.getMode()+"</td>");
+					if(!oi.getLocation().equals(""))
+						pw.print("<td>"+oi.getLocation()+"</td>");
+					else
+					pw.print("<td> - </td>");
+					pw.print("<input type='hidden' name='orderId' value='"+oi.getOrderId()+"'>");
+					pw.print("<td><input type='submit' name='Order' value='CancelOrder' class='btnbuy'></td>");
+					pw.print("</tr>");
+					pw.print("</form>");
+				}
+			
+			}
+			
+			pw.print("</table>");
+		}
+		else
+		{
+			pw.print("<h4 style='color:red; text-align:center;'>There are no orders to display.</h4>");
+		}
+
+		pw.print("</table>");		
+		pw.print("</h2></div></div></div>");		
 	}
 }

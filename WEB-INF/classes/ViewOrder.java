@@ -27,6 +27,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			return;
 		}
 		String username=utility.username();
+		String usertype = utility.usertype();
+
 		utility.printHtml("Header.html");
 		utility.printHtml("LeftNavigationBar.html");
 		pw.print("<form name ='ViewOrder' action='ViewOrder' method='get'>");
@@ -160,13 +162,13 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				}
 				//get the exact order with same ordername and add it into cancel list to remove it later
 				for (OrderPayment oi : orderPayments.get(orderId)) 
+				{
+					if(oi.getOrderName().equals(orderName) && (oi.getUserName().equals(username) || usertype.equals("retailer") ))
 					{
-							if(oi.getOrderName().equals(orderName) && oi.getUserName().equals(username))
-							{
-								ListOrderPayment.add(oi);
-								pw.print("<h4 style='color:red'>Your item  <span style='color:black'>"+ orderName +"</span> has been cancelled</h4>");								
-							}
+						ListOrderPayment.add(oi);
+						pw.print("<h4 style='color:red'>Your item  <span style='color:black'>"+ orderName +"</span> has been cancelled</h4>");								
 					}
+				}
 				//remove all the orders from hashmap that exist in cancel list
 				orderPayments.get(orderId).removeAll(ListOrderPayment);
 				if(orderPayments.get(orderId).size()==0)
