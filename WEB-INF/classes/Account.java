@@ -77,7 +77,7 @@ public class Account extends HttpServlet {
 			if(size>0)
 			{	
 				pw.print("<h3 style = 'text-align: center;'>Order Details</h3><br>");
-				pw.print("<table class='gridtable'><tr><td></td>");
+				pw.print("<table class='gridtable'><tr><th></th>");
 				pw.print("<th style = 'text-align: center;'>OrderId</th>");
 				pw.print("<th style = 'text-align: center;'>Order Date</th>");
 				pw.print("<th style = 'text-align: center;'>UserName</th>");

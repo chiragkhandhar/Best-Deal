@@ -42,8 +42,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	
 		if(request.getParameter("Order")==null)
 		{
-			pw.print("<table align='center'><tr><td>Enter OrderNo &nbsp&nbsp<input name='orderId' type='text'></td>");
-			pw.print("<td><input type='submit' name='Order' value='ViewOrder' class='btnbuy'></td></tr></table>");
+			pw.print("<table align='center'><tr><td>Enter Order ID<input name='orderId' type='text' style = 'margin-left: 1rem;'></td>");
+			pw.print("<td><input type='submit' name='Order' value='ViewOrder' class='btnbuy' style = 'margin-left: 1rem;'></td></tr></table>");
 		}
 
 		//hashmap gets all the order details from file 
@@ -98,17 +98,29 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				// display the orders if there exist order with order id
 				if(size>0)
 				{	
-					pw.print("<table  class='gridtable'>");
-					pw.print("<tr><td></td>");
-					pw.print("<td>OrderId:</td>");
-					pw.print("<td>UserName:</td>");
-					pw.print("<td>productOrdered:</td>");
-					pw.print("<td>productPrice:</td></tr>");
+					pw.print("<table  class='gridtable' style = 'width: 100%;'><th></th>");
+					pw.print("<th style = 'text-align: center;'>OrderId</th>");
+					pw.print("<th style = 'text-align: center;'>Order Date</th>");
+					pw.print("<th style = 'text-align: center;'>UserName</th>");
+					pw.print("<th style = 'text-align: center;'>Item</th>");
+					pw.print("<th style = 'text-align: center;'>Price</th>");
+					pw.print("<th style = 'text-align: center;'>Shipping Mode</th>");
+					pw.print("<th style = 'text-align: center;'>Pickup Location</th>");
+					pw.print("<th style = 'text-align: center;'>Action</th></tr>");
 					for (OrderPayment oi : orderPayments.get(orderId)) 
 					{
 						pw.print("<tr>");			
 						pw.print("<td><input type='radio' name='orderName' value='"+oi.getOrderName()+"'></td>");			
-						pw.print("<td>"+oi.getOrderId()+".</td><td>"+oi.getUserName()+"</td><td>"+oi.getOrderName()+"</td><td>Price: "+oi.getOrderPrice()+"</td>");
+						pw.print("<td>"+oi.getOrderId()+"</td>");
+						pw.print("<td>"+oi.getOrderDate()+"</td>");
+						pw.print("<td>"+oi.getUserName()+"</td>");
+						pw.print("<td>"+oi.getOrderName()+"</td>");
+						pw.print("<td>$ "+oi.getOrderPrice()+"</td>");
+						pw.print("<td>"+oi.getMode()+"</td>");
+						if(!oi.getLocation().equals(""))
+							pw.print("<td>"+oi.getLocation()+"</td>");
+						else
+						pw.print("<td> - </td>");
 						pw.print("<td><input type='submit' name='Order' value='CancelOrder' class='btnbuy'></td>");
 						pw.print("</tr>");
 					
@@ -152,7 +164,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 							if(oi.getOrderName().equals(orderName) && oi.getUserName().equals(username))
 							{
 								ListOrderPayment.add(oi);
-								pw.print("<h4 style='color:red'>Your Order is Cancelled</h4>");								
+								pw.print("<h4 style='color:red'>Your item  <span style='color:black'>"+ orderName +"</span> has been cancelled</h4>");								
 							}
 					}
 				//remove all the orders from hashmap that exist in cancel list
