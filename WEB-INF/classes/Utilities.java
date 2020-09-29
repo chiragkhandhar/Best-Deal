@@ -52,14 +52,14 @@ public class Utilities extends HttpServlet{
 			if (session.getAttribute("username")!=null){
 				String username = session.getAttribute("username").toString();
 				username = Character.toUpperCase(username.charAt(0)) + username.substring(1);
-				result = result + "<li><a href='ViewOrder'><span class='glyphicon'>ViewOrder</span></a></li>"
-						+ "<li><a><span class='glyphicon'>Hello,"+username+"</span></a></li>"
-						+ "<li><a href='Account'><span class='glyphicon'>Account</span></a></li>"
-						+ "<li><a href='Logout'><span class='glyphicon'>Logout</span></a></li>";
+				result = result + "<li><a href='ViewOrder'>ViewOrder</a></li>"
+						+ "<li><a>Hello,"+username+"</a></li>"
+						+ "<li><a href='Account'>Account</a></li>"
+						+ "<li><a href='Logout'>Logout</a></li>";
 			}
 			else
-				result = result +"<li><a href='ViewOrder'><span class='glyphicon'>View Order</span></a></li>"+ "<li><a href='Login'><span class='glyphicon'>Login</span></a></li>";
-				result = result +"<li><a href='Cart'><span class='glyphicon'>Cart("+CartCount()+")</span></a></li></ul></div></div><div id='page'>";
+				result = result +"<li><a href='ViewOrder'>View Order</a></li>"+ "<li><a href='Login'>Login</a></li>";
+				result = result +"<li><a href='Cart'>Cart("+CartCount()+")</a></li></ul></div></div><div id='page'>";
 				pw.print(result);
 		} else
 				pw.print(result);
