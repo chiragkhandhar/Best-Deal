@@ -93,6 +93,19 @@
             <accessory>nintendo_sh</accessory>
         </accessories>
     </TV>
+    <TV id="NEWPRODUCT">
+        <name>NEWPRODUCT</name>
+        <price>1000</price>
+        <image>sony_x1.jpg</image>
+        <description>This is a dummy description 1232.</description>
+        <manufacturer>NEWPRODUCT</manufacturer>
+        <condition>NEWPRODUCT</condition>
+        <discount>50.0</discount>
+        <accessories>
+            <accessory>nintendo_wc</accessory>
+            <accessory>nintendo_sh</accessory>
+        </accessories>
+    </TV>
 </TVCatalog>
 
 <PhoneCatalog>
