@@ -141,16 +141,14 @@ public class Utilities extends HttpServlet{
 	public User getUser(){
 		String usertype = usertype();
 		HashMap<String, User> hm=new HashMap<String, User>();
-		String TOMCAT_HOME = System.getProperty("catalina.home");
-			try
-			{		
-				FileInputStream fileInputStream=new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\UserDetails.txt"));
-				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
-				hm= (HashMap)objectInputStream.readObject();
-			}
-			catch(Exception e)
-			{
-			}	
+		
+		try
+		{		 
+			hm = MySqlDataStoreUtilities.selectUser();
+		}
+		catch(Exception e)
+		{
+		}	
 		User user = hm.get(username());
 		return user;
 	}
@@ -166,23 +164,21 @@ public class Utilities extends HttpServlet{
 	/*  getOrdersPaymentSize Function gets  the size of OrderPayment */
 	public int getOrderPaymentSize(){
 		HashMap<Integer, ArrayList<OrderPayment>> orderPayments = new HashMap<Integer, ArrayList<OrderPayment>>();
-		String TOMCAT_HOME = System.getProperty("catalina.home");
-			try
-			{
-				FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\PaymentDetails.txt"));
-				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
-				orderPayments = (HashMap)objectInputStream.readObject();
-			}
-			catch(Exception e)
-			{
-			
-			}
-			int size=0;
-			for(Map.Entry<Integer, ArrayList<OrderPayment>> entry : orderPayments.entrySet()){
-					 size=size + 1;
-					 
-			}
-			return size;		
+		
+		try
+		{  
+			orderPayments = MySqlDataStoreUtilities.selectOrder();
+		}
+		catch(Exception e)
+		{
+		
+		}
+		int size=0;
+		for(Map.Entry<Integer, ArrayList<OrderPayment>> entry : orderPayments.entrySet()){
+					size=size + 1;
+					
+		}
+		return size;		
 	}
 
 	/*  CartCount Function gets  the size of User Orders*/
@@ -265,47 +261,39 @@ public class Utilities extends HttpServlet{
 	public void storePayment(int orderId, String orderName, double orderPrice, String userAddress, String creditCardNo, String mode, String location, String orderDate)
 	{
 		HashMap<Integer, ArrayList<OrderPayment>> orderPayments= new HashMap<Integer, ArrayList<OrderPayment>>();
-		String TOMCAT_HOME = System.getProperty("catalina.home");
-			// get the payment details file 
-			try
-			{
-				FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\PaymentDetails.txt"));
-				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
-				orderPayments = (HashMap)objectInputStream.readObject();
-			}
-			catch(Exception e)
-			{
-			
-			}
-			if(orderPayments==null)
-			{
-				orderPayments = new HashMap<Integer, ArrayList<OrderPayment>>();
-			}
-			// if there exist order id already add it into same list for order id or create a new record with order id
-			
-			if(!orderPayments.containsKey(orderId)){	
-				ArrayList<OrderPayment> arr = new ArrayList<OrderPayment>();
-				orderPayments.put(orderId, arr);
-			}
+		
+		try
+		{
+			orderPayments = MySqlDataStoreUtilities.selectOrder();
+		}
+		catch(Exception e)
+		{
+		
+		}
+		if(orderPayments == null)
+		{
+			orderPayments = new HashMap<Integer, ArrayList<OrderPayment>>();
+		}
+		// if there exist order id already add it into same list for order id or create a new record with order id
+		
+		if(!orderPayments.containsKey(orderId)){	
+			ArrayList<OrderPayment> arr = new ArrayList<OrderPayment>();
+			orderPayments.put(orderId, arr);
+		}
 		ArrayList<OrderPayment> listOrderPayment = orderPayments.get(orderId);		
 		OrderPayment orderpayment = new OrderPayment(orderId, username(), orderName, orderPrice, userAddress, creditCardNo, mode, location, orderDate);
 		listOrderPayment.add(orderpayment);	
 			
 			// add order details into file
 
-			try
-			{	
-				FileOutputStream fileOutputStream = new FileOutputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\PaymentDetails.txt"));
-				ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            	objectOutputStream.writeObject(orderPayments);
-				objectOutputStream.flush();
-				objectOutputStream.close();       
-				fileOutputStream.close();
-			}
-			catch(Exception e)
-			{
-				System.out.println("inside exception file not written properly");
-			}	
+		try
+		{	
+			MySqlDataStoreUtilities.insertOrder(orderId,username(),orderName,orderPrice,userAddress,creditCardNo, mode, location, orderDate);
+		}
+		catch(Exception e)
+		{
+			System.out.println("inside exception file not written properly");
+		}	
 	}
 
 	

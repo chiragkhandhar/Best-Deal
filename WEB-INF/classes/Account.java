@@ -56,12 +56,10 @@ public class Account extends HttpServlet {
 			pw.print("<td>" +user.getUsertype()+ "</td>");
 			pw.print("</tr></table>");
 			HashMap<Integer, ArrayList<OrderPayment>> orderPayments = new HashMap<Integer, ArrayList<OrderPayment>>();
-			String TOMCAT_HOME = System.getProperty("catalina.home");
+			
 			try
-			{
-				FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\PaymentDetails.txt"));
-				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
-				orderPayments = (HashMap)objectInputStream.readObject();
+			{     
+				orderPayments = MySqlDataStoreUtilities.selectOrder();
 			}
 			catch(Exception e)
 			{
@@ -269,12 +267,10 @@ public class Account extends HttpServlet {
 	void displayAllSalesmen(PrintWriter pw)
 	{
 		HashMap<String, User> usersHM = new HashMap<String, User>();
-		String TOMCAT_HOME = System.getProperty("catalina.home");
+		
 		try
-		{
-			FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\UserDetails.txt"));
-			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
-			usersHM = (HashMap)objectInputStream.readObject();
+		{      
+			usersHM = MySqlDataStoreUtilities.selectUser();
 		}
 		catch(Exception e)
 		{
@@ -320,12 +316,10 @@ public class Account extends HttpServlet {
 	void displayAllCustomers(PrintWriter pw)
 	{
 		HashMap<String, User> usersHM = new HashMap<String, User>();
-		String TOMCAT_HOME = System.getProperty("catalina.home");
+		
 		try
-		{
-			FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\UserDetails.txt"));
-			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
-			usersHM = (HashMap)objectInputStream.readObject();
+		{    
+			usersHM = MySqlDataStoreUtilities.selectUser();
 		}
 		catch(Exception e)
 		{
