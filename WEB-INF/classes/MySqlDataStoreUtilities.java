@@ -24,7 +24,7 @@ public class MySqlDataStoreUtilities
         {
             
             getConnection();
-            String deleteOrderQuery ="Delete from customerorders where OrderId=? and orderName=?";
+            String deleteOrderQuery ="Delete from CustomerOrder where OrderId=? and orderName=?";
             PreparedStatement pst = conn.prepareStatement(deleteOrderQuery);
             pst.setInt(1,orderId);
             pst.setString(2,orderName);

@@ -51,13 +51,11 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		//hashmap gets all the order details from file 
 
 		HashMap<Integer, ArrayList<OrderPayment>> orderPayments = new HashMap<Integer, ArrayList<OrderPayment>>();
-		String TOMCAT_HOME = System.getProperty("catalina.home");
+		String TOMCAT_HOME = System.getProperty("catalina.home");	
 
 		try
-		{
-			FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\PaymentDetails.txt"));
-			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
-			orderPayments = (HashMap)objectInputStream.readObject();
+		{				      
+			orderPayments = MySqlDataStoreUtilities.selectOrder();
 		}
 		catch(Exception e)
 		{
@@ -240,11 +238,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				ArrayList<OrderPayment> ListOrderPayment =new ArrayList<OrderPayment>();
 				//get the order from file
 				try
-				{
-		
-					FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\PaymentDetails.txt"));
-					ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
-					orderPayments = (HashMap)objectInputStream.readObject();
+				{      
+					orderPayments = MySqlDataStoreUtilities.selectOrder();
 				}
 				catch(Exception e)
 				{
@@ -255,6 +250,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				{
 					if(oi.getOrderName().equals(orderName) && (oi.getUserName().equals(username) || usertype.equals("retailer") || usertype.equals("manager") ))
 					{
+						MySqlDataStoreUtilities.deleteOrder(orderId,orderName);
 						ListOrderPayment.add(oi);
 						pw.print("<h4 style='color:red'>Your item  <span style='color:black'>"+ orderName +"</span> has been cancelled</h4>");								
 					}
@@ -265,21 +261,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				{
 						orderPayments.remove(orderId);
 				}
-				//save the updated hashmap with removed order to the file	
-				try
-				{	
-					FileOutputStream fileOutputStream = new FileOutputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\PaymentDetails.txt"));
-					ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-					objectOutputStream.writeObject(orderPayments);
-					objectOutputStream.flush();
-					objectOutputStream.close();       
-					fileOutputStream.close();
-				}
-				catch(Exception e)
-				{
-				
-				}	
-			}else
+			}
+			else
 			{
 				pw.print("<h4 style='color:red'>Please select any product</h4>");
 			}
