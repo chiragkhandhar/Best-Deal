@@ -36,6 +36,21 @@ public class MySqlDataStoreUtilities
         }
     }
 
+    public static void deleteCustomer(String customerName)
+    {
+        try
+        {
+            getConnection();
+            String deleteCustomerQuery ="Delete from Registration where username=?";
+            PreparedStatement pst = conn.prepareStatement(deleteCustomerQuery);
+            pst.setString(1,customerName);
+            pst.executeUpdate();
+        }
+        catch(Exception e)
+        {            
+        }
+    }
+
     public static void insertOrder(int orderId,String userName,String orderName,double orderPrice,String userAddress,String creditCardNo, String mode, String location, String orderDate)
     {
         try
