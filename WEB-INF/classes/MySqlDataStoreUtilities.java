@@ -36,20 +36,21 @@ public class MySqlDataStoreUtilities
         }
     }
 
-    public static void deleteCustomer(String customerName)
+    public static void deleteUser(String name)
     {
         try
         {
             getConnection();
-            String deleteCustomerQuery ="Delete from Registration where username=?";
-            PreparedStatement pst = conn.prepareStatement(deleteCustomerQuery);
-            pst.setString(1,customerName);
+            String deleteUserQuery ="Delete from Registration where username=?";
+            PreparedStatement pst = conn.prepareStatement(deleteUserQuery);
+            pst.setString(1,name);
             pst.executeUpdate();
         }
         catch(Exception e)
         {            
         }
     }
+
 
     public static void insertOrder(int orderId,String userName,String orderName,double orderPrice,String userAddress,String creditCardNo, String mode, String location, String orderDate)
     {

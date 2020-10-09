@@ -51,8 +51,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		//hashmap gets all the order details from file 
 
 		HashMap<Integer, ArrayList<OrderPayment>> orderPayments = new HashMap<Integer, ArrayList<OrderPayment>>();
-		String TOMCAT_HOME = System.getProperty("catalina.home");	
-
+	
 		try
 		{				      
 			orderPayments = MySqlDataStoreUtilities.selectOrder();
@@ -72,12 +71,9 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			{	
 				int orderId=Integer.parseInt(request.getParameter("orderId"));
 				pw.print("<input type='hidden' name='orderId' value='"+orderId+"'>");
-				//get the order details from file
 				try
 				{
-					FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\PaymentDetails.txt"));
-					ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
-					orderPayments = (HashMap)objectInputStream.readObject();
+					orderPayments = MySqlDataStoreUtilities.selectOrder();
 				}
 				catch(Exception e)
 				{
@@ -91,9 +87,9 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 
 				if(orderPayments.get(orderId)!=null)
 				{
-				for(OrderPayment od:orderPayments.get(orderId))	
-				if(od.getUserName().equals(username))
-				size= orderPayments.get(orderId).size();
+					for(OrderPayment od:orderPayments.get(orderId))	
+						if(od.getUserName().equals(username))
+							size= orderPayments.get(orderId).size();
 				}
 				// display the orders if there exist order with order id
 				if(size>0)
@@ -146,10 +142,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			HashMap<String, User> usersHM = new HashMap<String, User>();
 			
 			try
-			{
-				FileInputStream fileInputStream = new FileInputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\UserDetails.txt"));
-				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);	      
-				usersHM = (HashMap)objectInputStream.readObject();
+			{      
+				usersHM = MySqlDataStoreUtilities.selectUser();
 			}
 			catch(Exception e)
 			{
@@ -161,23 +155,10 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				User temp = entry.getValue();
 				if(temp.getUsertype().equals("manager") && temp.getName().equals(managerName))
 				{
+					MySqlDataStoreUtilities.deleteUser(managerName);
 					usersHM.remove(entry.getKey());
 					break;
 				}
-			}
-			//save the updated hashmap with removed order to the file	
-			try
-			{	
-				FileOutputStream fileOutputStream = new FileOutputStream(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\UserDetails.txt"));
-				ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-				objectOutputStream.writeObject(usersHM);
-				objectOutputStream.flush();
-				objectOutputStream.close();       
-				fileOutputStream.close();
-			}
-			catch(Exception e)
-			{
-			
 			}	
 			response.sendRedirect("Account");
 		}
@@ -202,7 +183,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				User temp = entry.getValue();
 				if(temp.getUsertype().equals("customer") && temp.getName().equals(customerName))
 				{
-					MySqlDataStoreUtilities.deleteCustomer(customerName);
+					MySqlDataStoreUtilities.deleteUser(customerName);
 					usersHM.remove(entry.getKey());
 					break;
 				}
