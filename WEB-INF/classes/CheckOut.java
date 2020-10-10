@@ -29,6 +29,7 @@ public class CheckOut extends HttpServlet {
 			response.setContentType("text/html");
 			PrintWriter pw = response.getWriter();
 			Utilities utility = new Utilities(request,pw);
+			
 			if(!utility.isLoggedin())
 			{
 				HttpSession session = request.getSession(true);				
@@ -38,7 +39,8 @@ public class CheckOut extends HttpServlet {
 			}
 			HttpSession session=request.getSession(); 
 
-			//get the order product details	on clicking submit the form will be passed to submitorder page				
+			//get the order product details	on clicking submit the form will be passed to submitorder page	
+			User user = utility.getUser();			
 			String userName = session.getAttribute("username").toString();
 			String orderTotal = request.getParameter("orderTotal");
 			utility.printHtml("Header.html");
@@ -49,6 +51,7 @@ public class CheckOut extends HttpServlet {
 			pw.print("</h2><div class='entry'>");
 
 			pw.print("<table  class='gridtable' style = 'width: 100%'>");
+			pw.print("<tr><td style = 'text-align: center;'>Customer ID</td><th>" + user.getId() + "</th></tr>");
 			pw.print("<tr><td style = 'text-align: center;'>Customer Name</td><th>" + userName + "</th></tr>");
 			pw.print("</table>");
 

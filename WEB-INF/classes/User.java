@@ -14,23 +14,24 @@ import java.io.*;
 */
 
 public class User implements Serializable{
-	private int id;
+	private String userID;
 	private String name;
 	private String password;
 	private String usertype;
 	
-	public User(String name, String password, String usertype) {
+	public User(String userID, String name, String password, String usertype) {
+		this.userID = userID;
 		this.name=name;
 		this.password=password;
 		this.usertype=usertype;
 	}
 
-	public int getId() {
-		return id;
+	public String getId() {
+		return userID;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String userID) {
+		this.userID = userID;
 	}
 
 	public String getName() {

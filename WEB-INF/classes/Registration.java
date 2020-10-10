@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 @WebServlet("/Registration")
 
@@ -28,6 +30,7 @@ public class Registration extends HttpServlet {
 		PrintWriter pw = response.getWriter();
 		Utilities utility = new Utilities(request, pw);
 
+		String userID = String.valueOf(Calendar.getInstance(TimeZone.getTimeZone("GMT--5")).getTime().getTime()/1000);
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String repassword = request.getParameter("repassword");
@@ -43,12 +46,12 @@ public class Registration extends HttpServlet {
 		}
 		else
 		{
-			HashMap<String, User> hm=new HashMap<String, User>();
+			HashMap<String, User> hm = new HashMap<String, User>();
 			
 			//get the user details from MySQL 
 			try
 			{
-				hm=MySqlDataStoreUtilities.selectUser();
+				hm = MySqlDataStoreUtilities.selectUser();
 			}
 			catch(Exception e)
 			{
@@ -63,11 +66,11 @@ public class Registration extends HttpServlet {
 			{
 				/*create a user object and store details into hashmap
 				store the user hashmap into file  */
-
-				User user = new User(username,password,usertype);
+				
+				User user = new User(userID, username, password, usertype);
 				hm.put(username, user);
 				
-				MySqlDataStoreUtilities.insertUser(username,password,repassword,usertype);	
+				MySqlDataStoreUtilities.insertUser(userID, username, password, usertype);	
 
 				HttpSession session = request.getSession(true);				
 				session.setAttribute("login_msg", "Your "+usertype+" account has been created. Please login");
@@ -80,20 +83,18 @@ public class Registration extends HttpServlet {
 		}
 
 		//display the error message
-		if(utility.isLoggedin()){
+		if(utility.isLoggedin())
+		{
 			HttpSession session = request.getSession(true);				
 			session.setAttribute("login_msg", error_msg);
 			response.sendRedirect("Account"); return;
 		}
-		displayRegistration(request, response, pw, true);
-		
+		displayRegistration(request, response, pw, true);	
 	}
 
 	/*  displayRegistration function displays the Registration page of New User */
-	
-	protected void displayRegistration(HttpServletRequest request,
-			HttpServletResponse response, PrintWriter pw, boolean error)
-			throws ServletException, IOException {
+	protected void displayRegistration(HttpServletRequest request, HttpServletResponse response, PrintWriter pw, boolean error) throws ServletException, IOException 
+	{
 		Utilities utility = new Utilities(request, pw);
 		utility.printHtml("Header.html");
 		pw.print("<div class='post' style='float: none; width: 100%'>");

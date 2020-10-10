@@ -115,18 +115,18 @@ public class MySqlDataStoreUtilities
         return orderPayments;
     }
 
-    public static void insertUser(String username,String password,String repassword,String usertype)
+    public static void insertUser(String userID, String username, String password, String usertype)
     {
         try
         {	
             getConnection();
-            String insertIntoCustomerRegisterQuery = "INSERT INTO registration(username,password,repassword,usertype) "
+            String insertIntoCustomerRegisterQuery = "INSERT INTO registration(userID, username, password, usertype) "
             + "VALUES (?,?,?,?);";	
                     
             PreparedStatement pst = conn.prepareStatement(insertIntoCustomerRegisterQuery);
-            pst.setString(1,username);
-            pst.setString(2,password);
-            pst.setString(3,repassword);
+            pst.setString(1,userID);
+            pst.setString(2,username);
+            pst.setString(3,password);            
             pst.setString(4,usertype);
             pst.execute();
         }
@@ -146,8 +146,9 @@ public class MySqlDataStoreUtilities
             String selectCustomerQuery="select * from  Registration";
             ResultSet rs = stmt.executeQuery(selectCustomerQuery);
             while(rs.next())
-            {	User user = new User(rs.getString("username"),rs.getString("password"),rs.getString("usertype"));
-                    hm.put(rs.getString("username"), user);
+            {	
+                User user = new User(rs.getString("userID"), rs.getString("username"), rs.getString("password"), rs.getString("usertype"));
+                hm.put(rs.getString("username"), user);
             }
         }
         catch(Exception e)

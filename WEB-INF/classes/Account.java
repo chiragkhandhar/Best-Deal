@@ -47,6 +47,13 @@ public class Account extends HttpServlet {
 			pw.print("</h2><div class='entry'>");
 			User user=utility.getUser();
 			pw.print("<table class='gridtable' style = 'width: 100%'>");
+			if(user.getId() != null)
+			{
+				pw.print("<tr>");
+				pw.print("<th style = 'text-align: center;'> User ID</th>");
+				pw.print("<td>" +user.getId()+ "</td>");
+				pw.print("</tr>");
+			}			
 			pw.print("<tr>");
 			pw.print("<th style = 'text-align: center;'> User Name</th>");
 			pw.print("<td>" +user.getName()+ "</td>");
