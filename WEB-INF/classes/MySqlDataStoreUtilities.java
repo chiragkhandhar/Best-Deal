@@ -88,6 +88,29 @@ public class MySqlDataStoreUtilities
         }		
     }
 
+    public static ArrayList<StoreLocation> getLocations()
+    {	
+       ArrayList<StoreLocation> locations = new ArrayList<StoreLocation>();            
+        try
+        {			
+            getConnection();
+            String selectOrderQuery ="select * from locations";			
+            PreparedStatement pst = conn.prepareStatement(selectOrderQuery);
+            ResultSet rs = pst.executeQuery();	
+           
+            while(rs.next())
+            {
+                StoreLocation location = new StoreLocation(rs.getString("storeID"), rs.getString("street"), rs.getString("city"), rs.getString("state"), rs.getString("zip"));
+                locations.add(location);		
+            }					
+        }
+        catch(Exception e)
+        {
+            
+        }
+        return locations;
+    }
+
     public static HashMap<Integer, ArrayList<OrderPayment>> selectOrder()
     {	
         HashMap<Integer, ArrayList<OrderPayment>> orderPayments = new HashMap<Integer, ArrayList<OrderPayment>>();

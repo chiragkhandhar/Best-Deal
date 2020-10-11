@@ -1,6 +1,6 @@
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +29,7 @@ public class CheckOut extends HttpServlet {
 			response.setContentType("text/html");
 			PrintWriter pw = response.getWriter();
 			Utilities utility = new Utilities(request,pw);
+			ArrayList<StoreLocation> locations = new ArrayList<StoreLocation>();
 			
 			if(!utility.isLoggedin())
 			{
@@ -98,18 +99,24 @@ public class CheckOut extends HttpServlet {
 			pw.print("<td><input type='radio' id = 'delivery' name ='mode' value = 'delivery' required = 'true' style = 'margin-left: 1rem;'> <label for='delivery'>Delivery</label><br></td>");
 			pw.print("<td><input type='radio' id = 'pickup' name ='mode' value = 'pickup' required = 'true' > <label for='pickup'>Pickup</label><br></td>");
 			pw.print("</tr>");
+
+			try{
+				locations = MySqlDataStoreUtilities.getLocations();
+			}
+			catch(Exception e){
+
+			}
 			
 			pw.print("<tr>");
 			pw.print("<td colspan='2'>");
 			pw.print("<label>Select Pickup location(if pickup is selected): </label> ");
-			pw.print("<select name = 'location' class='input' >");
-			pw.print("<option value = '1555N State Street' selected>1555N State Street</option>");
-			pw.print("<option value = '256N Michigan Avenue'>256N Michigan Avenue</option>");
-			pw.print("<option value = '400E 25th Street'>400E 25th Street</option>");
-			pw.print("<option value = 'Devon Ave'>Devon Ave</option>");
-			pw.print("<option value = 'Belmont Harbour'>Belmont Harbour</option>");
-			pw.print("<option value = '525 S Adams'>525 S Adams</option>");
-			pw.print("<option value = '256 W Chinatown'>256 W Chinatown</option>");
+			pw.print("<select name = 'locationDetails' class='input' >");
+			for(StoreLocation location : locations)
+			{
+				String storeID = location.getStoreID();
+				String temp = location.getStreet() + ", " + location.getCity() + ", " + location.getState() + ", " + location.getZip();
+				pw.print("<option value = '" + storeID + "&" +  temp + "'>" + temp + "</option>");
+			}
 			pw.print("</td>");
 			pw.print("</tr>");
 

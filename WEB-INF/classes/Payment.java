@@ -37,7 +37,10 @@ public class Payment extends HttpServlet {
 		String userAddress = street + ", " + apt + ", " + city + ", " + state + ", " + zip;
 		String creditCardNo=request.getParameter("creditCardNo");
 		String mode = request.getParameter("mode");
-		String location = request.getParameter("location");
+		String locationDetails = request.getParameter("locationDetails");
+		String[] temp = locationDetails.split("&");
+		String storeID = temp[0];
+		String location = temp[1];
 
 		if(mode.equals("delivery"))
 			location = "";
@@ -56,7 +59,7 @@ public class Payment extends HttpServlet {
 			//iterate through each order
 			for (OrderItem oi : utility.getCustomerOrders())
 			{
-				utility.storePayment(user.getId(), user.getName(), userAddress, creditCardNo, orderId, "productID", oi.getName(), "category",  orderDate, shipDate, oi.getPrice(), 0, 0, 0, 0, mode, "storeID", location);
+				utility.storePayment(user.getId(), user.getName(), userAddress, creditCardNo, orderId, "productID", oi.getName(), "category",  orderDate, shipDate, oi.getPrice(), 0, 0, 0, 0, mode, storeID, location);
 			}
 
 			//remove the order details from cart after processing			

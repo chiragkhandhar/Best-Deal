@@ -24,7 +24,7 @@ public class Login extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String usertype = request.getParameter("usertype");
-		HashMap<String, User> hm=new HashMap<String, User>();
+		HashMap<String, User> hm = new HashMap<String, User>();
 		
 		try
 		{		 
