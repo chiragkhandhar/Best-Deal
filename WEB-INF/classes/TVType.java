@@ -29,7 +29,8 @@ public class TVType extends HttpServlet{
 	private String condition;
 	private double discount;
 	HashMap<String,String> accessories;
-	public TVType(String name, double price, String image, String retailer,String condition,double discount){
+	public TVType(String id, String name, double price, String image, String retailer,String condition,double discount, String description){
+		this.id = id;
 		this.name=name;
 		this.price=price;
 		this.image=image;
@@ -37,6 +38,7 @@ public class TVType extends HttpServlet{
 		this.retailer = retailer;
 		this.condition=condition;
 		this.discount = discount;
+		this.description = description;
         this.accessories=new HashMap<String,String>();
 	}
 	

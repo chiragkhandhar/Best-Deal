@@ -35,7 +35,7 @@ public class Carousel
 			TVType tv1 = hm.get(name);
 			int k = 0; int size= hm.size();		
 			sb.append("<div id='content'><div class='post'><h2 class='title meta'>");
-			sb.append("<a style='font-size: 24px;'>"+name+" Accessories</a>");
+			sb.append("<a style='font-size: 24px;'>"+tv1.getName()+" Accessories</a>");
 			sb.append("</h2>");
 			sb.append("<div class='container'>");
 			sb.append("<div class='carousel slide' id='"+myCarousel+"' data-ride='carousel'>");

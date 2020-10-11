@@ -3,7 +3,7 @@
 <ProductCatalog>
 
 <TVCatalog>
-    <TV id="LG Nanocell">
+    <TV id="tv1">
         <name>LG Nanocell</name>
         <price>499.99</price>
         <image>lg_nanocell.jpg</image>
@@ -23,7 +23,7 @@
 			
         </accessories>
     </TV>
-    <TV id="LG UHD">
+    <TV id="tv2">
         <name>LG UHD</name>
         <price>699.99</price>
         <image>lg_UHD.jpg</image>
@@ -41,7 +41,7 @@
         </accessories>
     </TV>
 
-    <TV id="Samsung Crystal UHD">
+    <TV id="tv3">
         <name>Samsung Crystal UHD</name>
         <price>549.99</price>
         <image>samsung_crystalUHD.jpg</image>
@@ -54,7 +54,7 @@
 			
         </accessories>
     </TV>
-    <TV id="Samsung QLED">
+    <TV id="tv4">
         <name>Samsung QLED</name>
         <price>549.99</price>
         <image>samsung_QLED.jpg</image>
@@ -67,7 +67,7 @@
 			
         </accessories>
     </TV>
-    <TV id="Samsung UHD">
+    <TV id="tv5">
         <name>Samsung UHD</name>
         <price>749.99</price>
         <image>samsung_UHD.jpg</image>
@@ -80,7 +80,7 @@
             <accessory>nintendo_sh</accessory>
         </accessories>
     </TV>
-    <TV id="Sony X1">
+    <TV id="tv6">
         <name>Sony X1</name>
         <price>849.99</price>
         <image>sony_x1.jpg</image>
@@ -93,7 +93,7 @@
             <accessory>nintendo_sh</accessory>
         </accessories>
     </TV>
-    <TV id="NEWPRODUCT">
+    <TV id="tv7">
         <name>NEWPRODUCT</name>
         <price>1000</price>
         <image>sony_x1.jpg</image>

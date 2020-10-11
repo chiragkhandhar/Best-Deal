@@ -53,7 +53,7 @@ public class MySqlDataStoreUtilities
 
     public static void insertProduct(String type, String ID, String name, double price, String image, String manufactorer, String condition, double discount, String description)
     {
-        System.out.println(type + " | " + ID + " | " + name + " | " + price + " | " + image + " | " + manufactorer + " | " + condition + " | " + discount + " | " + description);
+        // System.out.println(type + " | " + ID + " | " + name + " | " + price + " | " + image + " | " + manufactorer + " | " + condition + " | " + discount + " | " + description);
         try
         {        
             getConnection();
@@ -76,6 +76,28 @@ public class MySqlDataStoreUtilities
         {
         
         }		
+    }
+
+    public static HashMap<String,TVType> getTVs(){
+        HashMap<String,TVType> tvs = new HashMap<String,TVType>();            
+        try
+        {			
+            getConnection();
+            String selectOrderQuery ="select * from productDetails where productType = 'tv'";			
+            PreparedStatement pst = conn.prepareStatement(selectOrderQuery);
+            ResultSet rs = pst.executeQuery();	
+           
+            while(rs.next())
+            {
+                TVType tv = new TVType(rs.getString("ID"), rs.getString("productName"), rs.getDouble("productPrice"), rs.getString("productImage"), rs.getString("productManufacturer"), rs.getString("productCondition"), rs.getDouble("productDiscount"), rs.getString("description"));
+                tvs.put(tv.getId(), tv);		
+            }					
+        }
+        catch(Exception e)
+        {
+            
+        }
+        return tvs;
     }
 
 

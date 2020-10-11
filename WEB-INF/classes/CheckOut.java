@@ -62,7 +62,7 @@ public class CheckOut extends HttpServlet {
 			// for each order iterate and display the order name price
 			for (OrderItem oi : utility.getCustomerOrders()) 
 			{
-				pw.print("<tr><td>" + oi.getName()+"</td><td>" + oi.getPrice() + "</td></tr>");
+				pw.print("<tr><td>" + oi.getName()+"</td><td>" + oi.getNetTotal() + "</td></tr>");
 				pw.print("<input type='hidden' name='orderPrice' value='$ "+oi.getPrice()+"'>");
 				pw.print("<input type='hidden' name='orderName' value='"+oi.getName()+"'>");
 			}
@@ -119,7 +119,7 @@ public class CheckOut extends HttpServlet {
 			}
 			pw.print("</td>");
 			pw.print("</tr>");
-
+			pw.print("<tr><label>Note: Additional $3 per item would be charged if shipping mode is <b>Delivery</b> </label> </tr>");
 			pw.print("</table>");
 		
 

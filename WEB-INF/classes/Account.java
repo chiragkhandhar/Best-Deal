@@ -128,7 +128,7 @@ public class Account extends HttpServlet {
 					pw.print("<td>"+oi.getOrderDate()+"</td>");
 					pw.print("<td>"+oi.getUserName()+"</td>");
 					pw.print("<td>"+oi.getOrderName()+"</td>");
-					pw.print("<td>$ "+oi.getOrderPrice()+"</td>");
+					pw.print("<td>$ "+oi.getNetTotal()+"</td>");
 					pw.print("<td>"+oi.getMode()+"</td>");
 					if(!oi.getLocation().equals(""))
 						pw.print("<td>"+oi.getLocation()+"</td>");

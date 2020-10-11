@@ -25,6 +25,7 @@ public class TV extends HttpServlet {
 
 		HashMap<String, TVType> hm = new HashMap<String, TVType>();
 		if(CategoryName==null){
+			System.out.println("SaxParserDataStore.tvs.size = " + SaxParserDataStore.tvs.size());
 			hm.putAll(SaxParserDataStore.tvs);
 			name = "";
 		}

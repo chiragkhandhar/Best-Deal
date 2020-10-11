@@ -41,9 +41,14 @@ public class Payment extends HttpServlet {
 		String[] temp = locationDetails.split("&");
 		String storeID = temp[0];
 		String location = temp[1];
+		double shippingCost = 0;
 
 		if(mode.equals("delivery"))
+		{
 			location = "";
+			shippingCost = 3;
+		}
+
 
 		if(!userAddress.isEmpty() && !creditCardNo.isEmpty() )
 		{
@@ -59,7 +64,7 @@ public class Payment extends HttpServlet {
 			//iterate through each order
 			for (OrderItem oi : utility.getCustomerOrders())
 			{
-				utility.storePayment(user.getId(), user.getName(), userAddress, creditCardNo, orderId, "productID", oi.getName(), "category",  orderDate, shipDate, oi.getPrice(), 0, 0, 0, 0, mode, storeID, location);
+				utility.storePayment(user.getId(), user.getName(), userAddress, creditCardNo, orderId, oi.getId(), oi.getName(), oi.getCategory(),  orderDate, shipDate, oi.getPrice(), 0, oi.getDiscount(), shippingCost, oi.getNetTotal() + shippingCost, mode, storeID, location);
 			}
 
 			//remove the order details from cart after processing			
@@ -75,7 +80,9 @@ public class Payment extends HttpServlet {
 			pw.print("<h3>Your tracking id is <span style = 'font-weight:bold;'>&nbsp;"+(orderId) + "</span></h3><br>");
 			pw.print("<h4 style = 'text-align: center;'> Use this ID to manage your orders.");
 			if(mode.equals("delivery"))
-				pw.print("<h3>Your order would be delivered on "+shipDate+"</h3>");
+			{
+				pw.print("<h4 style = 'text-align: center;'>You have been charged for delivery.</h4>");
+				pw.print("<h3>Your order would be delivered on "+shipDate+"</h3>");}
 			else
 				pw.print("<h3>Your order would be ready for pickup on "+shipDate+"</h3>");
 			pw.print("</div></div></div>");		

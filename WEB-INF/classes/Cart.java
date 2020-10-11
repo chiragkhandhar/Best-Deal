@@ -63,7 +63,7 @@ public class Cart extends HttpServlet {
 			for (OrderItem oi : utility.getCustomerOrders()) 
 			{
 				pw.print("<tr>");
-				pw.print("<td>"+i+".</td><td>"+oi.getName()+"</td><td>$ "+oi.getPrice()+"</td>");
+				pw.print("<td>"+i+".</td><td>"+oi.getName()+"</td><td>$ "+oi.getNetTotal()+"</td>");
 
 				pw.print("<form name ='Cart' action='Cart' method='post'>");
 				pw.print("<input type='hidden' name='name' value='"+oi.getName()+"'>");
@@ -72,7 +72,7 @@ public class Cart extends HttpServlet {
 				pw.print("</form>");
 				
 				pw.print("</tr>");
-				total = total +oi.getPrice();
+				total = total +oi.getNetTotal();
 				i++;
 			}
 			pw.print("<form name ='Cart' action='CheckOut' method='post'>");

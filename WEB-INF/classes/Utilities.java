@@ -203,42 +203,42 @@ public class Utilities extends HttpServlet{
 		if(type.equals("tvs")){
 			TVType tv;
 			tv = SaxParserDataStore.tvs.get(name);
-			OrderItem orderitem = new OrderItem(tv.getName(), getNewPrice(tv.getPrice(), tv.getDiscount()), tv.getImage(), tv.getRetailer());
+			OrderItem orderitem = new OrderItem(tv.getId(), tv.getName(), tv.getPrice(), tv.getDiscount(), getNewPrice(tv.getPrice(), tv.getDiscount()), tv.getImage(), tv.getRetailer(), type);
 			orderItems.add(orderitem);
 		}
 		if(type.equals("soundsystems")){
 			SSType soundsystem = null;
 			soundsystem = SaxParserDataStore.soundsystems.get(name);
-			OrderItem orderitem = new OrderItem(soundsystem.getName(), getNewPrice(soundsystem.getPrice(), soundsystem.getDiscount()), soundsystem.getImage(), soundsystem.getRetailer());
+			OrderItem orderitem = new OrderItem(soundsystem.getId(), soundsystem.getName(), soundsystem.getPrice(), soundsystem.getDiscount(), getNewPrice(soundsystem.getPrice(), soundsystem.getDiscount()), soundsystem.getImage(), soundsystem.getRetailer(), type);
 			orderItems.add(orderitem);
 		}
 		if(type.equals("phones")){
 			PhoneType phone = null;
 			phone = SaxParserDataStore.phones.get(name);
-			OrderItem orderitem = new OrderItem(phone.getName(), getNewPrice(phone.getPrice(), phone.getDiscount()), phone.getImage(), phone.getRetailer());
+			OrderItem orderitem = new OrderItem(phone.getId(), phone.getName(), phone.getPrice(), phone.getDiscount(), getNewPrice(phone.getPrice(), phone.getDiscount()), phone.getImage(), phone.getRetailer(), type);
 			orderItems.add(orderitem);
 		}
 		if(type.equals("laptops")){
 			LaptopType laptop = null;
 			laptop = SaxParserDataStore.laptops.get(name);
-			OrderItem orderitem = new OrderItem(laptop.getName(), getNewPrice(laptop.getPrice(), laptop.getDiscount()), laptop.getImage(), laptop.getRetailer());
+			OrderItem orderitem = new OrderItem(laptop.getId(), laptop.getName(), laptop.getPrice(), laptop.getDiscount(), getNewPrice(laptop.getPrice(), laptop.getDiscount()), laptop.getImage(), laptop.getRetailer(), type);
 			orderItems.add(orderitem);
 		}
 		if(type.equals("vas")){
 			VAType va = null;
 			va = SaxParserDataStore.vas.get(name);
-			OrderItem orderitem = new OrderItem(va.getName(), getNewPrice(va.getPrice(), va.getDiscount()), va.getImage(), va.getRetailer());
+			OrderItem orderitem = new OrderItem(va.getId(), va.getName(), va.getPrice(), va.getDiscount(), getNewPrice(va.getPrice(), va.getDiscount()), va.getImage(), va.getRetailer(), type);
 			orderItems.add(orderitem);
 		}
 		if(type.equals("wts")){
 			WTType wt = null;
 			wt = SaxParserDataStore.wts.get(name);
-			OrderItem orderitem = new OrderItem(wt.getName(), getNewPrice(wt.getPrice(), wt.getDiscount()), wt.getImage(), wt.getCategory());
+			OrderItem orderitem = new OrderItem(wt.getId(), wt.getName(), wt.getPrice(), wt.getDiscount(), getNewPrice(wt.getPrice(), wt.getDiscount()), wt.getImage(), wt.getCategory(), type);
 			orderItems.add(orderitem);
 		}
 		if(type.equals("accessories")){	
 			Accessory accessory = SaxParserDataStore.accessories.get(name); 
-			OrderItem orderitem = new OrderItem(accessory.getName(), getNewPrice(accessory.getPrice(), accessory.getDiscount()), accessory.getImage(), accessory.getRetailer());
+			OrderItem orderitem = new OrderItem(accessory.getId(), accessory.getName(),  accessory.getPrice(), accessory.getDiscount(), getNewPrice(accessory.getPrice(), accessory.getDiscount()), accessory.getImage(), accessory.getRetailer(), type);
 			orderItems.add(orderitem);
 		}
 		

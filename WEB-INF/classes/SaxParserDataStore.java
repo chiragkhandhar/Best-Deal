@@ -44,6 +44,8 @@ public class SaxParserDataStore extends DefaultHandler {
 	wts = new HashMap<String, WTType>();
 	accessories=new HashMap<String, Accessory>();
 	accessoryHashMap=new HashMap<String,String>();
+	
+	//tvs = MySqlDataStoreUtilities.getTVs();
 	parseDocument();
     }
 
@@ -63,8 +65,6 @@ public class SaxParserDataStore extends DefaultHandler {
             System.out.println("IO error");
         }
 	}
-
-	
 	
 	// when xml start element is parsed store the id into respective hashmap for TV, soundsystems etc 
     @Override
@@ -123,39 +123,39 @@ public class SaxParserDataStore extends DefaultHandler {
 		{
 			if (element.equals("TV")) {
 				tvs.put(tv.getId(),tv);
-				
+				MySqlDataStoreUtilities.insertProduct("tv", tv.getId(), tv.getName(), tv.getPrice(), tv.getImage(), tv.getRetailer(), tv.getCondition(), tv.getDiscount(), tv.getDescription());  
 				return;
 			}
 	 
 			if (element.equals("phone")) {	
 				phones.put(phone.getId(),phone);
-				
+				MySqlDataStoreUtilities.insertProduct("phone", phone.getId(), phone.getName(), phone.getPrice(), phone.getImage(), phone.getRetailer(), phone.getCondition(), phone.getDiscount(), phone.getDescription());  
 				return;
 			}
 			if (element.equals("soundsystem")) {	  
 				soundsystems.put(soundsystem.getId(),soundsystem);
-				
+				MySqlDataStoreUtilities.insertProduct("soundsystem", soundsystem.getId(), soundsystem.getName(), soundsystem.getPrice(), soundsystem.getImage(), soundsystem.getRetailer(), soundsystem.getCondition(), soundsystem.getDiscount(), soundsystem.getDescription());
 				return;
 			}
 			if (element.equals("laptop")) {	  
 				laptops.put(laptop.getId(),laptop);
-			
+				MySqlDataStoreUtilities.insertProduct("laptop", laptop.getId(), laptop.getName(), laptop.getPrice(), laptop.getImage(), laptop.getRetailer(), laptop.getCondition(), laptop.getDiscount(), laptop.getDescription());  
 				return;
 			}
 			if (element.equals("va")) {	  
 				vas.put(va.getId(),va);
-				//MySqlDataStoreUtilities.insertProduct("va", va.getId(), va.getName(), va.getPrice(), va.getImage(), va.getRetailer(), va.getCondition(), va.getDiscount(), va.getDescription());  
+				MySqlDataStoreUtilities.insertProduct("va", va.getId(), va.getName(), va.getPrice(), va.getImage(), va.getRetailer(), va.getCondition(), va.getDiscount(), va.getDescription());  
 				return;
 			}
 			if (element.equals("wt")) {	  
 				wts.put(wt.getId(),wt);
-				//MySqlDataStoreUtilities.insertProduct("wt", wt.getId(), wt.getName(), wt.getPrice(), wt.getImage(), wt.getCategory(), wt.getCondition(), wt.getDiscount(), wt.getDescription());  
+				MySqlDataStoreUtilities.insertProduct("wt", wt.getId(), wt.getName(), wt.getPrice(), wt.getImage(), wt.getCategory(), wt.getCondition(), wt.getDiscount(), wt.getDescription());  
 				return; 
 			}
 
 			if (element.equals("accessory") && currentElement.equals("accessory")) {
 				accessories.put(accessory.getId(),accessory);     
-				//MySqlDataStoreUtilities.insertProduct("accessory", accessory.getId(), accessory.getName(), accessory.getPrice(), accessory.getImage(), accessory.getRetailer(), accessory.getCondition(), accessory.getDiscount(), accessory.getDescription());  
+				MySqlDataStoreUtilities.insertProduct("accessory", accessory.getId(), accessory.getName(), accessory.getPrice(), accessory.getImage(), accessory.getRetailer(), accessory.getCondition(), accessory.getDiscount(), accessory.getDescription());  
 				return; 
 			}
 
