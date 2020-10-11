@@ -52,27 +52,34 @@ public class MySqlDataStoreUtilities
     }
 
 
-    public static void insertOrder(int orderId,String userName,String orderName,double orderPrice,String userAddress,String creditCardNo, String mode, String location, String orderDate)
+    public static void insertOrder(String userID, String userName, String userAddress, String creditCardNo, int orderId, String productID, String orderName, String category, String orderDate, String shipDate, double orderPrice, int quantity, double discount, double shippingCost, double netTotal, String mode, String storeID, String location)
     {
         try
         {        
             getConnection();
-            String insertIntoCustomerOrderQuery = "INSERT INTO CustomerOrder(OrderId, UserName, OrderName, OrderPrice, userAddress, creditCardNo, mode, location, orderDate)"
-            + "VALUES (?,?,?,?,?,?,?,?,?);";	
+            String insertIntoCustomerOrderQuery = "INSERT INTO CustomerOrder(OrderId, userID, userName, orderName, productID, category, quantity, discount, shippingCost, netTotal, orderPrice, userAddress, creditCardNo, mode, storeID, location, orderDate, shipDate)"
+            + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";	
                 
             PreparedStatement pst = conn.prepareStatement(insertIntoCustomerOrderQuery);
             //set the parameter for each column and execute the prepared statement
             pst.setInt(1,orderId);
-            pst.setString(2,userName);
-            pst.setString(3,orderName);
-            pst.setDouble(4,orderPrice);
-            pst.setString(5,userAddress);
-            pst.setString(6,creditCardNo);
-            pst.setString(7,mode);
-            pst.setString(8,location);
-            pst.setString(9,orderDate);
-            System.out.println(orderId + " | " + userName + " | " + orderName + " | " + orderPrice + " | " + userAddress + " | " + creditCardNo + " | " + mode + " | " + " | " + location + " | " + orderDate);
-            System.out.println("Inside insertOrder | pst object Set.");
+            pst.setString(2,userID);
+            pst.setString(3,userName);
+            pst.setString(4,orderName);
+            pst.setString(5,productID);
+            pst.setString(6,category);
+            pst.setInt(7,quantity);
+            pst.setDouble(8,discount);
+            pst.setDouble(9,shippingCost);
+            pst.setDouble(10,netTotal);
+            pst.setDouble(11,orderPrice);
+            pst.setString(12,userAddress);
+            pst.setString(13,creditCardNo);
+            pst.setString(14,mode);
+            pst.setString(15,storeID);
+            pst.setString(16,location);
+            pst.setString(17,orderDate);
+            pst.setString(18,shipDate);
             pst.execute();
         }
         catch(Exception e)
@@ -104,7 +111,7 @@ public class MySqlDataStoreUtilities
                 System.out.println("data is"+rs.getInt("OrderId")+orderPayments.get(rs.getInt("OrderId")));
 
                 //add to orderpayment hashmap
-                OrderPayment order= new OrderPayment(rs.getInt("OrderId"),rs.getString("userName"),rs.getString("orderName"),rs.getDouble("orderPrice"),rs.getString("userAddress"),rs.getString("creditCardNo"), rs.getString("mode"), rs.getString("location"), rs.getString("orderDate"));
+                OrderPayment order = new OrderPayment(rs.getString("userID"), rs.getString("userName"), rs.getString("userAddress"), rs.getString("creditCardNo"), rs.getInt("OrderId"), rs.getString("productID"), rs.getString("orderName"), rs.getString("category"), rs.getString("orderDate"), rs.getString("shipDate"), rs.getDouble("orderPrice"), rs.getInt("quantity"), rs.getFloat("discount"), rs.getFloat("shippingCost"), rs.getFloat("netTotal"), rs.getString("mode"), rs.getString("storeID"), rs.getString("location"));
                 listOrderPayment.add(order);		
             }					
         }

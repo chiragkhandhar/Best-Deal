@@ -258,10 +258,9 @@ public class Utilities extends HttpServlet{
 	}
 	
 	// store the payment details for orders
-	public void storePayment(int orderId, String orderName, double orderPrice, String userAddress, String creditCardNo, String mode, String location, String orderDate)
+	public void storePayment(String userID, String userName, String userAddress, String creditCardNo, int orderId, String productID, String orderName, String category, String orderDate, String shipDate, double orderPrice, int quantity, double discount, double shippingCost, double netTotal, String mode, String storeID, String location)
 	{
 		HashMap<Integer, ArrayList<OrderPayment>> orderPayments= new HashMap<Integer, ArrayList<OrderPayment>>();
-		
 		try
 		{
 			orderPayments = MySqlDataStoreUtilities.selectOrder();
@@ -281,14 +280,14 @@ public class Utilities extends HttpServlet{
 			orderPayments.put(orderId, arr);
 		}
 		ArrayList<OrderPayment> listOrderPayment = orderPayments.get(orderId);		
-		OrderPayment orderpayment = new OrderPayment(orderId, username(), orderName, orderPrice, userAddress, creditCardNo, mode, location, orderDate);
+		OrderPayment orderpayment = new OrderPayment(userID, username(), userAddress, creditCardNo, orderId, productID ,orderName, category, orderDate, shipDate, orderPrice, quantity,discount, shippingCost, netTotal, mode, storeID, location);
 		listOrderPayment.add(orderpayment);	
 			
 			// add order details into file
 
 		try
 		{	
-			MySqlDataStoreUtilities.insertOrder(orderId,username(),orderName,orderPrice,userAddress,creditCardNo, mode, location, orderDate);
+			MySqlDataStoreUtilities.insertOrder(userID, username(), userAddress, creditCardNo, orderId, productID ,orderName, category, orderDate, shipDate, orderPrice, quantity,discount, shippingCost, netTotal, mode, storeID, location);
 		}
 		catch(Exception e)
 		{

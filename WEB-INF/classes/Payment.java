@@ -19,6 +19,7 @@ public class Payment extends HttpServlet {
 		PrintWriter pw = response.getWriter();
 		
 		Utilities utility = new Utilities(request, pw);
+		User user = utility.getUser();
 		if(!utility.isLoggedin())
 		{
 			HttpSession session = request.getSession(true);				
@@ -50,11 +51,12 @@ public class Payment extends HttpServlet {
 			//int orderId=utility.getOrderPaymentSize()+1; 
 
 			String orderDate = LocalDate.now().toString();
+			String shipDate = LocalDate.now().plusDays(14).toString();
 
 			//iterate through each order
 			for (OrderItem oi : utility.getCustomerOrders())
 			{
-				utility.storePayment(orderId, oi.getName(), oi.getPrice(), userAddress, creditCardNo, mode, location, orderDate);
+				utility.storePayment(user.getId(), user.getName(), userAddress, creditCardNo, orderId, "productID", oi.getName(), "category",  orderDate, shipDate, oi.getPrice(), 0, 0, 0, 0, mode, "storeID", location);
 			}
 
 			//remove the order details from cart after processing			
@@ -70,9 +72,9 @@ public class Payment extends HttpServlet {
 			pw.print("<h3>Your tracking id is <span style = 'font-weight:bold;'>&nbsp;"+(orderId) + "</span></h3><br>");
 			pw.print("<h4 style = 'text-align: center;'> Use this ID to manage your orders.");
 			if(mode.equals("delivery"))
-				pw.print("<h3>Your order would be delivered on "+LocalDate.now().plusDays(14)+"</h3>");
+				pw.print("<h3>Your order would be delivered on "+shipDate+"</h3>");
 			else
-				pw.print("<h3>Your order would be ready for pickup on "+LocalDate.now().plusDays(14)+"</h3>");
+				pw.print("<h3>Your order would be ready for pickup on "+shipDate+"</h3>");
 			pw.print("</div></div></div>");		
 			utility.printHtml("Footer.html");
 		}else
