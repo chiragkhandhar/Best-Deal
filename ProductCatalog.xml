@@ -440,6 +440,7 @@
         <manufacturer>Microsoft</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 
     <accessory id="xboxone_sh">
@@ -449,6 +450,7 @@
         <manufacturer>Microsoft</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 	 
 	 <accessory id="xboxone_vb">
@@ -458,6 +460,7 @@
         <manufacturer>Microsoft</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 
     <accessory id="xboxone_kg">
@@ -467,6 +470,7 @@
         <manufacturer>Microsoft</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 	 
 	 <accessory id="xboxone_rs">
@@ -476,6 +480,7 @@
         <manufacturer>Microsoft</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 
     <accessory id="xboxone_mp">
@@ -485,6 +490,7 @@
         <manufacturer>Microsoft</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 	 
 	 <accessory id="xboxone_mc">
@@ -494,6 +500,7 @@
         <manufacturer>Microsoft</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 	 
 
@@ -504,6 +511,7 @@
         <manufacturer>Microsoft</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 
     <accessory id="xbox360_sh">
@@ -513,6 +521,7 @@
         <manufacturer>Microsoft</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 	 
 	 <accessory id="xbox360_vb">
@@ -522,6 +531,7 @@
         <manufacturer>Microsoft</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 	 	 <accessory id="xbox360_rs">
         <name>messengerkit</name>
@@ -530,6 +540,7 @@
         <manufacturer>Microsoft</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 	 
 	 	 <accessory id="xbox360_mp">
@@ -539,6 +550,7 @@
         <manufacturer>Microsoft</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 	 
 	 	 <accessory id="xbox360_kg">
@@ -548,6 +560,7 @@
         <manufacturer>Microsoft</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 
     <accessory id="ps4_wc">
@@ -557,6 +570,7 @@
         <manufacturer>Sony</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 
     <accessory id="ps3_wc">
@@ -566,6 +580,7 @@
         <manufacturer>Sony</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 
     <accessory id="nintendo_wc">
@@ -575,6 +590,7 @@
         <manufacturer>Nintendo</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 
     <accessory id="nintendo_sh">
@@ -584,6 +600,7 @@
         <manufacturer>Nintendo</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+        <description>This is a dummy description.</description>
      </accessory>
 	 
   

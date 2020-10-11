@@ -63,6 +63,8 @@ public class SaxParserDataStore extends DefaultHandler {
             System.out.println("IO error");
         }
 	}
+
+	
 	
 	// when xml start element is parsed store the id into respective hashmap for TV, soundsystems etc 
     @Override
@@ -115,37 +117,56 @@ public class SaxParserDataStore extends DefaultHandler {
     }
 	// when xml end element is parsed store the data into respective hashmap for TV,soundsystems etc respectively
     @Override
-    public void endElement(String str1, String str2, String element) throws SAXException {
- 
-        if (element.equals("TV")) {
-			tvs.put(tv.getId(),tv);
-			return;
-        }
- 
-        if (element.equals("phone")) {	
-			phones.put(phone.getId(),phone);
-			return;
-        }
-        if (element.equals("soundsystem")) {	  
-			soundsystems.put(soundsystem.getId(),soundsystem);
-			return;
+	public void endElement(String str1, String str2, String element) throws SAXException 
+	{
+		try
+		{
+			if (element.equals("TV")) {
+				tvs.put(tv.getId(),tv);
+				
+				return;
+			}
+	 
+			if (element.equals("phone")) {	
+				phones.put(phone.getId(),phone);
+				
+				return;
+			}
+			if (element.equals("soundsystem")) {	  
+				soundsystems.put(soundsystem.getId(),soundsystem);
+				
+				return;
+			}
+			if (element.equals("laptop")) {	  
+				laptops.put(laptop.getId(),laptop);
+			
+				return;
+			}
+			if (element.equals("va")) {	  
+				vas.put(va.getId(),va);
+				//MySqlDataStoreUtilities.insertProduct("va", va.getId(), va.getName(), va.getPrice(), va.getImage(), va.getRetailer(), va.getCondition(), va.getDiscount(), va.getDescription());  
+				return;
+			}
+			if (element.equals("wt")) {	  
+				wts.put(wt.getId(),wt);
+				//MySqlDataStoreUtilities.insertProduct("wt", wt.getId(), wt.getName(), wt.getPrice(), wt.getImage(), wt.getCategory(), wt.getCondition(), wt.getDiscount(), wt.getDescription());  
+				return; 
+			}
+
+			if (element.equals("accessory") && currentElement.equals("accessory")) {
+				accessories.put(accessory.getId(),accessory);     
+				//MySqlDataStoreUtilities.insertProduct("accessory", accessory.getId(), accessory.getName(), accessory.getPrice(), accessory.getImage(), accessory.getRetailer(), accessory.getCondition(), accessory.getDiscount(), accessory.getDescription());  
+				return; 
+			}
+
+			
 		}
-		if (element.equals("laptop")) {	  
-			laptops.put(laptop.getId(),laptop);
-			return;
-		}
-		if (element.equals("va")) {	  
-			vas.put(va.getId(),va);
-			return;
-		}
-		if (element.equals("wt")) {	  
-			wts.put(wt.getId(),wt);
-			return;
-        }
-        if (element.equals("accessory") && currentElement.equals("accessory")) {
-			accessories.put(accessory.getId(),accessory);       
-			return; 
-        }
+		catch(Exception e)
+		{
+
+		} 
+        
+     
 		if (element.equals("accessory") && currentElement.equals("TV")) 
 		{
 			accessoryHashMap.put(elementValueRead,elementValueRead);
@@ -185,8 +206,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				va.setDescription(elementValueRead);
 			if(currentElement.equals("wt"))
 				wt.setDescription(elementValueRead);
-            // if(currentElement.equals("accessory"))
-			// 	accessory.setDescription(elementValueRead);          
+            if(currentElement.equals("accessory"))
+			 	accessory.setDescription(elementValueRead);          
 			return;
         }
 		if (element.equalsIgnoreCase("discount")) {
@@ -293,11 +314,12 @@ public class SaxParserDataStore extends DefaultHandler {
 
     /////////////////////////////////////////
     // 	     Kick-Start SAX in main       //
-    ////////////////////////////////////////
+	////////////////////////////////////////
 	
-//call the constructor to parse the xml and get product details
- public static void addHashmap() {
-		String TOMCAT_HOME = System.getProperty("catalina.home");	
-		new SaxParserDataStore(TOMCAT_HOME+"\\webapps\\Tutorial_1\\ProductCatalog.xml");
-    } 
+
+	
+	public static void addHashmap() {
+			String TOMCAT_HOME = System.getProperty("catalina.home");	
+			new SaxParserDataStore(TOMCAT_HOME+"\\webapps\\Tutorial_1\\ProductCatalog.xml");
+		} 
 }

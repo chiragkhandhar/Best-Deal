@@ -24,14 +24,16 @@ public class Accessory extends HttpServlet {
 	private String retailer;
 	private String condition;
 	private double discount;
+	private String description;
 	
-	public Accessory(String name, double price, String image, String retailer,String condition,double discount){
+	public Accessory(String name, double price, String image, String retailer,String condition,double discount, String description){
 		this.name=name;
 		this.price=price;
 		this.image=image;
 		this.condition=condition;
 		this.discount = discount;
 		this.retailer = retailer;
+		this.description = description;
 	}
 	
 	
@@ -92,6 +94,15 @@ public class Accessory extends HttpServlet {
 	public void setDiscount(double discount) {
 		this.discount = discount;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	
 
 }

@@ -51,6 +51,33 @@ public class MySqlDataStoreUtilities
         }
     }
 
+    public static void insertProduct(String type, String ID, String name, double price, String image, String manufactorer, String condition, double discount, String description)
+    {
+        System.out.println(type + " | " + ID + " | " + name + " | " + price + " | " + image + " | " + manufactorer + " | " + condition + " | " + discount + " | " + description);
+        try
+        {        
+            getConnection();
+            String insertIntoCustomerOrderQuery = "INSERT INTO productDetails(productType, ID, productName, productPrice, productImage, productManufacturer, productCondition, productDiscount, description)"
+            + "VALUES (?,?,?,?,?,?,?,?,?);";	
+                
+            PreparedStatement pst = conn.prepareStatement(insertIntoCustomerOrderQuery);
+            pst.setString(1,type);
+            pst.setString(2,ID);
+            pst.setString(3,name);
+            pst.setDouble(4,price);
+            pst.setString(5,image);
+            pst.setString(6,manufactorer);
+            pst.setString(7,condition);
+            pst.setDouble(8,discount);
+            pst.setString(9,description);
+            pst.execute();
+        }
+        catch(Exception e)
+        {
+        
+        }		
+    }
+
 
     public static void insertOrder(String userID, String userName, String userAddress, String creditCardNo, int orderId, String productID, String orderName, String category, String orderDate, String shipDate, double orderPrice, int quantity, double discount, double shippingCost, double netTotal, String mode, String storeID, String location)
     {
