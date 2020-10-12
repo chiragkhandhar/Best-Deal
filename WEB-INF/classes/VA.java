@@ -92,10 +92,10 @@ public class VA extends HttpServlet {
 					"<input type='hidden' name='access' value=''>"+
 					"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
 
-			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
+			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='" + va.getName() + "'>"+
 					"<input type='hidden' name='type' value='vas'>"+
 					"<input type='hidden' name='maker' value='"+va.getRetailer()+"'>"+
-					"<input type='hidden' name='access' value=''>"+
+					"<input type='hidden' name='price' value='"+va.getPrice()+"'>"+
 					"<input type='submit' value='WriteReview' class='btnreview'></form></li>");
 					
 			pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
