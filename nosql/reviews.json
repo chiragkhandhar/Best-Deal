@@ -1,0 +1,151 @@
+[{
+  "_id": {
+    "$oid": "5f839ba199e64b1f9cdd731e"
+  },
+  "title": "myReviews",
+  "userName": "chirag",
+  "productName": "Samsung QLED",
+  "productType": "tvs",
+  "productMaker": "Samsung",
+  "reviewRating": 1,
+  "reviewDate": "2020-10-11",
+  "reviewText": " scscs",
+  "retailerpin": "60616",
+  "retailercity": "chicago",
+  "price": 549
+},{
+  "_id": {
+    "$oid": "5f839cd199e64b1f9cdd7321"
+  },
+  "title": "myReviews",
+  "userName": "chirag",
+  "productName": "LG UHD",
+  "productType": "tvs",
+  "productMaker": "LG",
+  "reviewRating": 5,
+  "reviewDate": "2020-10-11",
+  "reviewText": " Very nice product",
+  "retailerpin": "60616",
+  "retailercity": "Chicago",
+  "price": 699
+},{
+  "_id": {
+    "$oid": "5f839d6d99e64b1f9cdd7324"
+  },
+  "title": "myReviews",
+  "userName": "chirag",
+  "productName": "Yamaha Turbi 2500",
+  "productType": "soundsystems",
+  "productMaker": "Yamaha",
+  "reviewRating": 4,
+  "reviewDate": "2020-10-11",
+  "reviewText": " Nice product.",
+  "retailerpin": "60616",
+  "retailercity": "Chicago",
+  "price": 349
+},{
+  "_id": {
+    "$oid": "5f839e3a99e64b1f9cdd7327"
+  },
+  "title": "myReviews",
+  "userName": "chirag",
+  "productName": "Apple iPhone 11 Pro",
+  "productType": "phones",
+  "productMaker": "Apple",
+  "reviewRating": 5,
+  "reviewDate": "2020-10-08",
+  "reviewText": " Awesome!",
+  "retailerpin": "60616",
+  "retailercity": "Chicago",
+  "price": 999
+},{
+  "_id": {
+    "$oid": "5f839eae99e64b1f9cdd732a"
+  },
+  "title": "myReviews",
+  "userName": "chirag",
+  "productName": "Dell Inspiron 6546",
+  "productType": "laptops",
+  "productMaker": "Dell",
+  "reviewRating": 3,
+  "reviewDate": "2020-10-05",
+  "reviewText": " Ok ok.",
+  "retailerpin": "60616",
+  "retailercity": "Chicago",
+  "price": 699
+},{
+  "_id": {
+    "$oid": "5f839ece99e64b1f9cdd732d"
+  },
+  "title": "myReviews",
+  "userName": "chirag",
+  "productName": "Amazon - Echo Dot Kids Edition Smart Speaker with Alexa - Rainbow",
+  "productType": "vas",
+  "productMaker": "Amazon",
+  "reviewRating": 2,
+  "reviewDate": "2020-10-11",
+  "reviewText": " very bad product",
+  "retailerpin": "60616",
+  "retailercity": "Chicago",
+  "price": 69
+},{
+  "_id": {
+    "$oid": "5f83a24599e64b1f9cdd7332"
+  },
+  "title": "myReviews",
+  "userName": "nishant",
+  "productName": "LG UHD",
+  "productType": "tvs",
+  "productMaker": "LG",
+  "reviewRating": 4,
+  "reviewDate": "2020-09-30",
+  "reviewText": " Nice product",
+  "retailerpin": "60616",
+  "retailercity": "Chicago",
+  "price": 699
+},{
+  "_id": {
+    "$oid": "5f83b27e99e64b1f9cdd734d"
+  },
+  "title": "myReviews",
+  "userName": "akash",
+  "productName": "LG UHD",
+  "productType": "tvs",
+  "productMaker": "LG",
+  "reviewRating": 3,
+  "reviewDate": "2020-09-28",
+  "reviewText": " I like the product. But the built quality is not nice.",
+  "retailerpin": "60616",
+  "retailercity": "Chicago",
+  "price": 699
+},{
+  "_id": {
+    "$oid": "5f83b6df99e64b1f9cdd7352"
+  },
+  "title": "myReviews",
+  "userName": "chris",
+  "productName": "LG UHD",
+  "productType": "tvs",
+  "productMaker": "LG",
+  "reviewRating": 1,
+  "reviewDate": "2020-10-07",
+  "reviewText": " This is a demo.",
+  "retailerpin": "60616",
+  "retailercity": "Chicago",
+  "price": 699
+},{
+  "_id": {
+    "$oid": "5f83bcaf99e64b1f9cdd7357"
+  },
+  "title": "myReviews",
+  "userName": "omar",
+  "productName": "LG UHD",
+  "productType": "tvs",
+  "productMaker": "LG",
+  "reviewRating": 1,
+  "reviewDate": "2020-10-11",
+  "reviewText": " Hey, I'm Omar and this is a demo",
+  "retailerpin": "60616",
+  "retailercity": "Chicago",
+  "price": 699
+}]
