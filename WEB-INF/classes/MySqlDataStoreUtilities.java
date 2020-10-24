@@ -137,6 +137,78 @@ public class MySqlDataStoreUtilities
         }		
     }
 
+    public static int getStock(String ID)
+    {
+        int stock = 0; 
+        try
+        {
+            getConnection();
+            String getStockQuery = "SELECT Stock FROM productDetails WHERE ID = ?";	
+                    
+            PreparedStatement pst = conn.prepareStatement(getStockQuery);
+            pst.setString(1,ID);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next())
+            {
+                stock = rs.getInt("Stock");
+            }			
+        }
+        catch(Exception e)
+        {
+
+        }
+
+        return stock;
+    }
+
+    public static void setStock(String ID, int quantity)
+    {
+        try
+        {
+            getConnection();
+            int stock = getStock(ID);
+            int newStock = stock - quantity;
+            if(stock > newStock)
+            {
+                String setStockQuery = "UPDATE productDetails SET Stock = ? WHERE ID = ?";	 
+                PreparedStatement pst = conn.prepareStatement(setStockQuery);
+                pst.setInt(1, newStock );
+                pst.setString(2,ID);
+                pst.executeUpdate();
+            }   
+            else
+            {
+                System.out.println("Not enough quantity available");
+            }
+        }
+        catch(Exception e)
+        {
+
+        }     
+    }
+
+    public static ArrayList<Product> getInventory()
+    {	
+       ArrayList<Product> productList = new ArrayList<Product>();
+       try
+        {			
+            getConnection();
+            String selectInventoryQuery ="select * from productDetails";			
+            PreparedStatement pst = conn.prepareStatement(selectInventoryQuery);
+            ResultSet rs = pst.executeQuery();	
+            while(rs.next())
+            {
+                Product temp = new Product(rs.getString("productType"), rs.getString("ID"), rs.getInt("Stock"), rs.getString("productName"), rs.getDouble("productPrice"), rs.getString("productImage"), rs.getString("productManufacturer"), rs.getString("productCondition"), rs.getDouble("productDiscount"), rs.getString("description"));
+                productList.add(temp);		
+            }					
+        }
+        catch(Exception e)
+        {
+            
+        }
+        return productList;
+    }
+
     public static ArrayList<StoreLocation> getLocations()
     {	
        ArrayList<StoreLocation> locations = new ArrayList<StoreLocation>();            

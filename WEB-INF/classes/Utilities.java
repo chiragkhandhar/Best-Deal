@@ -46,12 +46,20 @@ public class Utilities extends HttpServlet{
 
 	public void printHtml(String file) {
 		String result = HtmlToString(file);
+		String usertype = usertype();
+
+		String inventoryMarkup = "<li><a href='Inventory'>Inventory</a></li>";
+		String salesMarkup = "<li><a href='Sales'>Sales</a></li>";
 		//to print the right navigation in header of username cart and logout etc
 		if (file == "Header.html") {
 				result=result+"<div id='menu' style='float: right;'><ul>";
 			if (session.getAttribute("username")!=null){
 				String username = session.getAttribute("username").toString();
 				username = Character.toUpperCase(username.charAt(0)) + username.substring(1);
+				if(usertype.equals("retailer"))
+				{
+					result = result + inventoryMarkup + salesMarkup;
+				}
 				result = result + "<li><a href='ViewOrder'>ViewOrder</a></li>"
 						+ "<li><a>Hello,"+username+"</a></li>"
 						+ "<li><a href='Account'>Account</a></li>"
