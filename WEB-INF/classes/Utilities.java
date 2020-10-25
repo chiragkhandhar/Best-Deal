@@ -294,7 +294,7 @@ public class Utilities extends HttpServlet{
 			// add order details into file
 
 		try
-		{	
+		{	MySqlDataStoreUtilities.setStock(productID, 1);
 			MySqlDataStoreUtilities.insertOrder(userID, username(), userAddress, creditCardNo, orderId, productID ,orderName, category, orderDate, shipDate, orderPrice, quantity,discount, shippingCost, netTotal, mode, storeID, location);
 		}
 		catch(Exception e)
