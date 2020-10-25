@@ -237,6 +237,50 @@ public class MySqlDataStoreUtilities
         return productList;
     }
 
+    public static ArrayList<Product> getSalesList()
+    {	
+       ArrayList<Product> productList = new ArrayList<Product>();
+       try
+        {			
+            getConnection();
+            String selectInventoryQuery ="SELECT orderName, productID, netTotal, COUNT(OrderId) AS ItemSold FROM  customerOrder GROUP BY orderName";			
+            PreparedStatement pst = conn.prepareStatement(selectInventoryQuery);
+            ResultSet rs = pst.executeQuery();	
+            while(rs.next())
+            {
+                Product temp = new Product("", rs.getString("productID"), rs.getInt("ItemSold"), rs.getString("orderName"), rs.getDouble("netTotal"), "", "", "", 0, "");
+                productList.add(temp);		
+            }					
+        }
+        catch(Exception e)
+        {
+            
+        }
+        return productList;
+    }
+
+    public static ArrayList<Product> getDailySalesList()
+    {	
+       ArrayList<Product> productList = new ArrayList<Product>();
+       try
+        {			
+            getConnection();
+            String selectInventoryQuery ="SELECT orderDate, SUM(netTotal) AS Revenue, COUNT(OrderId) AS ItemSold FROM  customerOrder GROUP BY orderDate";			
+            PreparedStatement pst = conn.prepareStatement(selectInventoryQuery);
+            ResultSet rs = pst.executeQuery();	
+            while(rs.next())
+            {
+                Product temp = new Product("", "", rs.getInt("ItemSold"), rs.getString("orderDate"), rs.getDouble("Revenue"), "", "", "", 0, "");
+                productList.add(temp);		
+            }					
+        }
+        catch(Exception e)
+        {
+            
+        }
+        return productList;
+    }
+
     public static ArrayList<StoreLocation> getLocations()
     {	
        ArrayList<StoreLocation> locations = new ArrayList<StoreLocation>();            

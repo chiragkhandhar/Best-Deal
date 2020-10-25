@@ -57,13 +57,13 @@ public class Sales extends HttpServlet {
             pw.print("</tr></table>");
             
             
-			// ArrayList<Product> productList = new ArrayList<Product>();
-			// ArrayList<Product> discountedProductList = new ArrayList<Product>();
+            ArrayList<Product> productList = new ArrayList<Product>();
+            ArrayList<Product> dailySalesList = new ArrayList<Product>();
 			
 			try
 			{     
-				// productList = MySqlDataStoreUtilities.getInventory();
-				// discountedProductList = MySqlDataStoreUtilities.getDiscountedProducts();
+                productList = MySqlDataStoreUtilities.getSalesList();
+                dailySalesList = MySqlDataStoreUtilities.getDailySalesList();
 			}
 			catch(Exception e)
 			{
@@ -73,8 +73,8 @@ public class Sales extends HttpServlet {
 
 			if(user.getUsertype().equals("retailer"))
 			{
-				// displayInventoryTable(productList, pw);
-				// displayDiscountedTable(discountedProductList, pw);
+                displaySalesTable(productList, pw);
+                displayDailySalesTable(dailySalesList, pw);
 			}
 		
             pw.print("</div></div></div>");
@@ -85,20 +85,20 @@ public class Sales extends HttpServlet {
 		}		
 	}
 
-	void displayInventoryTable(ArrayList<Product> productList, PrintWriter pw)
+	void displaySalesTable(ArrayList<Product> productList, PrintWriter pw)
 	{
 		int size = productList.size();
 
 				
 		if(size>0)
 		{	
-			pw.print("<br><h3 style = 'text-align: center;'> Product Inventory</h3><br>");
-			pw.print("<table class='gridtable'><tr>");
+			pw.print("<br><h3 style = 'text-align: center;'> Sales Table</h3><br>");
+			pw.print("<table class='gridtable' style = \"width: 100%;\"><tr>");
 			pw.print("<th style = 'text-align: center;'>No.</th>");
 			pw.print("<th style = 'text-align: center;'>Product Name</th>");
-			pw.print("<th style = 'text-align: center;'>Product Price</th>");
-			pw.print("<th style = 'text-align: center;'>On Sale</th>");
-			pw.print("<th style = 'text-align: center;'>Items Available</th></tr>");
+			pw.print("<th style = 'text-align: center;'>Sale Price </th>");
+			pw.print("<th style = 'text-align: center;'>No. of items sold</th>");
+			pw.print("<th style = 'text-align: center;'>Net Revenue</th></tr>");
         
             int count = 1;
             for(Product temp : productList)	
@@ -106,13 +106,10 @@ public class Sales extends HttpServlet {
                
                 pw.print("<tr>");					
                 pw.print("<td>"+count+"</td>");
-                pw.print("<td>"+temp.getproductName()+"</td>");
-				pw.print("<td> $ "+temp.getproductPrice()+"</td>");
-				if(temp.getstock() > 0)
-					pw.print("<td>"+"Available"+"</td>");
-				else
-					pw.print("<td style = \"background-color: red; color:white; font-weight:bold;\">"+"Out of Stock"+"</td>");
-                pw.print("<td style = \"font-weight:bold;\">"+temp.getstock()+"</td>");
+                pw.print("<td >"+temp.getproductName()+"</td>");
+                pw.print("<td> $ "+getNewPrice(temp.getproductPrice(), temp.getproductDiscount())+"</td>");
+				pw.print("<td> "+temp.getstock()+"</td>");
+                pw.print("<td >$ "+getRevenue(temp.getstock(), getNewPrice(temp.getproductPrice(), temp.getproductDiscount()))+"</td>");
                 pw.print("</tr>"); 
                 count++;
             }
@@ -124,33 +121,31 @@ public class Sales extends HttpServlet {
 		}
 
 		pw.print("</table>");		
-	}
-
-	void displayDiscountedTable(ArrayList<Product> discountedProductList, PrintWriter pw)
+    }
+    
+    void displayDailySalesTable(ArrayList<Product> productList, PrintWriter pw)
 	{
-		int size = discountedProductList.size();
+		int size = productList.size();
 
 				
 		if(size>0)
 		{	
-			pw.print("<br><h3 style = 'text-align: center;'> Discounted Products</h3><br>");
-			pw.print("<table class='gridtable'><tr>");
+			pw.print("<br><h3 style = 'text-align: center;'>Daily Sales Table</h3><br>");
+			pw.print("<table class='gridtable' style = \"width: 100%;\"><tr>");
 			pw.print("<th style = 'text-align: center;'>No.</th>");
-			pw.print("<th style = 'text-align: center;'>Product Name</th>");
-			pw.print("<th style = 'text-align: center;'>Actual Price</th>");
-			pw.print("<th style = 'text-align: center;'>Discount/Rebate</th>");
-			pw.print("<th style = 'text-align: center;'>Marked-down Price</th></tr>");
+			pw.print("<th style = 'text-align: center;'>Date</th>");
+			pw.print("<th style = 'text-align: center;'>No. of items sold</th>");
+			pw.print("<th style = 'text-align: center;'>Net Revenue</th></tr>");
         
             int count = 1;
-            for(Product temp : discountedProductList)	
+            for(Product temp : productList)	
             {
                
                 pw.print("<tr>");					
                 pw.print("<td>"+count+"</td>");
-                pw.print("<td>"+temp.getproductName()+"</td>");
-				pw.print("<td> $ "+temp.getproductPrice()+"</td>");
-				pw.print("<td>"+temp.getproductDiscount()+" %</td>");
-                pw.print("<td style = \"font-weight:bold;\"> $ "+getNewPrice(temp.getproductPrice(), temp.getproductDiscount())+"</td>");
+                pw.print("<td >"+temp.getproductName()+"</td>");
+				pw.print("<td> "+temp.getstock()+"</td>");
+                pw.print("<td >$ " + temp.getproductPrice()+"</td>");
                 pw.print("</tr>"); 
                 count++;
             }
@@ -166,6 +161,10 @@ public class Sales extends HttpServlet {
 
 	double getNewPrice(double original, double discount) {
 		return  Math.round((original * (100 - discount)) / 100);
+	  }
+
+    double getRevenue(int quantity, double rate) {
+		return quantity * rate;
 	  }
 
 	

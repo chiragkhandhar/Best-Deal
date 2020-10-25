@@ -140,7 +140,7 @@ public class Inventory extends HttpServlet {
 		if(size>0)
 		{	
 			pw.print("<br><h3 style = 'text-align: center;'> Discounted Products</h3><br>");
-			pw.print("<table class='gridtable'><tr>");
+			pw.print("<table class='gridtable' style = \"width: 100%;\"><tr>");
 			pw.print("<th style = 'text-align: center;'>No.</th>");
 			pw.print("<th style = 'text-align: center;'>Product Name</th>");
 			pw.print("<th style = 'text-align: center;'>Actual Price</th>");

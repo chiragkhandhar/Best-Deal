@@ -79,18 +79,18 @@ public class AddProducts extends HttpServlet {
         pw.print("<div class='entry'>");
 
         pw.print("<h3>Add Product ID and Quantity</h3><br>");
-        pw.print("<table>");
+        pw.print("<table style = \"width: 70%;\">");
 
         pw.print("<tr>");
         pw.print("<th>Product ID</th>");
-        pw.print("<td><input type='text' name='productID' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
+        pw.print("<td><input type='text' name='productID' required = 'true' style = 'margin-left: 1rem;width: 70%;'></td></tr>");
 
         
         pw.print("<tr>");
         pw.print("<th>Number of Items</th>");
-        pw.print("<td><input type='number' name='quantity' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
+        pw.print("<td><input type='number' name='quantity' required = 'true' style = 'margin-left: 1rem;width: 70%;'></td></tr>");
 
-        pw.print("<tr><td>");
+        pw.print("<tr><td colspan = 2>");
         pw.print("<input type='submit' name='submit' class='btnbuy' value = 'Add Items' style = 'width: 100%; margin-top: 1rem;'>");
         pw.print("</td></tr>");
 
