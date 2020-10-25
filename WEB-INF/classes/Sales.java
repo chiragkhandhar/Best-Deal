@@ -10,17 +10,41 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 import java.io.*;
 import java.sql.*;
+import com.google.gson.Gson;
 
 @WebServlet("/Sales")
 
-public class Sales extends HttpServlet {
+public class Sales extends HttpServlet 
+{
 	private String error_msg;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
 		displayAccount(request, response);
 	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		try 
+		{
+            ArrayList<Product> productList = MySqlDataStoreUtilities.getSalesList();
+            
+            String productListJson = new Gson().toJson(productList);
+
+            response.setContentType("application/JSON");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(productListJson);
+
+		} 
+		catch (Exception ex) 
+		{
+            System.out.println(ex.getMessage());
+        }
+
+    }
 
 	/* Display Account Details of the Customer (Name and Usertype) */
 
@@ -93,6 +117,11 @@ public class Sales extends HttpServlet {
 		if(size>0)
 		{	
 			pw.print("<br><h3 style = 'text-align: center;'> Sales Table</h3><br>");
+			pw.print("<button id='btnGetChartData2' class='btnbuy'>View Chart</button>");
+			pw.println("<div id='chart_div'></div><br/>");
+			pw.println("<script type='text/javascript' src=\"https://www.gstatic.com/charts/loader.js\"></script>");
+			pw.println("<script type='text/javascript' src='DataVisualization.js'></script>");
+			
 			pw.print("<table class='gridtable' style = \"width: 100%;\"><tr>");
 			pw.print("<th style = 'text-align: center;'>No.</th>");
 			pw.print("<th style = 'text-align: center;'>Product Name</th>");
