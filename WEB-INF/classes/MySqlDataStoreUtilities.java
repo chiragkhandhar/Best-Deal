@@ -161,18 +161,23 @@ public class MySqlDataStoreUtilities
         return stock;
     }
 
-    public static void setStock(String ID, int quantity)
+    // (productID, quantity, flag) // flag => 0: Sell Opeation 1: Stockup Operation
+    public static void setStock(String ID, int quantity, int flag)
     {
         try
         {
             getConnection();
             int stock = getStock(ID);
             int newStock = stock - quantity;
-            if(stock > newStock)
+            if(stock > newStock || flag == 1)
             {
                 String setStockQuery = "UPDATE productDetails SET Stock = ? WHERE ID = ?";	 
                 PreparedStatement pst = conn.prepareStatement(setStockQuery);
-                pst.setInt(1, newStock );
+                
+                if (flag == 0)
+                    pst.setInt(1, newStock );
+                else if (flag == 1)
+                    pst.setInt(1, quantity );
                 pst.setString(2,ID);
                 pst.executeUpdate();
             }   

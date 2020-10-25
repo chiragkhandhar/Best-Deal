@@ -43,8 +43,8 @@ public class Inventory extends HttpServlet {
 			utility.printHtml("Header.html");
 			utility.printHtml("LeftNavigationBar.html");
 			pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
-			pw.print("<a style='font-size: 24px;'>Inventory</a>");
-			pw.print("</h2><div class='entry'>");
+			pw.print("<a style='font-size: 24px;'>Inventory</a></h2>");
+			pw.print("<div class='entry'>");
 			User user=utility.getUser();
 			pw.print("<table class='gridtable' style = 'width: 100%'>");			
 			pw.print("<tr>");
@@ -85,16 +85,21 @@ public class Inventory extends HttpServlet {
 		}		
 	}
 
+	
+
 	void displayInventoryTable(ArrayList<Product> productList, PrintWriter pw)
 	{
 		int size = productList.size();
-
-				
+	
 		if(size>0)
 		{	
-			pw.print("<br><h3 style = 'text-align: center;'> Product Inventory</h3><br>");
+			pw.print("<br><h3 style = 'text-align: center;'> Product Inventory</h3><br/>");
+			pw.print("<form method='get' action='AddProducts'>");
+			pw.print("<input type='submit' class='btnbuy' value = 'Update Inventory Items'v></input><br/>");
+			pw.print("</form>");
 			pw.print("<table class='gridtable'><tr>");
 			pw.print("<th style = 'text-align: center;'>No.</th>");
+			pw.print("<th style = 'text-align: center;'>Product ID</th>");
 			pw.print("<th style = 'text-align: center;'>Product Name</th>");
 			pw.print("<th style = 'text-align: center;'>Product Price</th>");
 			pw.print("<th style = 'text-align: center;'>On Sale</th>");
@@ -105,7 +110,8 @@ public class Inventory extends HttpServlet {
             {
                
                 pw.print("<tr>");					
-                pw.print("<td>"+count+"</td>");
+				pw.print("<td>"+count+"</td>");
+				pw.print("<td>"+temp.getID()+"</td>");
                 pw.print("<td>"+temp.getproductName()+"</td>");
 				pw.print("<td> $ "+temp.getproductPrice()+"</td>");
 				if(temp.getstock() > 0)
