@@ -209,6 +209,29 @@ public class MySqlDataStoreUtilities
         return productList;
     }
 
+    
+    public static ArrayList<Product> getDiscountedProducts()
+    {	
+       ArrayList<Product> productList = new ArrayList<Product>();
+       try
+        {			
+            getConnection();
+            String selectInventoryQuery ="select * from productDetails WHERE productDiscount > 0";			
+            PreparedStatement pst = conn.prepareStatement(selectInventoryQuery);
+            ResultSet rs = pst.executeQuery();	
+            while(rs.next())
+            {
+                Product temp = new Product(rs.getString("productType"), rs.getString("ID"), rs.getInt("Stock"), rs.getString("productName"), rs.getDouble("productPrice"), rs.getString("productImage"), rs.getString("productManufacturer"), rs.getString("productCondition"), rs.getDouble("productDiscount"), rs.getString("description"));
+                productList.add(temp);		
+            }					
+        }
+        catch(Exception e)
+        {
+            
+        }
+        return productList;
+    }
+
     public static ArrayList<StoreLocation> getLocations()
     {	
        ArrayList<StoreLocation> locations = new ArrayList<StoreLocation>();            

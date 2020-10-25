@@ -58,10 +58,12 @@ public class Inventory extends HttpServlet {
             
             
 			ArrayList<Product> productList = new ArrayList<Product>();
+			ArrayList<Product> discountedProductList = new ArrayList<Product>();
 			
 			try
 			{     
-                productList = MySqlDataStoreUtilities.getInventory();
+				productList = MySqlDataStoreUtilities.getInventory();
+				discountedProductList = MySqlDataStoreUtilities.getDiscountedProducts();
 			}
 			catch(Exception e)
 			{
@@ -72,6 +74,7 @@ public class Inventory extends HttpServlet {
 			if(user.getUsertype().equals("retailer"))
 			{
 				displayInventoryTable(productList, pw);
+				displayDiscountedTable(discountedProductList, pw);
 			}
 		
             pw.print("</div></div></div>");
@@ -104,7 +107,7 @@ public class Inventory extends HttpServlet {
                 pw.print("<tr>");					
                 pw.print("<td>"+count+"</td>");
                 pw.print("<td>"+temp.getproductName()+"</td>");
-				pw.print("<td>"+temp.getproductPrice()+"</td>");
+				pw.print("<td> $ "+temp.getproductPrice()+"</td>");
 				if(temp.getstock() > 0)
 					pw.print("<td>"+"Available"+"</td>");
 				else
@@ -121,8 +124,53 @@ public class Inventory extends HttpServlet {
 		}
 
 		pw.print("</table>");		
-
 	}
+
+	void displayDiscountedTable(ArrayList<Product> discountedProductList, PrintWriter pw)
+	{
+		int size = discountedProductList.size();
+
+				
+		if(size>0)
+		{	
+			pw.print("<br><h3 style = 'text-align: center;'> Discounted Products</h3><br>");
+			pw.print("<table class='gridtable'><tr>");
+			pw.print("<th style = 'text-align: center;'>No.</th>");
+			pw.print("<th style = 'text-align: center;'>Product Name</th>");
+			pw.print("<th style = 'text-align: center;'>Actual Price</th>");
+			pw.print("<th style = 'text-align: center;'>Discount/Rebate</th>");
+			pw.print("<th style = 'text-align: center;'>Marked-down Price</th></tr>");
+        
+            int count = 1;
+            for(Product temp : discountedProductList)	
+            {
+               
+                pw.print("<tr>");					
+                pw.print("<td>"+count+"</td>");
+                pw.print("<td>"+temp.getproductName()+"</td>");
+				pw.print("<td> $ "+temp.getproductPrice()+"</td>");
+				pw.print("<td>"+temp.getproductDiscount()+" %</td>");
+                pw.print("<td style = \"font-weight:bold;\"> $ "+getNewPrice(temp.getproductPrice(), temp.getproductDiscount())+"</td>");
+                pw.print("</tr>"); 
+                count++;
+            }
+			pw.print("</table>");
+		}
+		else
+		{
+			pw.print("<h4 style='color:red; text-align:center;'>There are no product to display.</h4>");
+		}
+
+		pw.print("</table>");		
+	}
+
+	double getNewPrice(double original, double discount) {
+		return  Math.round((original * (100 - discount)) / 100);
+	  }
 
 	
 }
+
+
+
+
