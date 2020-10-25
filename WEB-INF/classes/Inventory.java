@@ -10,17 +10,41 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 import java.io.*;
 import java.sql.*;
+import com.google.gson.Gson;
 
 @WebServlet("/Inventory")
 
 public class Inventory extends HttpServlet {
 	private String error_msg;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
 		displayAccount(request, response);
 	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		try 
+		{
+            ArrayList<Product> productList = MySqlDataStoreUtilities.getInventory();
+            
+            String productListJson = new Gson().toJson(productList);
+
+            response.setContentType("application/JSON");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(productListJson);
+
+		} 
+		catch (Exception ex) 
+		{
+            System.out.println(ex.getMessage());
+        }
+
+    }
 
 	/* Display Account Details of the Customer (Name and Usertype) */
 
@@ -94,9 +118,15 @@ public class Inventory extends HttpServlet {
 		if(size>0)
 		{	
 			pw.print("<br><h3 style = 'text-align: center;'> Product Inventory</h3><br/>");
+			pw.print("<div style = \"display: flex; flex-direction: row;\">");
 			pw.print("<form method='get' action='AddProducts'>");
-			pw.print("<input type='submit' class='btnbuy' value = 'Update Inventory Items'v></input><br/>");
+			pw.print("<input type='submit' class='btnbuy' value = 'Update Inventory Items'></input>");
 			pw.print("</form>");
+			pw.print("<button id='btnGetChartData' class='btnbuy'>View Chart</button>");
+			pw.print("</div><br/>");
+			pw.println("<div id='chart_div'></div><br/>");
+			pw.println("<script type='text/javascript' src=\"https://www.gstatic.com/charts/loader.js\"></script>");
+			pw.println("<script type='text/javascript' src='DataVisualization.js'></script>");
 			pw.print("<table class='gridtable'><tr>");
 			pw.print("<th style = 'text-align: center;'>No.</th>");
 			pw.print("<th style = 'text-align: center;'>Product ID</th>");
