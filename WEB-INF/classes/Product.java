@@ -102,4 +102,11 @@ public class Product extends HttpServlet{
 	public void setproductDiscount(double productDiscount) {
 		this.productDiscount = productDiscount;
 	}
+
+	public String getproductImage() {
+		return productImage;
+	}
+	public void setproductImage(String productImage) {
+		this.productImage = productImage;
+	}
 }
