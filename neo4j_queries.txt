@@ -1,0 +1,91 @@
+match (n) return n;
+
+// Create Customers
+CREATE (c1:Customer {name:'harsh'})
+CREATE (c2:Customer {name:'ninad'})
+CREATE (c3:Customer {name:'chirag'})
+CREATE (c4:Customer {name:'chris'})
+CREATE (c5:Customer {name:'nishant'})
+CREATE (c6:Customer {name:'akash'})
+CREATE (c7:Customer {name:'satyaveer'})
+CREATE (c8:Customer {name:'dhiraj'})
+CREATE (c9:Customer {name:'jose'})
+CREATE (c10:Customer {name:'jean'})
+
+// Create Products
+CREATE (p1:Product {name:'Apple Macbook Air', id: 'al1', category:'laptop'})
+CREATE (p2:Product {name:'Apple Macbook Pro', id: 'al2', category:'laptop'})
+CREATE (p3:Product {name:'Apple Macbook Pro 16', id: 'al3', category:'laptop'})
+CREATE (p4:Product {name:'Amazon - Echo Dot (3rd Gen) - Smart Speaker with Alexa - Charcoal', id: 'amz1', category:'va'})
+CREATE (p5:Product {name:'Amazon - Echo Studio Smart Speaker with Alexa - Charcoal', id: 'amz2', category:'va'})
+CREATE (p6:Product {name:'Amazon - Echo Dot Kids Edition Smart Speaker with Alexa - Rainbow', id: 'amz3', category:'va'})
+CREATE (p7:Product {name:'Apple iPhone 11', id: 'ap1', category:'phone'})
+CREATE (p8:Product {name:'Apple iPhone 11 Pro', id: 'ap2', category:'phone'})
+CREATE (p9:Product {name:'Apple iPhone 11 Pro Max', id: 'ap3', category:'phone'})
+CREATE (p10:Product {name:'Dell Inspiron 6546', id: 'dl1', category:'laptop'})
+
+// Transactions Relationship
+CREATE (c1)-[:ORDERS {orderID:'753145', customerName: 'harsh', rating: '2', zip: '60616', status: 'approved', onTime:'No', returned: 'No'  }]->(p1)   
+CREATE (c2)-[:ORDERS {orderID:'506054', customerName: 'ninad', rating: '2', zip: '60616', status: 'disputed', onTime:'No', returned: 'No'  }]->(p3)   
+CREATE (c3)-[:ORDERS {orderID:'821800', customerName: 'chirag', rating: '3', zip: '411004', status: 'disputed', onTime:'Yes', returned: 'No'  }]->(p8)
+CREATE (c4)-[:ORDERS {orderID:'122498', customerName: 'chris', rating: '5', zip: '60616', status: 'disputed', onTime:'Yes', returned: 'Yes'  }]->(p7) 
+CREATE (c3)-[:ORDERS {orderID:'623825', customerName: 'chirag', rating: '2', zip: '564565', status: 'disputed', onTime:'Yes', returned: 'No'  }]->(p2)
+CREATE (c2)-[:ORDERS {orderID:'108125', customerName: 'ninad', rating: '5', zip: '425401', status: 'approved', onTime:'Yes', returned: 'Yes'  }]->(p2)
+CREATE (c4)-[:ORDERS {orderID:'265818', customerName: 'chris', rating: '1', zip: '425401', status: 'disputed', onTime:'No', returned: 'Yes'  }]->(p7) 
+CREATE (c1)-[:ORDERS {orderID:'638721', customerName: 'harsh', rating: '4', zip: '564565', status: 'disputed', onTime:'No', returned: 'No'  }]->(p9)  
+CREATE (c5)-[:ORDERS {orderID:'426725', customerName: 'nishant', rating: '5', zip: '60616', status: 'approved', onTime:'No', returned: 'Yes'  }]->(p2)
+CREATE (c7)-[:ORDERS {orderID:'676614', customerName: 'satyaveer', rating: '4', zip: '564565', status: 'approved', onTime:'Yes', returned: 'No'  }]->(p9)
+CREATE (c5)-[:ORDERS {orderID:'354759', customerName: 'nishant', rating: '1', zip: '484645', status: 'disputed', onTime:'No', returned: 'No'  }]->(p7)
+CREATE (c2)-[:ORDERS {orderID:'367643', customerName: 'ninad', rating: '5', zip: '425401', status: 'disputed', onTime:'Yes', returned: 'No'  }]->(p10)
+CREATE (c2)-[:ORDERS {orderID:'458043', customerName: 'ninad', rating: '4', zip: '564565', status: 'disputed', onTime:'Yes', returned: 'No'  }]->(p9)
+CREATE (c4)-[:ORDERS {orderID:'897815', customerName: 'chris', rating: '4', zip: '60616', status: 'disputed', onTime:'No', returned: 'Yes'  }]->(p10)
+CREATE (c5)-[:ORDERS {orderID:'368283', customerName: 'nishant', rating: '3', zip: '60616', status: 'disputed', onTime:'No', returned: 'No'  }]->(p7)
+CREATE (c6)-[:ORDERS {orderID:'931259', customerName: 'akash', rating: '1', zip: '564565', status: 'disputed', onTime:'No', returned: 'No'  }]->(p9)
+CREATE (c7)-[:ORDERS {orderID:'449042', customerName: 'satyaveer', rating: '2', zip: '411004', status: 'approved', onTime:'Yes', returned: 'No'  }]->(p2)
+CREATE (c8)-[:ORDERS {orderID:'563144', customerName: 'dhiraj', rating: '5', zip: '564565', status: 'disputed', onTime:'Yes', returned: 'Yes'  }]->(p3)
+CREATE (c9)-[:ORDERS {orderID:'576425', customerName: 'jose', rating: '3', zip: '60616', status: 'approved', onTime:'Yes', returned: 'Yes'  }]->(p10)
+CREATE (c1)-[:ORDERS {orderID:'625548', customerName: 'harsh', rating: '5', zip: '484645', status: 'approved', onTime:'Yes', returned: 'Yes'  }]->(p9)
+CREATE (c7)-[:ORDERS {orderID:'206578', customerName: 'satyaveer', rating: '2', zip: '411004', status: 'approved', onTime:'Yes', returned: 'No'  }]->(p9)
+CREATE (c6)-[:ORDERS {orderID:'484151', customerName: 'akash', rating: '1', zip: '411004', status: 'approved', onTime:'Yes', returned: 'Yes'  }]->(p1)
+CREATE (c4)-[:ORDERS {orderID:'536641', customerName: 'chris', rating: '2', zip: '484645', status: 'disputed', onTime:'Yes', returned: 'No'  }]->(p10)
+CREATE (c8)-[:ORDERS {orderID:'186187', customerName: 'dhiraj', rating: '2', zip: '484645', status: 'disputed', onTime:'Yes', returned: 'Yes'  }]->(p8)
+CREATE (c5)-[:ORDERS {orderID:'356316', customerName: 'nishant', rating: '4', zip: '425401', status: 'disputed', onTime:'No', returned: 'No'  }]->(p8)
+CREATE (c2)-[:ORDERS {orderID:'732215', customerName: 'ninad', rating: '5', zip: '564565', status: 'disputed', onTime:'No', returned: 'Yes'  }]->(p2)
+CREATE (c5)-[:ORDERS {orderID:'643773', customerName: 'nishant', rating: '2', zip: '564565', status: 'approved', onTime:'No', returned: 'No'  }]->(p1)
+CREATE (c6)-[:ORDERS {orderID:'540418', customerName: 'akash', rating: '2', zip: '564565', status: 'approved', onTime:'Yes', returned: 'Yes'  }]->(p10)
+CREATE (c3)-[:ORDERS {orderID:'521953', customerName: 'chirag', rating: '3', zip: '564565', status: 'approved', onTime:'No', returned: 'No'  }]->(p9)
+CREATE (c3)-[:ORDERS {orderID:'474456', customerName: 'chirag', rating: '2', zip: '411004', status: 'disputed', onTime:'No', returned: 'No'  }]->(p10)
+CREATE (c2)-[:ORDERS {orderID:'653670', customerName: 'ninad', rating: '1', zip: '484645', status: 'approved', onTime:'No', returned: 'Yes'  }]->(p1)
+CREATE (c6)-[:ORDERS {orderID:'439316', customerName: 'akash', rating: '5', zip: '411004', status: 'disputed', onTime:'No', returned: 'No'  }]->(p3)
+CREATE (c9)-[:ORDERS {orderID:'958026', customerName: 'jose', rating: '2', zip: '425401', status: 'disputed', onTime:'Yes', returned: 'Yes'  }]->(p2)
+CREATE (c2)-[:ORDERS {orderID:'474234', customerName: 'ninad', rating: '3', zip: '425401', status: 'disputed', onTime:'Yes', returned: 'Yes'  }]->(p7)
+
+RETURN *
+
+MATCH(cust:Customer)-[trans:ORDERS]->(product)
+WHERE trans.onTime = 'No'
+RETURN trans.zip AS Zip, COUNT(trans.onTime) AS No_of_Delayed_Transactions
+
+MATCH(cust:Customer)-[trans:ORDERS]->(product)
+WHERE trans.status = 'disputed'
+RETURN trans.zip AS Zip, trans.customerName AS Customer, COUNT(trans.status) AS No_of_Disputed_Transactions
+
+
+MATCH (cust:Customer)-[trans:ORDERS]->(product)
+WHERE trans.status = "disputed"
+WITH cust, COUNT(*) AS No_of_Disputed_Transactions
+WHERE No_of_Disputed_Transactions > 1
+RETURN cust.name AS Customer, No_of_Disputed_Transactions 
+
+MATCH (customer:Customer)-[transaction:ORDERS]->(product)
+WHERE transaction.returned = "Yes"
+WITH customer, count(*) AS No_of_Returned_transactions
+WHERE No_of_Returned_transactions > 0
+WITH customer, No_of_Returned_transactions
+ORDER BY No_of_Returned_transactions DESC LIMIT 3
+RETURN customer.name AS Customer, No_of_Returned_transactions
+
+MATCH (customer:Customer)-[transaction:ORDERS]->(product)
+WHERE transaction.returned = "Yes" AND transaction.rating = "1"
+WITH customer, product, transaction, count(*) AS No_of_Returned_transactions
+RETURN product.category AS Category, transaction.zip AS ZIP, No_of_Returned_transactions

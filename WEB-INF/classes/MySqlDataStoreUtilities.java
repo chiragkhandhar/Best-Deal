@@ -78,6 +78,78 @@ public class MySqlDataStoreUtilities
         }		
     }
 
+    public static void insertTransaction()
+    {
+        String[] users = {"chirag", "nishant", "akash", "dhiraj", "ninad", "harsh", "satyaveer", "chris", "jose", "jean"};
+        String [] user_IDS = {"1602341465", "1602462193", "1602465920", "1602465931", "1602465967", "1602465977", "1602465951", "1602466072", "1602466080", "1602466090"};
+        
+        String [] creditcardno = {"653235654","4654135461","56556556445", "64654654464", "6464545612"};
+        String [] orderDate = {"2020-20-08", "2020-21-08","2020-22-08","2020-23-08","2020-24-08"};
+        String [] exp_DD = {"2020-07-09", "2020-08-09","2020-09-09","2020-10-09","2020-11-09"};
+        String [] act_DD = {"2020-05-09", "2020-09-09","2020-09-09","2020-09-09","2020-12-09"};
+        String [] zipArr = {"60616", "425401", "411004", "484645", "564565"};
+       
+        String [] productIDs = {"al1", "al2", "al3", "amz1", "amz2", "amz3", "ap1", "ap2", "ap3", "dl1"};
+        String [] productNames = {"Apple Macbook Air", "Apple Macbook Pro", "Apple Macbook Pro 16", "Amazon - Echo Dot (3rd Gen) - Smart Speaker with Alexa - Charcoal", "Amazon - Echo Studio Smart Speaker with Alexa - Charcoal", "Amazon - Echo Dot Kids Edition Smart Speaker with Alexa - Rainbow", "Apple iPhone 11", "Apple iPhone 11 Pro", "Apple iPhone 11 Pro Max", "Dell Inspiron 6546"};
+        String [] categories = {"laptop", "laptop","laptop", "va", "va", "va", "phone", "phone", "phone", "laptop"};
+        String [] manuf = {"Apple", "Apple", "Apple", "Amazon", "Amazon","Amazon","Apple", "Apple", "Apple", "Dell"};
+
+        String [] modeArr = {"delivery", "pickup"};
+        String [] statusArr = {"disputed", "approved"};
+        String [] returnedArr = {"Yes", "No"};
+
+        int indexMin = 0, ageMin = 18, commonMin = 0, modeMin = 0;
+        int indexMax = 9, ageMax = 30, commonMax = 4, modeMax = 1;
+        int min = 100000;
+        int max = 999999;
+
+        try
+        {        
+            getConnection();
+
+            
+                int nameIndex = (int)(Math.random()*(indexMax-indexMin+1)+indexMin);  
+                int productIndex = (int)(Math.random()*(indexMax-indexMin+1)+indexMin);  	
+                int ageIndex = (int)(Math.random()*(ageMax-ageMin+1)+ageMin);  	
+                int orderId =  (int)(Math.random()*(max-min+1)+min); 
+                int commonIndex =  (int)(Math.random()*(commonMax-commonMin+1)+commonMin);  
+                int rand_rating = (int)(Math.random()*(5-1+1)+1);
+                int modeIndex =  (int)(Math.random()*(modeMax-modeMin+1)+modeMin);  
+                int statusIndex =  (int)(Math.random()*(modeMax-modeMin+1)+modeMin);  
+                int returnedIndex =  (int)(Math.random()*(modeMax-modeMin+1)+modeMin);  
+                int onTimeIndex =  (int)(Math.random()*(modeMax-modeMin+1)+modeMin);  
+                
+                String query = "INSERT INTO transactions(loginID,customerName, customerAge,creditCardNo,OrderID,orderDate,exp_deliveryDate,act_deliveryDate,productID,productName,category,manufacturer,rating,del_trackingID,mode,del_ZIP,status,returned,onTime)" +
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";	
+                
+                PreparedStatement pst = conn.prepareStatement(query);
+                pst.setString(1,user_IDS[nameIndex]);
+                pst.setString(2,users[nameIndex]);
+                pst.setInt(3,ageIndex);
+                pst.setString(4,creditcardno[commonIndex]);
+                pst.setInt(5,orderId);
+                pst.setString(6,orderDate[commonIndex]);
+                pst.setString(7,exp_DD[commonIndex]);
+                pst.setString(8,act_DD[commonIndex]);
+                pst.setString(9,productIDs[productIndex]);
+                pst.setString(10,productNames[productIndex]);
+                pst.setString(11,categories[productIndex]);
+                pst.setString(12,manuf[productIndex]);
+                pst.setInt(13,rand_rating);
+                pst.setString(14,"" + orderId);
+                pst.setString(15,zipArr[commonIndex]);
+                pst.setString(16,modeArr[modeIndex]);
+                pst.setString(17,statusArr[statusIndex]);
+                pst.setString(18,returnedArr[returnedIndex]);
+                pst.setString(19,returnedArr[onTimeIndex]);
+                pst.execute();            
+        }
+        catch(Exception e)
+        {
+        
+        }		
+    }
+
     public static HashMap<String,TVType> getTVs(){
         HashMap<String,TVType> tvs = new HashMap<String,TVType>();            
         try
