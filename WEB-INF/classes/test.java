@@ -11,9 +11,9 @@ public class test {
       while ((line = br.readLine()) != null)
       //returns a Boolean value  
       {
-        String[] employee = line.split(splitBy);
+        String[] row = line.split(splitBy);
         //use comma as separator  
-        System.out.println("CREATE ("+getC(employee[1])+")-[:ORDERS {orderID:'"+employee[4]+"', customerName: '"+employee[1]+"', rating: '"+employee[12]+"', zip: '"+employee[14]+"', status: '"+employee[16]+"', onTime:'"+employee[18]+"', returned: '"+employee[17]+"'  }]->("+getP(employee[9])+")");
+        System.out.println("CREATE ("+getC(row[1])+")-[:ORDERS {orderID:'"+row[4]+"', customerName: '"+row[1]+"', rating: '"+row[12]+"', zip: '"+row[14]+"', status: '"+row[16]+"', onTime:'"+row[18]+"', returned: '"+row[17]+"'  }]->("+getP(row[9])+")");
       }
     }
     catch(IOException e) {
@@ -91,6 +91,16 @@ public class test {
         return "p10";
       }
       return "na";
+  }
+
+  public static void generateProduct(){
+    String [] productIDs = {"al1", "al2", "al3", "amz1", "amz2", "amz3", "ap1", "ap2", "ap3", "dl1"};
+    String [] productNames = {"Apple Macbook Air", "Apple Macbook Pro", "Apple Macbook Pro 16", "Amazon - Echo Dot (3rd Gen) - Smart Speaker with Alexa - Charcoal", "Amazon - Echo Studio Smart Speaker with Alexa - Charcoal", "Amazon - Echo Dot Kids Edition Smart Speaker with Alexa - Rainbow", "Apple iPhone 11", "Apple iPhone 11 Pro", "Apple iPhone 11 Pro Max", "Dell Inspiron 6546"};
+    String [] categories = {"laptop", "laptop","laptop", "va", "va", "va", "phone", "phone", "phone", "laptop"};
+    
+    for(int i = 0; i< 10; i++){
+        System.out.println("CREATE (p"+ (i+1) + ":Product {name:'"+productNames[i]+"', id: '"+productIDs[i]+"', category:'"+categories[i]+"'})");
+    }
   }
 }
 

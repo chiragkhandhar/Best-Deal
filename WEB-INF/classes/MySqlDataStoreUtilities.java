@@ -450,5 +450,27 @@ public class MySqlDataStoreUtilities
         {
         }
         return hm;			
-    }	
+    }
+    
+    public static HashMap<String,Product> getData()
+	{
+		HashMap<String,Product> hm=new HashMap<String,Product>();
+		try
+		{
+			getConnection();
+			Statement stmt=conn.createStatement();
+			String selectCustomerQuery="select * from  productDetails";
+			ResultSet rs = stmt.executeQuery(selectCustomerQuery);
+			while(rs.next())
+            {	Product p = new Product(rs.getString("productType"), rs.getString("ID"), rs.getInt("Stock"), rs.getString("productName"), rs.getDouble("productPrice"), rs.getString("productImage"), rs.getString("productManufacturer"), rs.getString("productCondition"), rs.getDouble("productDiscount"), rs.getString("description"));
+                hm.put(rs.getString("productName"), p);
+			}
+		}
+		catch(Exception e)
+		{
+		e.printStackTrace();	
+		}
+		return hm;			
+	}
+
 }	
