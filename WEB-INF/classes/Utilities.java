@@ -446,8 +446,5 @@ public class Utilities extends HttpServlet{
 			
 			return "Successfull";	
 		}
-		}
-	
-	
-
+	}
 }
