@@ -84,7 +84,7 @@ public class ProductRecommenderUtility
             ArrayList<Product> productList = MySqlDataStoreUtilities.getInventory();
             for(Product temp : productList)
             {
-                if(temp.getproductName().equals(product))
+                if(temp.getproductName().contains(product))
                 {
                     prodObj = temp;
                     break;
