@@ -112,24 +112,27 @@ public class DealMatchesUtilities extends HttpServlet {
                 pw.print("<li id='item'><img src='images/"+entry.getValue().getproductType()+"s/"+entry.getValue().getproductImage()+"' alt='' />");
                 pw.print("</li><li>");
 
-                pw.print("<form action='Cart' method='post'><input type='submit' class='btnbuy' value='Buy Now'>");
-                pw.print("<input type='hidden' name='name' value='"+entry.getKey()+"'>");
-                pw.print("<input type='hidden' name='type' value='"+entry.getValue().getproductType()+"'>");
+                pw.print("<form action='Cart' method='post'>");
+                pw.print("<input type='submit' class='btnbuy' value='Buy Now'>");
+                pw.print("<input type='hidden' name='name' value='"+entry.getValue().getID()+"'>");
+                pw.print("<input type='hidden' name='type' value='"+entry.getValue().getproductType()+"s'>");
                 pw.print("<input type='hidden' name='maker' value='"+entry.getValue().getproductManufacturer()+"'>");
                 pw.print("<input type='hidden' name='access' value=''>");
                 pw.print("</form></li><li>");
 
                 pw.print("<form action='WriteReview' method='post'><input type='submit' class='btnreview' value='WriteReview'>");
-                pw.print("<input type='hidden' name='name' value='"+entry.getValue().getID()+"'>");
-                pw.print("<input type='hidden' name='type' value='"+entry.getValue().getproductType()+"'>");
+                pw.print("<input type='hidden' name='name' value='"+entry.getKey()+"'>");
+                pw.print("<input type='hidden' name='type' value='"+entry.getValue().getproductType()+"s'>");
                 pw.print("<input type='hidden' name='maker' value='"+entry.getValue().getproductManufacturer()+"'>");
                 pw.print("<input type='hidden' name='price' value='"+entry.getValue().getproductPrice()+"'>");
                 pw.print("</form></li>");
 
                 pw.print("<li>");
                 pw.print("<form action='ViewReview' method='post'><input type='submit' class='btnreview' value='ViewReview'>");
-                pw.print("<input type='hidden' name='name' value='"+entry.getValue().getID()+"'>");
-                pw.print("<input type='hidden' name='type' value='"+entry.getValue().getproductType()+"'>");
+                pw.print("<input type='hidden' name='name' value='"+entry.getKey()+"'>");
+                pw.print("<input type='hidden' name='type' value='"+entry.getValue().getproductType()+"s'>");
+                pw.print("<input type='hidden' name='maker' value='"+entry.getValue().getproductManufacturer()+"'>");
+                pw.print("<input type='hidden' name='price' value='"+entry.getValue().getproductPrice()+"'>");
                 pw.print("</form></li></ul></div></td>");
             }
             pw.print("</tr></table>");

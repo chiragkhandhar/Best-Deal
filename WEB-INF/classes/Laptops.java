@@ -96,7 +96,6 @@ public class Laptops extends HttpServlet {
 					"<input type='hidden' name='access' value=''>"+
 					"<input type='submit' class='btnbuy' value='View Item'></form></li>");
 
-			
 			pw.print("<li><form method='post' action='Cart'>" +
 					"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='laptops'>"+
